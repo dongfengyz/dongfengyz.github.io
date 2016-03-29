@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-28T12:04:05.828Z</updated>
+  <updated>2016-03-29T13:35:23.670Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2016/03/29/demodelete/"/>
+    <id>http://yoursite.com/2016/03/29/demodelete/</id>
+    <published>2016-03-29T13:30:54.807Z</published>
+    <updated>2016-03-29T13:35:23.670Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;对于demo删除的改进&quot;&gt;&lt;a href=&quot;#对于demo删除的改进&quot; class=&quot;headerlink&quot; title=&quot;对于demo删除的改进&quot;&gt;&lt;/a&gt;对于demo删除的改进&lt;/h1&gt;&lt;p&gt;3/29/2016 9:34:30 PM &lt;/p&gt;
+&lt;p&gt;-问题描述&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- 上次在进入用户界面进行删除，把所有的用户都删除了，页面并没有变化。
+- 而且还是在那个页面上并且在页面上的缓存用户名。
+- 显然很不合理
+`request.setCharacterEncoding(&amp;quot;UTF-8&amp;quot;);
+    String idString = request.getParameter(&amp;quot;id&amp;quot;);
+    String temp_msg = &amp;quot;删除成功&amp;quot;;
+    try {
+        int id = Integer.parseInt(idString);
+        UserinfoDao userinfoDao = new UserinfoDaoImpl();
+        boolean flag = userinfoDao.deleteUserinfoById(id);
+        if (!flag) {
+            temp_msg = &amp;quot;删除失败&amp;quot;;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        temp_msg = &amp;quot;用户ID丢失或无效&amp;quot;;
+    }
+    request.setAttribute(&amp;quot;temp_msg&amp;quot;, temp_msg);
+    request.getRequestDispatcher(&amp;quot;UserinfoListServlet&amp;quot;).forward(request, response);`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对于delete的处理页面思考一下，也没有问题，根据跳转应该是到了userinfolistservlet的处理页面，之后就是关键的一个细节。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt; 准对来自数据库的查询来进行判断&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;UserinfoDao userinfoDao = new UserinfoDaoImpl();
+List&amp;lt;Userinfo&amp;gt; userinfoList = userinfoDao.fetchUserinfoList();
+if ***(userinfoList == null )*** {
+    request.setAttribute(&amp;quot;temp_msg&amp;quot;, &amp;quot;无用户信息，请注册！！！~&amp;quot;);
+    request.getRequestDispatcher(&amp;quot;register.jsp&amp;quot;).forward(request, response);
+} else {
+    request.setAttribute(&amp;quot;userinfoList&amp;quot;,userinfoList);
+    request.getRequestDispatcher(&amp;quot;userinfoList.jsp&amp;quot;).forward(request, response);
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对于(userinfoList == null ) 的判断本身有问题，改进之后&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UserinfoDao userinfoDao = new UserinfoDaoImpl();
+List&amp;lt;Userinfo&amp;gt; userinfoList = userinfoDao.fetchUserinfoList();
+if (**userinfoList == null||userinfoList.size()&amp;lt;1**) {
+    request.setAttribute(&amp;quot;temp_msg&amp;quot;, &amp;quot;无用户信息，请注册！！！~&amp;quot;);
+    request.getRequestDispatcher(&amp;quot;register.jsp&amp;quot;).forward(request, response);
+} else {
+    request.setAttribute(&amp;quot;userinfoList&amp;quot;,userinfoList);
+    request.getRequestDispatcher(&amp;quot;userinfoList.jsp&amp;quot;).forward(request, response);
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;userinfoList.size()&amp;lt;1的判断关键。然后逻辑就可以正确。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;对于demo删除的改进&quot;&gt;&lt;a href=&quot;#对于demo删除的改进&quot; class=&quot;headerlink&quot; title=&quot;对于demo删除的改进&quot;&gt;&lt;/a&gt;对于demo删除的改进&lt;/h1&gt;&lt;p&gt;3/29/2016 9:34:30 PM &lt;/p&gt;
+&lt;p&gt;-问题描述
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>文章标题</title>

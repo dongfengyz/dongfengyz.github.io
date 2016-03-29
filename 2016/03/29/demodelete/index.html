@@ -3,17 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2016 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
+  <meta name="description" content="对于demo删除的改进3/29/2016 9:34:30 PM 
+-问题描述
+- 上次在进入用户界面进行删除，把所有的用户都删除了，页面并没有变化。
+- 而且还是在那个页面上并且在页面上的缓存用户名。
+- 显然很不合理
+`request.setCharacterEncoding(&amp;quot;UTF-8&amp;quot;);
+    String idString = request.getParamet">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/03/29/demodelete/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="对于demo删除的改进3/29/2016 9:34:30 PM 
+-问题描述
+- 上次在进入用户界面进行删除，把所有的用户都删除了，页面并没有变化。
+- 而且还是在那个页面上并且在页面上的缓存用户名。
+- 显然很不合理
+`request.setCharacterEncoding(&amp;quot;UTF-8&amp;quot;);
+    String idString = request.getParamet">
+<meta property="og:updated_time" content="2016-03-29T13:35:23.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:description" content="对于demo删除的改进3/29/2016 9:34:30 PM 
+-问题描述
+- 上次在进入用户界面进行删除，把所有的用户都删除了，页面并没有变化。
+- 而且还是在那个页面上并且在页面上的缓存用户名。
+- 显然很不合理
+`request.setCharacterEncoding(&amp;quot;UTF-8&amp;quot;);
+    String idString = request.getParamet">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -42,8 +61,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false,
@@ -223,98 +242,196 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-demodelete" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/03/29/demodelete/" class="article-date">
+      <time datetime="2016-03-29T13:30:54.807Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+    <div class="article-entry" itemprop="articleBody">
       
+          
+        <h1 id="对于demo删除的改进"><a href="#对于demo删除的改进" class="headerlink" title="对于demo删除的改进"></a>对于demo删除的改进</h1><p>3/29/2016 9:34:30 PM </p>
+<p>-问题描述</p>
+<pre><code>- 上次在进入用户界面进行删除，把所有的用户都删除了，页面并没有变化。
+- 而且还是在那个页面上并且在页面上的缓存用户名。
+- 显然很不合理
+`request.setCharacterEncoding(&quot;UTF-8&quot;);
+    String idString = request.getParameter(&quot;id&quot;);
+    String temp_msg = &quot;删除成功&quot;;
+    try {
+        int id = Integer.parseInt(idString);
+        UserinfoDao userinfoDao = new UserinfoDaoImpl();
+        boolean flag = userinfoDao.deleteUserinfoById(id);
+        if (!flag) {
+            temp_msg = &quot;删除失败&quot;;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        temp_msg = &quot;用户ID丢失或无效&quot;;
+    }
+    request.setAttribute(&quot;temp_msg&quot;, temp_msg);
+    request.getRequestDispatcher(&quot;UserinfoListServlet&quot;).forward(request, response);`
+</code></pre><p>对于delete的处理页面思考一下，也没有问题，根据跳转应该是到了userinfolistservlet的处理页面，之后就是关键的一个细节。</p>
+<blockquote>
+<p> 准对来自数据库的查询来进行判断</p>
+</blockquote>
+<pre><code>UserinfoDao userinfoDao = new UserinfoDaoImpl();
+List&lt;Userinfo&gt; userinfoList = userinfoDao.fetchUserinfoList();
+if ***(userinfoList == null )*** {
+    request.setAttribute(&quot;temp_msg&quot;, &quot;无用户信息，请注册！！！~&quot;);
+    request.getRequestDispatcher(&quot;register.jsp&quot;).forward(request, response);
+} else {
+    request.setAttribute(&quot;userinfoList&quot;,userinfoList);
+    request.getRequestDispatcher(&quot;userinfoList.jsp&quot;).forward(request, response);
+
+}
+</code></pre><p>对于(userinfoList == null ) 的判断本身有问题，改进之后</p>
+<pre><code>UserinfoDao userinfoDao = new UserinfoDaoImpl();
+List&lt;Userinfo&gt; userinfoList = userinfoDao.fetchUserinfoList();
+if (**userinfoList == null||userinfoList.size()&lt;1**) {
+    request.setAttribute(&quot;temp_msg&quot;, &quot;无用户信息，请注册！！！~&quot;);
+    request.getRequestDispatcher(&quot;register.jsp&quot;).forward(request, response);
+} else {
+    request.setAttribute(&quot;userinfoList&quot;,userinfoList);
+    request.getRequestDispatcher(&quot;userinfoList.jsp&quot;).forward(request, response);
+
+}
+</code></pre><p>userinfoList.size()&lt;1的判断关键。然后逻辑就可以正确。</p>
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/29/demodelete/" class="archive-article-date">
-      <time datetime="2016-03-29T13:30:54.807Z" itemprop="datePublished">03-29</time>
-</a>
-        </div>
-         
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2016/03/29/demodelete/"></a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">John Doe</a></p>
+        <p><span>Created:</span>2016-03-29, 21:30:54</p>
+        <p><span>Updated:</span>2016-03-29, 21:35:23</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2016/03/29/demodelete/" title="">http://yoursite.com/2016/03/29/demodelete/</a>
+            <span class="copy-path" data-clipboard-text="From http://yoursite.com/2016/03/29/demodelete/　　By John Doe" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/03/28/文章标题/">
+                    文章标题
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#对于demo删除的改进"><span class="toc-number">1.</span> <span class="toc-text">对于demo删除的改进</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<script>
+    var valueHide = "Hide";
+    var valueShow = "Show";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/28/文章标题/" class="archive-article-date">
-      <time datetime="2016-03-28T11:50:53.509Z" itemprop="datePublished">03-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/28/文章标题/">文章标题</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/28/hello-world/" class="archive-article-date">
-      <time datetime="2016-03-28T09:18:48.596Z" itemprop="datePublished">03-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/28/hello-world/">Hello World</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
 
-    
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
+        
+            <a href="/2016/03/28/文章标题/" title="Next: 文章标题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/03/29/demodelete/">demodelete</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/文章标题/">文章标题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
