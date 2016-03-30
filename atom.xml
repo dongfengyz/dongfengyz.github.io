@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-30T15:54:12.839Z</updated>
+  <updated>2016-03-30T16:05:40.898Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://yoursite.com/2016/03/30/oracle_10/"/>
     <id>http://yoursite.com/2016/03/30/oracle_10/</id>
     <published>2016-03-30T15:12:11.252Z</published>
-    <updated>2016-03-30T15:54:12.839Z</updated>
+    <updated>2016-03-30T16:05:40.898Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
+    <content type="html">&lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;约束&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;not null -----------不为空
 unique  -----------可以有一个
@@ -49,11 +50,32 @@ paimary key-------唯一且不为空
    references ：标示在父表中的列
    on   delete  cascade   当父表中的列被删除时，子表中相对于的列也别删除
    on   delete  set null  子表中相应的列置空。
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;check&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- 出现currval，nextavl，level，和rownum违例
+- 使用sysdate，uid，user，userenv函数 在查询中涉及到其他列的值
+- alter table  添加和删除约束，但是不能修改约束。
+- 有效化和无效化约束
+- 添加not null 约束 要使用modify语句
+    - alter table table
+    - add  constraint constraint type （clumn）；
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;查询数据字典视图&lt;/strong&gt; &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;USER_CONS_COLUMNS
+SELECT  constraint_name, column_name
+FROM  user_cons_columns
+WHERE  table_name = &amp;apos;EMPLOYEES&amp;apos;;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h1 id=&quot;视图：&quot;&gt;&lt;a href=&quot;#视图：&quot; class=&quot;headerlink&quot; title=&quot;视图：&quot;&gt;&lt;/a&gt;视图：&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;控制数据访问&lt;/li&gt;
+&lt;li&gt;简化查询（查询的速度快）&lt;/li&gt;
+&lt;li&gt;数据独立性&lt;/li&gt;
+&lt;li&gt;避免重复访问相同的数据&lt;/li&gt;
+&lt;/ul&gt;
+</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。       3/
+      &lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。    
     
     </summary>
     

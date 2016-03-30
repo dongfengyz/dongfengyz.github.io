@@ -246,7 +246,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="oracle之约束"><a href="#oracle之约束" class="headerlink" title="oracle之约束"></a>oracle之约束</h1><pre><code>经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
+        <h1 id="oracle之约束"><a href="#oracle之约束" class="headerlink" title="oracle之约束"></a>oracle之约束</h1><hr>
+<pre><code>经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 </code></pre><p><strong>约束</strong></p>
 <pre><code>not null -----------不为空
 unique  -----------可以有一个
@@ -273,7 +274,27 @@ paimary key-------唯一且不为空
    references ：标示在父表中的列
    on   delete  cascade   当父表中的列被删除时，子表中相对于的列也别删除
    on   delete  set null  子表中相应的列置空。
-</code></pre>
+</code></pre><p><strong>check</strong></p>
+<pre><code>- 出现currval，nextavl，level，和rownum违例
+- 使用sysdate，uid，user，userenv函数 在查询中涉及到其他列的值
+- alter table  添加和删除约束，但是不能修改约束。
+- 有效化和无效化约束
+- 添加not null 约束 要使用modify语句
+    - alter table table
+    - add  constraint constraint type （clumn）；
+</code></pre><p><strong>查询数据字典视图</strong> </p>
+<pre><code>USER_CONS_COLUMNS
+SELECT  constraint_name, column_name
+FROM  user_cons_columns
+WHERE  table_name = &apos;EMPLOYEES&apos;;
+</code></pre><hr>
+<h1 id="视图："><a href="#视图：" class="headerlink" title="视图："></a>视图：</h1><ul>
+<li>控制数据访问</li>
+<li>简化查询（查询的速度快）</li>
+<li>数据独立性</li>
+<li>避免重复访问相同的数据</li>
+</ul>
+
       
     </div>
     
