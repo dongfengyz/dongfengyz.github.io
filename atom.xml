@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-30T15:35:58.068Z</updated>
+  <updated>2016-03-30T15:54:12.839Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,18 +20,40 @@
     <link href="http://yoursite.com/2016/03/30/oracle_10/"/>
     <id>http://yoursite.com/2016/03/30/oracle_10/</id>
     <published>2016-03-30T15:12:11.252Z</published>
-    <updated>2016-03-30T15:35:58.068Z</updated>
+    <updated>2016-03-30T15:54:12.839Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。               3/30/2016 11:08:11 PM 
+    <content type="html">&lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;约束&lt;/strong&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;not null -----------不为空
 unique  -----------可以有一个
 paimary key-------唯一且不为空
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;check&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 在新建表时
+2. 后期可以添加
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;约束分为列级的和表级&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;约束可以之后来定义否则系统会给用户起一个默认的现在没什么影响但是在之后删除时就比较麻烦。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;unique&lt;/strong&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以又很多列&lt;/li&gt;
+&lt;li&gt;primarykey 的定义一个表中只可以 有一个主键 但是可以有多列。&lt;ul&gt;
+&lt;li&gt;一般的格式：&lt;br&gt;constraint emp_emp_id primary key （employee_id，employee_name）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;foreign key&lt;/strong&gt;&lt;br&gt;定义主外键（必考）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constraint emp_dept_id foreign key （department_id） references departments(department_id)
+1. 顺便如果有两个是 写两个
+2. foreign key：在表级指定子表中的列
+   references ：标示在父表中的列
+   on   delete  cascade   当父表中的列被删除时，子表中相对于的列也别删除
+   on   delete  set null  子表中相应的列置空。
 &lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。         
+      &lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。       3/
     
     </summary>
     

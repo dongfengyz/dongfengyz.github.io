@@ -5,28 +5,49 @@
   
   <title>younger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="oracle之约束经典语录---活着不是硬道理，活着并硬着才是道理。               3/30/2016 11:08:11 PM 
+  <meta name="description" content="oracle之约束经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 约束
 not null -----------不为空
 unique  -----------可以有一个
-paimary key-------唯一且不为空">
+paimary key-------唯一且不为空
+check
+1. 在新建表时
+2. 后期可以添加
+
+约束分为列级的和表级
+
+约束可以之后来定义否则系统会给用户起一个默">
 <meta property="og:type" content="article">
 <meta property="og:title" content="younger">
 <meta property="og:url" content="http://yoursite.com/2016/03/30/oracle_10/index.html">
 <meta property="og:site_name" content="younger">
-<meta property="og:description" content="oracle之约束经典语录---活着不是硬道理，活着并硬着才是道理。               3/30/2016 11:08:11 PM 
+<meta property="og:description" content="oracle之约束经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 约束
 not null -----------不为空
 unique  -----------可以有一个
-paimary key-------唯一且不为空">
-<meta property="og:updated_time" content="2016-03-30T15:35:58.068Z">
+paimary key-------唯一且不为空
+check
+1. 在新建表时
+2. 后期可以添加
+
+约束分为列级的和表级
+
+约束可以之后来定义否则系统会给用户起一个默">
+<meta property="og:updated_time" content="2016-03-30T15:54:12.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="younger">
-<meta name="twitter:description" content="oracle之约束经典语录---活着不是硬道理，活着并硬着才是道理。               3/30/2016 11:08:11 PM 
+<meta name="twitter:description" content="oracle之约束经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 约束
 not null -----------不为空
 unique  -----------可以有一个
-paimary key-------唯一且不为空">
+paimary key-------唯一且不为空
+check
+1. 在新建表时
+2. 后期可以添加
+
+约束分为列级的和表级
+
+约束可以之后来定义否则系统会给用户起一个默">
   
     <link rel="alternative" href="/atom.xml" title="younger" type="application/atom+xml">
   
@@ -252,11 +273,33 @@ paimary key-------唯一且不为空">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="oracle之约束"><a href="#oracle之约束" class="headerlink" title="oracle之约束"></a>oracle之约束</h1><pre><code>经典语录---活着不是硬道理，活着并硬着才是道理。               3/30/2016 11:08:11 PM 
+        <h1 id="oracle之约束"><a href="#oracle之约束" class="headerlink" title="oracle之约束"></a>oracle之约束</h1><pre><code>经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
 </code></pre><p><strong>约束</strong></p>
 <pre><code>not null -----------不为空
 unique  -----------可以有一个
 paimary key-------唯一且不为空
+</code></pre><p><strong>check</strong></p>
+<pre><code>1. 在新建表时
+2. 后期可以添加
+</code></pre><blockquote>
+<p>约束分为列级的和表级</p>
+</blockquote>
+<pre><code>约束可以之后来定义否则系统会给用户起一个默认的现在没什么影响但是在之后删除时就比较麻烦。
+</code></pre><p><strong>unique</strong> </p>
+<ul>
+<li>可以又很多列</li>
+<li>primarykey 的定义一个表中只可以 有一个主键 但是可以有多列。<ul>
+<li>一般的格式：<br>constraint emp_emp_id primary key （employee_id，employee_name）</li>
+</ul>
+</li>
+</ul>
+<p><strong>foreign key</strong><br>定义主外键（必考）</p>
+<pre><code>constraint emp_dept_id foreign key （department_id） references departments(department_id)
+1. 顺便如果有两个是 写两个
+2. foreign key：在表级指定子表中的列
+   references ：标示在父表中的列
+   on   delete  cascade   当父表中的列被删除时，子表中相对于的列也别删除
+   on   delete  set null  子表中相应的列置空。
 </code></pre>
       
     </div>
@@ -268,7 +311,7 @@ paimary key-------唯一且不为空
         <p><span>本文标题:</span><a href="/2016/03/30/oracle_10/"></a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
         <p><span>发布时间:</span>2016-03-30, 23:12:11</p>
-        <p><span>最后更新:</span>2016-03-30, 23:35:58</p>
+        <p><span>最后更新:</span>2016-03-30, 23:54:12</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/03/30/oracle_10/" title="">http://yoursite.com/2016/03/30/oracle_10/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/03/30/oracle_10/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
