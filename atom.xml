@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-29T13:35:23.670Z</updated>
+  <updated>2016-03-30T15:35:58.068Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2016/03/30/oracle_10/"/>
+    <id>http://yoursite.com/2016/03/30/oracle_10/</id>
+    <published>2016-03-30T15:12:11.252Z</published>
+    <updated>2016-03-30T15:35:58.068Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。               3/30/2016 11:08:11 PM 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;约束&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;not null -----------不为空
+unique  -----------可以有一个
+paimary key-------唯一且不为空
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;oracle之约束&quot;&gt;&lt;a href=&quot;#oracle之约束&quot; class=&quot;headerlink&quot; title=&quot;oracle之约束&quot;&gt;&lt;/a&gt;oracle之约束&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;经典语录---活着不是硬道理，活着并硬着才是道理。         
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title></title>
