@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-04T09:07:12.863Z</updated>
+  <updated>2016-04-04T13:21:14.499Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -16,18 +16,53 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>文章题目</title>
+    <link href="http://dongfengyz.github.io/2016/04/04/%E6%96%87%E7%AB%A0%E9%A2%98%E7%9B%AE/"/>
+    <id>http://dongfengyz.github.io/2016/04/04/文章题目/</id>
+    <published>2016-04-04T13:17:39.000Z</published>
+    <updated>2016-04-04T13:21:14.499Z</updated>
+    
+    <content type="html">&lt;p&gt;盼望着，盼望着，东风来了，春天的脚步近了。&lt;br&gt;一切都像刚睡醒的样子，欣欣然张开了眼。山朗润起来了，水涨起来了，太阳的脸红起来了。&lt;br&gt;小草偷偷地从土里钻出来，嫩嫩的，绿绿的。园子里，田野里，瞧去，一大片一大片满是的。坐着，躺着，打两个滚，踢几脚球，赛几趟跑，捉几回迷藏。风轻悄悄的，草软绵绵的。&lt;br&gt;桃树、杏树、梨树，你不让我，我不让你，都开满了花赶趟儿。红的像火，粉的像霞，白的像雪。花里带着甜味儿；闭了眼，树上仿佛已经满是桃儿、杏儿、梨儿。花下成千成百的蜜蜂嗡嗡地闹着，大小的蝴蝶飞来飞去。野花遍地是：杂样儿，有名字的，没名字的，散在草丛里，像眼睛，像星星，还眨呀眨的。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;“吹面不寒杨柳风”，不错的，像母亲的手抚摸着你。风里带来些新翻的泥土的气息，混着青草味儿，还有各种花的香，都在微微润湿的空气里酝酿。鸟儿将巢安在繁花嫩叶当中，高兴起来了，呼朋引伴地卖弄清脆的喉咙，唱出宛转的曲子，与轻风流水应和着。牛背上牧童的短笛，这时候也成天嘹亮地响着。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;盼望着，盼望着，东风来了，春天的脚步近了。&lt;br&gt;一切都像刚睡醒的样子，欣欣然张开了眼。山朗润起来了，水涨起来了，太阳的脸红起来了。&lt;br&gt;小草偷偷地从土里钻出来，嫩嫩的，绿绿的。园子里，田野里，瞧去，一大片一大片满是的。坐着，躺着，打两个滚，踢几脚球，赛几趟跑，捉几回迷藏。风轻悄悄的，草软绵绵的。&lt;br&gt;桃树、杏树、梨树，你不让我，我不让你，都开满了花赶趟儿。红的像火，粉的像霞，白的像雪。花里带着甜味儿；闭了眼，树上仿佛已经满是桃儿、杏儿、梨儿。花下成千成百的蜜蜂嗡嗡地闹着，大小的蝴蝶飞来飞去。野花遍地是：杂样儿，有名字的，没名字的，散在草丛里，像眼睛，像星星，还眨呀眨的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://dongfengyz.github.io/categories/hexo/"/>
+    
+    
+      <category term="hexo" scheme="http://dongfengyz.github.io/tags/hexo/"/>
+    
+      <category term="test" scheme="http://dongfengyz.github.io/tags/test/"/>
+    
+      <category term="测试" scheme="http://dongfengyz.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>biaoti</title>
     <link href="http://dongfengyz.github.io/2016/04/04/biaoti/"/>
     <id>http://dongfengyz.github.io/2016/04/04/biaoti/</id>
     <published>2016-04-04T09:07:12.000Z</published>
-    <updated>2016-04-04T09:07:12.863Z</updated>
+    <updated>2016-04-04T13:11:24.809Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;pre&gt;&lt;code&gt;纸上得来终觉浅，绝知此事要躬行。
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
+      &lt;pre&gt;&lt;code&gt;纸上得来终觉浅，绝知此事要躬行。
+&lt;/code&gt;&lt;/pre&gt;
+    
     </summary>
     
+      <category term="css" scheme="http://dongfengyz.github.io/categories/css/"/>
+    
+    
+      <category term="hexo" scheme="http://dongfengyz.github.io/tags/hexo/"/>
     
   </entry>
   
