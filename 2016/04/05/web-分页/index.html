@@ -3,17 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives | younger</title>
+  <title>web-分页 | younger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="孤独膨胀成猪">
-<meta property="og:type" content="website">
-<meta property="og:title" content="younger">
-<meta property="og:url" content="http://dongfengyz.github.io/archives/page/2/index.html">
+  <meta name="description" content="分页实现
+页面中提供分页参数
+后台类中实现分页查询
+
+页面中提供的分页参数
+目标页码
+每页多少数据（行）
+一般还要有共多少页或多少数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web-分页">
+<meta property="og:url" content="http://dongfengyz.github.io/2016/04/05/web-分页/index.html">
 <meta property="og:site_name" content="younger">
-<meta property="og:description" content="孤独膨胀成猪">
+<meta property="og:description" content="分页实现
+页面中提供分页参数
+后台类中实现分页查询
+
+页面中提供的分页参数
+目标页码
+每页多少数据（行）
+一般还要有共多少页或多少数据">
+<meta property="og:updated_time" content="2016-04-05T14:56:28.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="younger">
-<meta name="twitter:description" content="孤独膨胀成猪">
+<meta name="twitter:title" content="web-分页">
+<meta name="twitter:description" content="分页实现
+页面中提供分页参数
+后台类中实现分页查询
+
+页面中提供的分页参数
+目标页码
+每页多少数据（行）
+一般还要有共多少页或多少数据">
   
     <link rel="alternative" href="/atom.xml" title="younger" type="application/atom+xml">
   
@@ -42,8 +64,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false,
@@ -230,108 +252,214 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-web-分页" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/04/05/web-分页/" class="article-date">
+      <time datetime="2016-04-05T14:39:06.000Z" itemprop="datePublished">2016-04-05</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web-分页
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/jsp/">jsp</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="分页实现"><a href="#分页实现" class="headerlink" title="分页实现"></a>分页实现</h1><ol>
+<li>页面中提供分页参数</li>
+<li>后台类中实现分页查询</li>
+</ol>
+<h2 id="页面中提供的分页参数"><a href="#页面中提供的分页参数" class="headerlink" title="页面中提供的分页参数"></a>页面中提供的分页参数</h2><ol>
+<li>目标页码</li>
+<li>每页多少数据（行）</li>
+<li>一般还要有共多少页或多少数据</li>
+</ol>
+<a id="more"></a>
+<h2 id="后台类中实现分页查询"><a href="#后台类中实现分页查询" class="headerlink" title="后台类中实现分页查询"></a>后台类中实现分页查询</h2><ol>
+<li>根据页码传递的分页参数计算查询记录的起始位置和结束位置</li>
+<li>将计算的起至位置带入sql代码中去作为查询条件</li>
+</ol>
+<h2 id="数据库不同分页查询的sql代码"><a href="#数据库不同分页查询的sql代码" class="headerlink" title="数据库不同分页查询的sql代码"></a>数据库不同分页查询的sql代码</h2><ol>
+<li>SQLserver 使用关键字top</li>
+<li>ORACLE 使用rownum关键字</li>
+<li>MYSQL 使用limit关键字实现分页目的</li>
+</ol>
+
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/28/文章标题/" class="archive-article-date">
-      <time datetime="2016-03-28T11:50:53.509Z" itemprop="datePublished">03-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/28/文章标题/">文章标题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/28/文章标题 - 副本/" class="archive-article-date">
-      <time datetime="2016-03-28T11:50:53.000Z" itemprop="datePublished">03-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/28/文章标题 - 副本/">文章标题</a>
-    </h1>
-  
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2016/04/05/web-分页/">web-分页</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">younger</a></p>
+        <p><span>Created:</span>2016-04-05, 22:39:06</p>
+        <p><span>Updated:</span>2016-04-05, 22:56:28</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2016/04/05/web-分页/" title="web-分页">http://dongfengyz.github.io/2016/04/05/web-分页/</a>
+            <span class="copy-path" data-clipboard-text="From http://dongfengyz.github.io/2016/04/05/web-分页/　　By younger" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
 
-        <div class="article-info info-on-archive">
-          
 
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/03/28/hello-world/" class="archive-article-date">
-      <time datetime="2016-03-28T09:18:48.596Z" itemprop="datePublished">03-28</time>
-</a>
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/03/28/hello-world/">Hello World</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/04/文章题目/">
+                    文章题目
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#分页实现"><span class="toc-number">1.</span> <span class="toc-text">分页实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#页面中提供的分页参数"><span class="toc-number">1.1.</span> <span class="toc-text">页面中提供的分页参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后台类中实现分页查询"><span class="toc-number">1.2.</span> <span class="toc-text">后台类中实现分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库不同分页查询的sql代码"><span class="toc-number">1.3.</span> <span class="toc-text">数据库不同分页查询的sql代码</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<script>
+    var valueHide = "Hide";
+    var valueShow = "Show";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/04/05/web-分页/" data-title="web-分页" data-url="http://dongfengyz.github.io/2016/04/05/web-分页/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangze1"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://yangze.win/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/04/04/文章题目/" title="Next: 文章题目">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/05/web-分页/">web-分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/文章题目/">文章题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/biaoti/">biaoti</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/oracle_10/">oracle_10</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/29/demodelete/">demodelete</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/文章标题/">文章标题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/文章标题 - 副本/">文章标题</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
