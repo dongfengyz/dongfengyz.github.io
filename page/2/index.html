@@ -110,13 +110,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -157,7 +157,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
                     </div>
                 </section>
                 
@@ -236,6 +236,95 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-demodelete" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/29/demodelete/" class="article-date">
+      <time datetime="2016-03-29T13:30:54.807Z" itemprop="datePublished">2016-03-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="对于demo删除的改进"><a href="#对于demo删除的改进" class="headerlink" title="对于demo删除的改进"></a>对于demo删除的改进</h1><p>3/29/2016 9:34:30 PM </p>
+<p>-问题描述</p>
+<pre><code>- 上次在进入用户界面进行删除，把所有的用户都删除了，页面并没有变化。
+- 而且还是在那个页面上并且在页面上的缓存用户名。
+- 显然很不合理
+`request.setCharacterEncoding(&quot;UTF-8&quot;);
+    String idString = request.getParameter(&quot;id&quot;);
+    String temp_msg = &quot;删除成功&quot;;
+    try {
+        int id = Integer.parseInt(idString);
+        UserinfoDao userinfoDao = new UserinfoDaoImpl();
+        boolean flag = userinfoDao.deleteUserinfoById(id);
+        if (!flag) {
+            temp_msg = &quot;删除失败&quot;;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        temp_msg = &quot;用户ID丢失或无效&quot;;
+    }
+    request.setAttribute(&quot;temp_msg&quot;, temp_msg);
+    request.getRequestDispatcher(&quot;UserinfoListServlet&quot;).forward(request, response);`
+</code></pre><p>对于delete的处理页面思考一下，也没有问题，根据跳转应该是到了userinfolistservlet的处理页面，之后就是关键的一个细节。</p>
+<blockquote>
+<p> 准对来自数据库的查询来进行判断</p>
+</blockquote>
+<pre><code>UserinfoDao userinfoDao = new UserinfoDaoImpl();
+List&lt;Userinfo&gt; userinfoList = userinfoDao.fetchUserinfoList();
+if ***(userinfoList == null )*** {
+    request.setAttribute(&quot;temp_msg&quot;, &quot;无用户信息，请注册！！！~&quot;);
+    request.getRequestDispatcher(&quot;register.jsp&quot;).forward(request, response);
+} else {
+    request.setAttribute(&quot;userinfoList&quot;,userinfoList);
+    request.getRequestDispatcher(&quot;userinfoList.jsp&quot;).forward(request, response);
+
+}
+</code></pre><p>对于(userinfoList == null ) 的判断本身有问题，改进之后</p>
+<pre><code>UserinfoDao userinfoDao = new UserinfoDaoImpl();
+List&lt;Userinfo&gt; userinfoList = userinfoDao.fetchUserinfoList();
+if (**userinfoList == null||userinfoList.size()&lt;1**) {
+    request.setAttribute(&quot;temp_msg&quot;, &quot;无用户信息，请注册！！！~&quot;);
+    request.getRequestDispatcher(&quot;register.jsp&quot;).forward(request, response);
+} else {
+    request.setAttribute(&quot;userinfoList&quot;,userinfoList);
+    request.getRequestDispatcher(&quot;userinfoList.jsp&quot;).forward(request, response);
+
+}
+</code></pre><p>userinfoList.size()&lt;1的判断关键。然后逻辑就可以正确。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-文章标题" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -421,14 +510,14 @@
                 &copy; 2016 younger
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo">Yelee</a> by MOxFIVE
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >Site Visitors: 
+                        <span id="site-visit" >本站到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -438,7 +527,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">Page Hits: 
+                        <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
@@ -471,9 +560,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">

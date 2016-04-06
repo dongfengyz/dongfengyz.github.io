@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-05T14:56:28.216Z</updated>
+  <updated>2016-04-06T12:48:26.499Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,88 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>oracle</title>
+    <link href="http://dongfengyz.github.io/2016/04/06/oracle/"/>
+    <id>http://dongfengyz.github.io/2016/04/06/oracle/</id>
+    <published>2016-04-06T11:02:25.000Z</published>
+    <updated>2016-04-06T12:48:26.499Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;视图&quot;&gt;&lt;a href=&quot;#视图&quot; class=&quot;headerlink&quot; title=&quot;视图&quot;&gt;&lt;/a&gt;视图&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;简化查询&lt;/li&gt;
+&lt;li&gt;控制数据访问&lt;/li&gt;
+&lt;li&gt;数据独立性&lt;/li&gt;
+&lt;li&gt;避免访问重复的数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;结构：&lt;br&gt;    create [or replace] [force|noforce] view view1 [(alias[, alias]…)] as subquery;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;描述视图的结构&lt;br&gt;    describe view1;&lt;br&gt;删除视图&lt;br&gt;    drop view view1;&lt;/p&gt;
+&lt;h1 id=&quot;临时视图&quot;&gt;&lt;a href=&quot;#临时视图&quot; class=&quot;headerlink&quot; title=&quot;临时视图&quot;&gt;&lt;/a&gt;临时视图&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;临时视图是嵌套在sql语句中，本身不会存储。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Top-N&quot;&gt;&lt;a href=&quot;#Top-N&quot; class=&quot;headerlink&quot; title=&quot;Top-N&quot;&gt;&lt;/a&gt;Top-N&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;select [column_list],rownum
+from (select [column_list]
+            from table
+            order by top-n_column desc)
+where rownum&amp;lt;=n;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&quot;序列&quot;&gt;&lt;a href=&quot;#序列&quot; class=&quot;headerlink&quot; title=&quot;序列&quot;&gt;&lt;/a&gt;序列&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;给主键提供值&lt;/li&gt;
+&lt;li&gt;共享对象&lt;/li&gt;
+&lt;li&gt;自动提供唯一的数值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;语法：&lt;br&gt;    create sequence sequence1&lt;br&gt;    [increment by n]//公差是多少&lt;br&gt;    [start with n]&lt;br&gt;    [{maxvalue n | nomaxvalue}]&lt;br&gt;    [{minvalue n | nominvalue}]&lt;br&gt;    [{cycle n | nocycle}]&lt;br&gt;    [cache n | nocache];&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;currval 中存放序列的当前值&lt;br&gt;nextval 返回序列中的下一个有效值&lt;br&gt;使用序列访问效率提高&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;索引&quot;&gt;&lt;a href=&quot;#索引&quot; class=&quot;headerlink&quot; title=&quot;索引&quot;&gt;&lt;/a&gt;索引&lt;/h2&gt;&lt;p&gt;优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一种数据库的对象&lt;/li&gt;
+&lt;li&gt;指针加速oracle服务器的查询速度&lt;/li&gt;
+&lt;li&gt;快速定位数据的方法，减少磁盘i/o&lt;/li&gt;
+&lt;li&gt;索引与表相互独立&lt;/li&gt;
+&lt;li&gt;oracle服务器自动使用和维护索引&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;缺点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DML操作的更新复杂&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;创建索引&lt;br&gt;    create index index1 on table (column[, column]…);&lt;br&gt;    create index emp_last_name_idx on employees(last_name);&lt;br&gt;不要创建索引：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;表很小&lt;/li&gt;
+&lt;li&gt;列不经常作为连接条件或出现&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;经常更新&lt;/p&gt;
+&lt;h2 id=&quot;同义词&quot;&gt;&lt;a href=&quot;#同义词&quot; class=&quot;headerlink&quot; title=&quot;同义词&quot;&gt;&lt;/a&gt;同义词&lt;/h2&gt;&lt;p&gt;好处：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;方便其他用户的访问&lt;br&gt;缩短对象名的长度&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  CREATE [PUBLIC] SYNONYM synonym FOR object;&lt;/p&gt;
+&lt;h2 id=&quot;权限&quot;&gt;&lt;a href=&quot;#权限&quot; class=&quot;headerlink&quot; title=&quot;权限&quot;&gt;&lt;/a&gt;权限&lt;/h2&gt;&lt;p&gt;要点：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;创建用户&lt;/li&gt;
+&lt;li&gt;创建角色&lt;/li&gt;
+&lt;li&gt;使用grant和revoke语句赋予和回收权限&lt;/li&gt;
+&lt;li&gt;创建按数据库联接&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;视图&quot;&gt;&lt;a href=&quot;#视图&quot; class=&quot;headerlink&quot; title=&quot;视图&quot;&gt;&lt;/a&gt;视图&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;简化查询&lt;/li&gt;
+&lt;li&gt;控制数据访问&lt;/li&gt;
+&lt;li&gt;数据独立性&lt;/li&gt;
+&lt;li&gt;避免访问重复的数据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;结构：&lt;br&gt;    create [or replace] [force|noforce] view view1 [(alias[, alias]…)] as subquery;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="oracle" scheme="http://dongfengyz.github.io/categories/oracle/"/>
+    
+    
+      <category term="oracle" scheme="http://dongfengyz.github.io/tags/oracle/"/>
+    
+  </entry>
   
   <entry>
     <title>web-分页</title>
