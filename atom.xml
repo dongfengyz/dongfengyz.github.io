@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-06T14:25:04.023Z</updated>
+  <updated>2016-04-07T11:56:07.226Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,129 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>程序员的弊病</title>
+    <link href="http://dongfengyz.github.io/2016/04/07/%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%BC%8A%E7%97%85/"/>
+    <id>http://dongfengyz.github.io/2016/04/07/程序员的弊病/</id>
+    <published>2016-04-07T11:52:32.000Z</published>
+    <updated>2016-04-07T11:56:07.226Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/rjpFb1u.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;盲目崇拜自己喜欢领域的能力，对陌生的领域表现出排斥心态，从而扩大了了认知的局限。不会承认自己的无知，这些跟智慧无关，更像是种不健康的精神状态。内向，寡语，偏执，甚至是玻璃心，美其名曰可爱。我想他应该是在抨击这一小部分人，我接触的大部分还是很有商业头脑的。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/rjpFb1u.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;盲目崇拜自己喜欢领域的能力，对陌生的领域表现出排斥心态，从而扩大了了认知的局限。不会承认自己的无知，这些跟智慧无关，更像是种不健康的精神状态。内向，寡语，偏执，
+    
+    </summary>
+    
+      <category term="人生" scheme="http://dongfengyz.github.io/categories/%E4%BA%BA%E7%94%9F/"/>
+    
+    
+      <category term="感触" scheme="http://dongfengyz.github.io/tags/%E6%84%9F%E8%A7%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jsp-标签</title>
+    <link href="http://dongfengyz.github.io/2016/04/07/jsp-%E6%A0%87%E7%AD%BE/"/>
+    <id>http://dongfengyz.github.io/2016/04/07/jsp-标签/</id>
+    <published>2016-04-07T00:08:15.000Z</published>
+    <updated>2016-04-07T01:22:36.436Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;架包&quot;&gt;&lt;a href=&quot;#架包&quot; class=&quot;headerlink&quot; title=&quot;架包&quot;&gt;&lt;/a&gt;架包&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;jstl-1.2.jar&lt;/li&gt;
+&lt;li&gt;jstl-api-1.2.jar&lt;/li&gt;
+&lt;li&gt;impl-1.2.jar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;类型：&quot;&gt;&lt;a href=&quot;#类型：&quot; class=&quot;headerlink&quot; title=&quot;类型：&quot;&gt;&lt;/a&gt;类型：&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;**taglib**：taglib uri--统一资源标示符 在使用标签时首先就应该导入。
+**set**：set=&amp;quot;maxcount&amp;quot; value=&amp;quot;100&amp;quot; 
+**out**：输出是可能会出现跨界,如果未定义不会任何输出。 value=&amp;quot;${maxvalue}&amp;quot;
+**if**
+**foreach**
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;路径部署：eclipse的服务器的部署webapp路径。&lt;/p&gt;
+&lt;p&gt;escapeXml:作用是否将代码交给xml解析器解释，为true是 xml解析 ，否则浏览器解析,&lt;br&gt;的原样输出。&lt;/p&gt;
+&lt;p&gt;域(scop)的描述：page-&amp;gt;request-&amp;gt;session-&amp;gt;application&lt;/p&gt;
+&lt;p&gt;一般不会出现空指针的状态，异常做了处理。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;c:set var=&quot;password&quot;&gt;1234&lt;/c:set&gt;&lt;/li&gt;
+&lt;li&gt;&lt;property=&quot;username&quot;&gt; or &lt;property=&quot;username&quot;&gt;属性的大小写是有差别的。&lt;/property=&quot;username&quot;&gt;&lt;/property=&quot;username&quot;&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:remove value=&quot;&quot; scop=&quot;&quot;&gt;&lt;/c:remove&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:catch var=&quot;error&quot;&gt;  &lt;c:out value=&quot;${error.message}&quot;&gt; &lt;c:out value=&quot;${error.cause}&quot;&gt;&lt;/c:out&gt;&lt;/c:out&gt;&lt;/c:catch&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:if&gt;&lt;/c:if&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:choose&gt;&lt;/c:choose&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:otherwise&gt;&lt;/c:otherwise&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:when&gt;&lt;ul&gt;
+&lt;li&gt;&lt;c:foreach var=&quot;userinfo&quot; items=&quot;users&quot;&gt;&lt;ul&gt;
+&lt;li&gt;&lt;c:out value=&quot;${userinfo.uaername}&quot;&gt;&lt;/c:out&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/c:foreach&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:foreach var=&quot;count&quot; begin=&quot;50&quot; end=&quot;60&quot;&gt;&lt;/c:foreach&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:foreach var=&quot;count&quot; begin=&quot;10&quot; end=&quot;100&quot; step=&quot;10&quot;&gt;&lt;/c:foreach&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/c:when&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:import url=&quot;&quot;&gt;&lt;/c:import&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:url value=&quot;foot.jsp&quot; var=&quot;nextpage&quot;&gt;&lt;/c:url&gt;&lt;/li&gt;
+&lt;li&gt;&amp;lt;c:redirct value=nextpage”&amp;gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:setdatasource&gt;&lt;/c:setdatasource&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:query&gt;&lt;/c:query&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:update&gt;&lt;/c:update&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:transaction&gt;&lt;/c:transaction&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;li&gt;&lt;c:&gt;&lt;/c:&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;架包&quot;&gt;&lt;a href=&quot;#架包&quot; class=&quot;headerlink&quot; title=&quot;架包&quot;&gt;&lt;/a&gt;架包&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;jstl-1.2.jar&lt;/li&gt;
+&lt;li&gt;jstl-api-1.2.jar&lt;/li&gt;
+&lt;li&gt;impl-1.2.jar&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="jsp" scheme="http://dongfengyz.github.io/categories/jsp/"/>
+    
+    
+      <category term="标签" scheme="http://dongfengyz.github.io/tags/%E6%A0%87%E7%AD%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>oracle</title>

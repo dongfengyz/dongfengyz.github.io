@@ -157,7 +157,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+                        <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/感触/" style="font-size: 10px;">感触</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
                     </div>
                 </section>
                 
@@ -236,6 +236,158 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-biaoti" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/04/biaoti/" class="article-date">
+      <time datetime="2016-04-04T09:07:12.000Z" itemprop="datePublished">2016-04-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/04/biaoti/">biaoti</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <pre><code>纸上得来终觉浅，绝知此事要躬行。
+</code></pre>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/css/">css</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-oracle_10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/30/oracle_10/" class="article-date">
+      <time datetime="2016-03-30T15:12:11.252Z" itemprop="datePublished">2016-03-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="oracle之约束"><a href="#oracle之约束" class="headerlink" title="oracle之约束"></a>oracle之约束</h1><hr>
+<pre><code>经典语录---活着不是硬道理，活着并硬着才是道理。       3/30/2016 11:08:11 PM 
+</code></pre><p><strong>约束</strong></p>
+<pre><code>not null -----------不为空
+unique  -----------可以有一个
+paimary key-------唯一且不为空
+</code></pre><p><strong>check</strong></p>
+<pre><code>1. 在新建表时
+2. 后期可以添加
+</code></pre><blockquote>
+<p>约束分为列级的和表级</p>
+</blockquote>
+<pre><code>约束可以之后来定义否则系统会给用户起一个默认的现在没什么影响但是在之后删除时就比较麻烦。
+</code></pre><p><strong>unique</strong> </p>
+<ul>
+<li>可以又很多列</li>
+<li>primarykey 的定义一个表中只可以 有一个主键 但是可以有多列。<ul>
+<li>一般的格式：<br>constraint emp_emp_id primary key （employee_id，employee_name）</li>
+</ul>
+</li>
+</ul>
+<p><strong>foreign key</strong><br>定义主外键（必考）</p>
+<pre><code>constraint emp_dept_id foreign key （department_id） references departments(department_id)
+1. 顺便如果有两个是 写两个
+2. foreign key：在表级指定子表中的列
+   references ：标示在父表中的列
+   on   delete  cascade   当父表中的列被删除时，子表中相对于的列也别删除
+   on   delete  set null  子表中相应的列置空。
+</code></pre><p><strong>check</strong></p>
+<pre><code>- 出现currval，nextavl，level，和rownum违例
+- 使用sysdate，uid，user，userenv函数 在查询中涉及到其他列的值
+- alter table  添加和删除约束，但是不能修改约束。
+- 有效化和无效化约束
+- 添加not null 约束 要使用modify语句
+    - alter table table
+    - add  constraint constraint type （clumn）；
+</code></pre><p><strong>查询数据字典视图</strong> </p>
+<pre><code>USER_CONS_COLUMNS
+SELECT  constraint_name, column_name
+FROM  user_cons_columns
+WHERE  table_name = &apos;EMPLOYEES&apos;;
+</code></pre><hr>
+<h1 id="视图："><a href="#视图：" class="headerlink" title="视图："></a>视图：</h1><ul>
+<li>控制数据访问</li>
+<li>简化查询（查询的速度快）</li>
+<li>数据独立性</li>
+<li>避免重复访问相同的数据</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
   
     <article id="post-demodelete" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -435,71 +587,9 @@ if (**userinfoList == null||userinfoList.size()&lt;1**) {
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/03/28/hello-world/" class="article-date">
-      <time datetime="2016-03-28T09:18:48.596Z" itemprop="datePublished">2016-03-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/28/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
