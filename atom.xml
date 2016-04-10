@@ -397,11 +397,11 @@
       <category term="hexo" scheme="http://dongfengyz.github.io/categories/hexo/"/>
     
     
-      <category term="hexo" scheme="http://dongfengyz.github.io/tags/hexo/"/>
-    
       <category term="test" scheme="http://dongfengyz.github.io/tags/test/"/>
     
       <category term="测试" scheme="http://dongfengyz.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="hexo" scheme="http://dongfengyz.github.io/tags/hexo/"/>
     
   </entry>
   
