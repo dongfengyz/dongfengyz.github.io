@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-07T11:56:07.226Z</updated>
+  <updated>2016-04-08T08:38:31.191Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,117 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android17</title>
+    <link href="http://dongfengyz.github.io/2016/04/08/android17/"/>
+    <id>http://dongfengyz.github.io/2016/04/08/android17/</id>
+    <published>2016-04-08T08:30:51.000Z</published>
+    <updated>2016-04-08T08:38:31.191Z</updated>
+    
+    <content type="html">&lt;ol&gt;
+&lt;li&gt;创建一个layout线性布局&lt;/li&gt;
+&lt;li&gt;创建两个水平布局 一个button  在水平布局中放一个textview 和edittext&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;创建一个layout线性布局&lt;/li&gt;
+&lt;li&gt;创建两个水平布局 一个button  在水平布局中放一个textview 和edittext&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+    
+    </summary>
+    
+      <category term="android" scheme="http://dongfengyz.github.io/categories/android/"/>
+    
+    
+      <category term="url" scheme="http://dongfengyz.github.io/tags/url/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>上传</title>
+    <link href="http://dongfengyz.github.io/2016/04/08/%E4%B8%8A%E4%BC%A0/"/>
+    <id>http://dongfengyz.github.io/2016/04/08/上传/</id>
+    <published>2016-04-08T02:12:09.000Z</published>
+    <updated>2016-04-08T03:38:05.156Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;知识改变命运，态度决定未来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;上传原理-表单entype&quot;&gt;&lt;a href=&quot;#上传原理-表单entype&quot; class=&quot;headerlink&quot; title=&quot;上传原理(表单entype)&quot;&gt;&lt;/a&gt;上传原理(表单entype)&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;表单元素entype属性&lt;ul&gt;
+&lt;li&gt;application/x-www-from-urlencoded:只会传递value表单里面的值&lt;/li&gt;
+&lt;li&gt;multipart/from-data:默认属性选择，会把文件域的指定文件包含在里面&lt;/li&gt;
+&lt;li&gt;text/plain:mailto:URL比较方便&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;格式：&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;file&amp;quot; name=&amp;quot;file&amp;quot;&amp;gt;&lt;/code&gt; &lt;ul&gt;
+&lt;li&gt;默认时只会传递url而不会抓取内部的内容。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;手动上传&quot;&gt;&lt;a href=&quot;#手动上传&quot; class=&quot;headerlink&quot; title=&quot;手动上传&quot;&gt;&lt;/a&gt;手动上传&lt;/h2&gt;&lt;h1 id=&quot;使用上传框架完成上传&quot;&gt;&lt;a href=&quot;#使用上传框架完成上传&quot; class=&quot;headerlink&quot; title=&quot;使用上传框架完成上传&quot;&gt;&lt;/a&gt;使用上传框架完成上传&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;cos:&lt;/li&gt;
+&lt;li&gt;common-fileupload:Apache&lt;/li&gt;
+&lt;li&gt;jspsmart：www.jspsmart.com（已死）&lt;ul&gt;
+&lt;li&gt;在lib里面加入jspsmart.jar&lt;/li&gt;
+&lt;li&gt;核心代码：&lt;ul&gt;
+&lt;li&gt;SmartUpload su = new SmartUpload();&lt;/li&gt;
+&lt;li&gt;su.initialize(pageContext);&lt;/li&gt;
+&lt;li&gt;su.upload();&lt;/li&gt;
+&lt;li&gt;int count = su.save(“/upload/“);&lt;/li&gt;
+&lt;li&gt;out.println(count+”个文件上传成功！&lt;br&gt;“);&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;验证码&quot;&gt;&lt;a href=&quot;#验证码&quot; class=&quot;headerlink&quot; title=&quot;验证码&quot;&gt;&lt;/a&gt;验证码&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;png 没有背景插入后反色不大&lt;/li&gt;
+&lt;li&gt;jpg:有背景的、&lt;/li&gt;
+&lt;li&gt;gif：动画图片，多个图片的组合&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;设置eclipse的环境开发utf-8&lt;/p&gt;
+&lt;p&gt;math.random():产生0，1随机码   &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;知识改变命运，态度决定未来。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;上传原理-表单entype&quot;&gt;&lt;a href=&quot;#上传原理-表单entype&quot; class=&quot;headerlink&quot; title=&quot;上传原理(表单entype)&quot;&gt;&lt;/a&gt;上传原理(表单entype)&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;表单元素entype属性&lt;ul&gt;
+&lt;li&gt;application/x-www-from-urlencoded:只会传递value表单里面的值&lt;/li&gt;
+&lt;li&gt;multipart/from-data:默认属性选择，会把文件域的指定文件包含在里面&lt;/li&gt;
+&lt;li&gt;text/plain:mailto:URL比较方便&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="jsp" scheme="http://dongfengyz.github.io/categories/jsp/"/>
+    
+    
+      <category term="上传" scheme="http://dongfengyz.github.io/tags/%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>程序员的弊病</title>
