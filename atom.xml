@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-11T12:33:54.529Z</updated>
+  <updated>2016-04-13T11:12:49.659Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,378 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>oracle-pl变量与常量的定义</title>
+    <link href="http://dongfengyz.github.io/2016/04/13/oracle-pl%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89/"/>
+    <id>http://dongfengyz.github.io/2016/04/13/oracle-pl变量与常量的定义/</id>
+    <published>2016-04-13T10:59:55.000Z</published>
+    <updated>2016-04-13T11:12:49.659Z</updated>
+    
+    <content type="html">&lt;p&gt;变量的赋值：=&lt;br&gt;not null&lt;br&gt;每行只能定义一个变量&lt;br&gt;变量的作用域，在块内部的变量的可以覆盖块外面的。&lt;br&gt;%rowtype获取记录类型定义变量&lt;br&gt;记录类型变量的应用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 形同记录类型的变量可以相互赋值
+2. 不同记录类型的变量，即使
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;变量的赋值：=&lt;br&gt;not null&lt;br&gt;每行只能定义一个变量&lt;br&gt;变量的作用域，在块内部的变量的可以覆盖块外面的。&lt;br&gt;%rowtype获取记录类型定义变量&lt;br&gt;记录类型变量的应用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 形同记录类型的变量可以相互赋值
+2. 不同记
+    
+    </summary>
+    
+      <category term="oracle" scheme="http://dongfengyz.github.io/categories/oracle/"/>
+    
+    
+      <category term="pl" scheme="http://dongfengyz.github.io/tags/pl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>项目管理复习</title>
+    <link href="http://dongfengyz.github.io/2016/04/12/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%A4%8D%E4%B9%A0/"/>
+    <id>http://dongfengyz.github.io/2016/04/12/项目管理复习/</id>
+    <published>2016-04-12T10:56:00.000Z</published>
+    <updated>2016-04-20T09:43:35.115Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;项目管理课程复习&quot;&gt;&lt;a href=&quot;#项目管理课程复习&quot; class=&quot;headerlink&quot; title=&quot;项目管理课程复习&quot;&gt;&lt;/a&gt;项目管理课程复习&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/gFhxq3t.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目的含义及主要特征&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;项目是为了创造一个唯一的产品或提供一个唯一的服务而进行的临时性的努力。
+1. 有明确的目标
+2. 项目之间的活动具有相关性
+3. 限定的周期
+4. 有独特性
+5. 资源成本的约束性
+6. 项目的不确定性
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;2.为什么需求建议书？目的，角度，从谁的角度阐述要做的工作  开发  项目经理&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 目的是从客户自身的角度出发，通过全面详细地陈述，使开发商或项目团队理解客户
+    所希望的是什么，以可行的价格满足客户的已识别的需求。
+2. 从客户的角度全面，详细地阐述为了满足需求所要做的工作。
+3. 需求建议书是指从客户的角度出发，全面详细地阐述为了满足识别出的需求而进行的
+    一份提供了详细信息的文件。在大多情况下，不需要准备正式的需求建议书，而是通过口头的表达。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;3.工作包是什么？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 任务分解(wbs)的过程：将一个项目分解成为更多的工作细目或者子项目，是任务
+    变得更小，更易管理，更易操作。
+2. package是wbs最底层的可交付的成果
+3. 工作包应当有唯一主题负责
+4. 这一交付成果可以分配给另外一位项目经理进行计划和规划，或者通过子项目的方式完成
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;4.何时选派项目经理比较合适？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 项目的启动阶段
+2. 软件项目的计划与分析阶段
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;5.项目失败的主要原因有哪些？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 不充分的需求规范
+2. 需求的改变
+3. 缺乏系统工程师
+4. 缺乏了解软件特性的经理人
+5. 缺乏合格的项目经理
+6. 缺乏软件工程师
+7. 固定价合同
+8. 系统集成阶段，交流和沟通不充分
+9. 团队缺乏经验
+10. 缺乏应用领域专家
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;里程碑&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 项目中表示报告要求或重要工作完成的可以辨别的点或项目的阶段性成果。
+2. 里程碑显示项目进展中的重大工作完成
+3. 里程碑不同于活动
+    1. 活动是需要消耗资源的
+    2. 里程碑仅仅代表事件的标记
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目为何会变更？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 在项目的早期某些问题不可能完全被定义，软件需求是不完备的。这导致随着项目的进
+    行，需求会发生变更，以便达到完备的程度。
+2. 随着软件项目的进行，软件开发人员会对问题的理解会发生变化，这些变化也要反应到
+    需求中，可能导致需求变更。
+3. 此外，在开发大型软件系统，还可能存在（用户类型不同对应功能不同）
+    1. 大型系统通常拥有不同类型的用户，每类用户可能会拥有不同的需求和优先次序。
+    这些需求可能是冲突的或矛盾的，最后的系统需求是他们之间的一个折中，
+    然而这种的程度在项目进行过程中有可能会发生改变，从而导致系统需求的改变。
+    2. 系统客户和系统最终用户很少是一个人，系统客户可能因为机构的原因或预算
+    的原因对系统提出一些需求，而这些需求可能和最终的用户需求不一致。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;什么文件会注明项目目标，工作内容，交付时间级最终产品&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;范围说明书-----WBS
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;在项目结束阶段，为何要审查可交付产品和进度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;确定项目是否应该进入下一个阶段，每个阶段的成果可看成一个里程碑。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目进度和成本的计算，进度偏差， 成本偏差等的计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 项目进度计算
+    1. 基于规模的进度估算
+        1. 定额计算方法
+    T=Q/(R*S) 
+    T:活动持续时间       Q:活动的工作量
+    R:人力或设备的数量   S:产量定额,以单位时间完成的工作量表示
+        2. 经验导出方程
+    2. pert
+    3. cpm
+    4. 基于进度表的进度估算
+    5. 基于承诺的进度估算
+    6. 其他策略
+2. 成本计算：
+    1. 代码行，功能点
+    2. 类比
+    3. 自顶向下
+    4. 自底向上
+    5. 参数估算法
+    6. 专家估算法
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目开始与结束的标志&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/FeBsTeR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;工作的结果是什么&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;为完成项目所进行的各项工作活动的结果。/项目结束
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;那些项目会用到书面变更指令  小型  中性  大型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;所有项目，不论大小
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;如何计算bcws bcwp &lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;举例：某土方工程总挖方量为 4000立方米，计划用10天完成，每天400立方米，预算单价
+为45元/立方米，该挖方工程预算总费用为180000元。 开工后第7天早晨刚上班时业主项目
+管理人员前去测量，取得了两个数据：已完成挖方2000立方米，支付给承包单位的工程进度
+款累计已达120000元。
+1、计算BCWP（实际完成工作的预算成本）
+BCWP =45元/立方米 ×2000立方米=90000元  ,从这里可以看出，实际完成工作预算成本
+（BCWP）与项目进度没有直接关心，并不关系项目实际进度到了什么程度，只关系实际完
+成的工作量
+2、计算BCWS（计划工作预算成本）
+开工后第6天结束时，承包单位应得到的工程进度款累计额为BCWS=45元/立方米×6天×400立
+方米=108000元。
+3、计算ACWP（完成工作的实际成本）
+本案例的ACWP很明显，直接给出了，ACWP=120000
+4、费用偏差，也叫成本偏差：CV = BCWP- ACWP=90000-120000=-30000元，表明承包
+单位已经超支
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目开始和结束时间的计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;最早开始时间（ES）+工期估计=最早结束时间（EF）
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;pert法计算项目进度是使用分布的平均值（期望值）计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;pert的平均值PERT=(P+M*4+O)/6 P(悲观),M(最可能),O(乐观)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/kKadBaP.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目管理成本有哪些内容&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 软件系统规模估算：软件系统规模估算包括软件项目工作任务分解，别且根据分解的
+    工作任务对程序量进行估算。
+2. 软件项目成本估算：软件成本估算包括软件生产效率的估计，并根据软件系统规模和
+    生产效率估计完成项目所需各项资源的成本。
+3. 软甲项目成本预算制定：包括软件项目的整体成本估算配置到各单项任务中，并输出
+    成本估算表和使用计划表。
+4. 软件项目成本监控：包括定期的项目成本统计，核算，监控预算完成情况，偏差分析
+    和预算调整等。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目人力资源管理有哪些过程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/67rysZO.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;有哪些项目组织类型？优缺点—团队  什么是  项目型 进度型 &lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 职能型 有一个总经理下面管理多个部门经理在之下还有多个职员
+    1. 优点：
+        1. 何以充分发挥职能部门的资源集中优势
+        2. 部门的专家可以同时为部门内的不同项目使用
+        3. 便于相互交流相互支援
+        4. 可以随时增派人员
+        5. 可以将项目和本部门的只能工作融为一体
+    2. 缺点：
+        1. 项目和部门利益发生冲突时，职能部门更重视部门的目标，会忽视项目目标
+        2. 资源平衡会出现问题
+        3. 权利分割不利于各个职能部门的交流和团结协作
+        4. 行政隶属关系使得项目经理没有充分的权利
+2. 项目型 
+    1. 优点：
+        1. 项目经理对项目可以负全责
+        2. 项目目标单一，可以以项目为中心，有利于项目顺利进行
+        3. 避免多重领导
+        4. 组织结构简单，交流简单，快速。
+    2. 缺点：
+        1. 资源不能共享
+        2. 各个独立的项目处于相对封闭的状态，不利于公司政策的贯彻
+        3. 对项目组织的成员缺少一种事业上的连续性和安全感
+        4. 项目组织之间处于分割状态，缺少信息交流
+3. 矩阵型
+    1. 优点：
+        1. 专职的项目经理负责整个项目，以项目为中心
+        2. 公司的多个项目可以共享各个职能部门的资源
+        3. 即利于项目目标的实现，有利于公司目标方针的贯彻
+        4. 项目成员的顾虑减少
+    2. 缺点：
+        1. 容易引起职能经理和项目经理权力的冲突
+        2. 资源共享也能引起项目之间的冲突
+        3. 项目成员有多头领导。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;软件项目资源计划编制依据&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;设计项目的范围，时间，质量等各个方面的计划和要求的文件和相关各种支持细节与信息资料。指主要包括：
+1. 项目工作分解结构
+2. 项目工作分解结构的支持细节
+    1. 项目历史信息
+    2. 项目范围计划
+    3. 项目资源描述
+3. 项目组织的管理政策
+4. 各类资源的定额，标准和计算规则
+    1. 活动工期估计
+    2. 资源文件
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;任务分解的步骤&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;输入-&amp;gt;分解-&amp;gt;WBS(
+1. 首先明确并标示出项目各主要组成成分，即明确项目的主要可交付成果。
+2. 确定每个可交付成果的详细程度是否已经达到足以编制恰当的成本和历时估算
+3. 确定可交付成果的组成元素
+4. 核实分解的正确性
+)
+WBS：
+1. 确认并分解项目的组成要素
+2. 确定分解标准
+3. 确定分解是否详细
+4. 确定项目交付成果
+5. 验证分解的正确性
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目沟通的方式（ppt第七章p8-9）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 书面和口头沟通
+2. 需要和非语言沟通
+3. 正式和非正式沟通
+4. 单向和双向的沟通
+5. 网络沟通
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目实施控制中团队管理的过程（ppt第十二章p86-102）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 人员选择
+2. 选择合适的项目人员：确定需要人员类型，明确项目需要的人员技能，验证需
+    要的技能。
+3. 人员培训
+4. 项目培训特点：短期培训，片段式培训，针对性强，见效快。
+5. 人员激励
+6. 马斯洛的需求层次理论
+7. 海兹伯格激励理论
+8. 麦克勒格的X-理论和Y-理论
+9. 超Y理论
+10. z理论
+11. 期望理论
+12. 团队管理建设
+13. 基本方法：创建有确实存在感的项目团队，建立奖励机制，创建良好的人际关系。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目趋势分析（被用来监控技术，成本和进度执行的情况）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;1. 被用来监控技术，成本，和进度执行情况
+2. 趋势分析指作用数字技巧，依据过去的成果预测将来的产品。
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目管理中的管理要素（ppt第十一章p5-6）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;五要素：人的要素，材料因素，方法因素，机械因素，环境因素
+范围（S） 质量（Q） 进度（T） 成本（C）
+四要素的关系
+C=F（S，Q，T）
+sc成一定正比，qc成一定正比，tc成一定反比
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;决策分析树分析法应用及计算—-会画图（ppt第八章p33-40）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;决策树分析是一种图表分析方法
+提供项目所有可供选择的行动方案，行动方案之间的关系，行动方案的后果以及发生的概率
+提供选择一个最佳的方案的依据
+- 损益期望是决策树的一种计算值
+- 根据风险发生的概率计算出一种期望的损益
+    例如：
+    某行动方案成功的概率是50%，收益是10
+    EMV=10*50%=5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Fbw38qv.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/NDZEU9g.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;项目任务分解，根据网络图估算项目最早开始时间和最晚结束时间等，确定项目关键路径（总的路径）（p120/ppt第三章p17-23）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;关键路径是项目网络图中最长的路径，他决定了项目的总耗时间。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;自己补充：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;直接成本组成：开发成本，管理成本，质量成本&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建议：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;小纸条&lt;/li&gt;
+&lt;li&gt;时间。。。。。&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;项目管理课程复习&quot;&gt;&lt;a href=&quot;#项目管理课程复习&quot; class=&quot;headerlink&quot; title=&quot;项目管理课程复习&quot;&gt;&lt;/a&gt;项目管理课程复习&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/gFhxq3t.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="项目管理" scheme="http://dongfengyz.github.io/categories/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="复习" scheme="http://dongfengyz.github.io/tags/%E5%A4%8D%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>人生感悟-1</title>
