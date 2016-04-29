@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-13T11:12:49.659Z</updated>
+  <updated>2016-04-29T02:08:12.904Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,95 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>struts.xml配置文件详解</title>
+    <link href="http://dongfengyz.github.io/2016/04/28/struts202/"/>
+    <id>http://dongfengyz.github.io/2016/04/28/struts202/</id>
+    <published>2016-04-28T06:34:56.000Z</published>
+    <updated>2016-04-29T02:08:12.904Z</updated>
+    
+    <content type="html">&lt;p&gt;action是实现MVC设计模式的controller的具体实现。&lt;br&gt;execute（）作为默认的执行方法。&lt;br&gt;catalog&lt;/p&gt;
+&lt;h2 id=&quot;struts-xml常用配置&quot;&gt;&lt;a href=&quot;#struts-xml常用配置&quot; class=&quot;headerlink&quot; title=&quot;struts.xml常用配置&quot;&gt;&lt;/a&gt;struts.xml常用配置&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;bean&gt;配置&lt;/bean&gt;&lt;/li&gt;
+&lt;li&gt;&lt;constant&gt;配置&lt;/constant&gt;&lt;/li&gt;
+&lt;li&gt;&lt;package&gt;配置&lt;/package&gt;&lt;/li&gt;
+&lt;li&gt;&lt;include&gt;配置&lt;/include&gt;&lt;/li&gt;
+&lt;li&gt;&lt;globaresult&gt;配置&lt;/globaresult&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;配置概要&quot;&gt;&lt;a href=&quot;#配置概要&quot; class=&quot;headerlink&quot; title=&quot;配置概要&quot;&gt;&lt;/a&gt;配置概要&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Struts.xml 是Struts2的核心配置文件，默认放在classpath目录下。&lt;/li&gt;
+&lt;li&gt;struts-default.xml—基础xml，默认配置，自动载入&lt;ul&gt;
+&lt;li&gt;struts2-core-2.3.28.jar下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;default.properties—全局属性文件，默认配置，自动载入&lt;ul&gt;
+&lt;li&gt;org.apache.struts2包下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;struts-plugin.xml—插件相关配置&lt;/li&gt;
+&lt;li&gt;struts.xml—核心配置文件&lt;/li&gt;
+&lt;li&gt;struts.properties –核心配置文件，通常定义文件在classpath下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;&lt;bean&gt;配置&lt;/bean&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;struts&amp;gt;
+&amp;lt;!-- 该bean实现objectfactory接口，实现类myobjectfactory，实例名factory--&amp;gt;
+&amp;lt;bean
+    type=&amp;quot;com.opensymphony.xwork2.objectfactory&amp;quot;
+    name=&amp;quot;factory&amp;quot;
+    class=&amp;quot;com.opensymphony.xwork2.myapp.myobjectfactory&amp;quot;
+/&amp;gt;
+&amp;lt;/struts&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;class：必填属性，它指定Bean实例的实现类。&lt;/li&gt;
+&lt;li&gt;type：可选属性，它指定Bean实例实现的struts2的规范，通常为struts2接口。&lt;/li&gt;
+&lt;li&gt;name：可选属性，该属性指定Bean实例的名字&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;常量配置&quot;&gt;&lt;a href=&quot;#常量配置&quot; class=&quot;headerlink&quot; title=&quot;常量配置&quot;&gt;&lt;/a&gt;&lt;constant&gt;常量配置&lt;/constant&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;struts提供了一个简单的方法来改变Struts应用程序的行为，通过配置关键常量，&lt;br&gt;可以方便的修改插件及框架行为。&lt;/li&gt;
+&lt;li&gt;比如上传文件大小配置、启用开发者模式、启用DynamicMethodInvocation等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;!-- 设置要加载的国际化资源文件，以逗号分隔. --&gt; 
+&lt;p&gt;&lt;constant name=&quot;struts.i18n.encoding&quot; value=&quot;UTF-8&quot;&gt;&lt;br&gt;&lt;!-- 设置是否为开发模式，默认为false,测试阶段一般设为true. --&gt;  &lt;/constant&gt;&lt;/p&gt;
+&lt;p&gt;&lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot;&gt;&lt;br&gt;&lt;!-- 指定action的后缀，默认为action --&gt;  &lt;/constant&gt;&lt;/p&gt;
+&lt;p&gt;&lt;constant name=&quot;struts.action.extension&quot; value=&quot;do&quot;&gt;&lt;br&gt;&lt;!-- 是否支持动态方法调用true为支持false不支持--&gt;  &lt;/constant&gt;&lt;/p&gt;
+&lt;p&gt;&lt;constant name=&quot;struts.enable.DynamicMethodInvocation&quot; value=&quot;true&quot;&gt;&lt;br&gt;&lt;!-- 设置当struts.xml文件改动时，是否重新加载 --&gt;  &lt;/constant&gt;&lt;/p&gt;
+&lt;cosntant name=&quot;struts.configuration.xml.reload&quot; value=&quot;true&quot;&gt;    
+
+
+&lt;/cosntant&gt;&lt;/blockquote&gt;
+&lt;h2 id=&quot;package配置&quot;&gt;&lt;a href=&quot;#package配置&quot; class=&quot;headerlink&quot; title=&quot;package配置&quot;&gt;&lt;/a&gt;package配置&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;- Struts框架中核心组件就是action 和 interceptors interceptors-stack
+- namespace  来区别前后台相当于加了一个文件夹
+- name:必填属性，用来指定包的名字，唯一。
+- extends:可选属性, 指定包继承关系, 当包继承另一包时,该包会继承父包中的所有配置默认继承自 struts-default
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;action-标签&quot;&gt;&lt;a href=&quot;#action-标签&quot; class=&quot;headerlink&quot; title=&quot;action 标签&quot;&gt;&lt;/a&gt;action 标签&lt;/h2&gt;&lt;h1 id=&quot;子标签&quot;&gt;&lt;a href=&quot;#子标签&quot; class=&quot;headerlink&quot; title=&quot;#子标签:&quot;&gt;&lt;/a&gt;#&lt;action&gt;子标签:&lt;/action&gt;&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;所有的Action类都必须通过Action标签配置使用。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要属性有：&lt;br&gt;    name：必填项，用于匹配ActionMapping的请求路径&lt;br&gt;        请求路径规则：package的namespace + action的name&lt;br&gt;        &lt;a href=&quot;http://localhost:8080/工程路径/namespace/请求&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8080/工程路径/namespace/请求&lt;/a&gt;&lt;br&gt;        &lt;a href=&quot;http://localhost:8080/工程路径/namespace/请求.action&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8080/工程路径/namespace/请求.action&lt;/a&gt;&lt;br&gt;    class：非必填，配置ActionMapping关系&lt;br&gt;        注：不写class的执行路径&lt;br&gt;            default-action-ref标签制定的name请求&lt;br&gt;            如果没有指定default-class-ref那么执行ActionSupport&lt;br&gt;    method：非必填, 指定执行Action类的哪个方法，未指定则execute()&lt;/p&gt;
+&lt;h2 id=&quot;子标签-1&quot;&gt;&lt;a href=&quot;#子标签-1&quot; class=&quot;headerlink&quot; title=&quot;子标签&quot;&gt;&lt;/a&gt;&lt;result&gt;子标签&lt;/result&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;struts2框架中，当Action处理完毕后，就应该向用户返回结果信息，该任务被分为两部分：结果类型和结果本身。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要属性：&lt;br&gt;    Action方法执行完的返回结果配置&lt;br&gt;        name属性：匹配Action方法返回结果值，指定逻辑视图名称（默认值：success）&lt;br&gt;        type属性：返回结果后的处理类型（默认dispatcher）&lt;br&gt;    &lt;result&gt; name属性&lt;br&gt;        SUCCESS：Action正确的执行完成，返回相应的视图，j是name属性的默认值。&lt;br&gt;        NONE：表示Action正确的执行完成，但并不返回任何视图。&lt;br&gt;        ERROR：表示Action执行失败，返回到错误处理视图。&lt;br&gt;        INPUT：Action的执行，需要从前端界面获取参数，INPUT就是代表这个参数输入的界面，一般在应用中，会对这些参数进行验证，如果验证没有通过，将自动返回到该视图。&lt;br&gt;        LOGIN：Action因为用户没有登陆的原因没有正确执行，将返回该登陆视图，要求用户进行登陆验证。&lt;br&gt;    type属性详解：&lt;br&gt;        结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。&lt;br&gt;        默认结果类型是dispatcher，该结果类型使用JSP来向用户显示结果。&lt;/result&gt;&lt;/p&gt;
+&lt;h2 id=&quot;配置-1&quot;&gt;&lt;a href=&quot;#配置-1&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;&lt;include&gt;配置&lt;/include&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;引入其它的xml配置文件
+&amp;lt;include file=&amp;quot;example.xml&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;action是实现MVC设计模式的controller的具体实现。&lt;br&gt;execute（）作为默认的执行方法。&lt;br&gt;catalog&lt;/p&gt;
+&lt;h2 id=&quot;struts-xml常用配置&quot;&gt;&lt;a href=&quot;#struts-xml常用配置&quot; class=&quot;headerlink&quot; title=&quot;struts.xml常用配置&quot;&gt;&lt;/a&gt;struts.xml常用配置&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;bean/&gt;配置&lt;/li&gt;
+&lt;li&gt;&lt;constant/&gt;配置&lt;/li&gt;
+&lt;li&gt;&lt;package/&gt;配置&lt;/li&gt;
+&lt;li&gt;&lt;include/&gt;配置&lt;/li&gt;
+&lt;li&gt;&lt;globaResult/&gt;配置&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="javaweb" scheme="http://dongfengyz.github.io/categories/javaweb/"/>
+    
+    
+      <category term="struts2" scheme="http://dongfengyz.github.io/tags/struts2/"/>
+    
+  </entry>
   
   <entry>
     <title>oracle-pl变量与常量的定义</title>

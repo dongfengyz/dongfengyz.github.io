@@ -3,39 +3,36 @@
 <head>
   <meta charset="utf-8">
   
-  <title>oracle-pl | younger</title>
+  <title>struts.xml配置文件详解 | younger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="利用pl/sql来编程绑定数据库完成特定功能优点：
-
-与sql语言紧密集成
-减小网络流量，提高性能
-模块化设计程序，提高系统可靠性
-服务端程序设计，可移植好
-
-工具：pl/sql developer一个声明部分 declare v_fname varchar2(10)；执行部分 begin select first_name into v_fname from employees where em">
+  <meta name="description" content="action是实现MVC设计模式的controller的具体实现。execute（）作为默认的执行方法。catalog
+struts.xml常用配置
+配置
+配置
+配置
+配置
+配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="oracle-pl">
-<meta property="og:url" content="http://dongfengyz.github.io/2016/04/11/oracle-pl/index.html">
+<meta property="og:title" content="struts.xml配置文件详解">
+<meta property="og:url" content="http://dongfengyz.github.io/2016/04/28/struts202/index.html">
 <meta property="og:site_name" content="younger">
-<meta property="og:description" content="利用pl/sql来编程绑定数据库完成特定功能优点：
-
-与sql语言紧密集成
-减小网络流量，提高性能
-模块化设计程序，提高系统可靠性
-服务端程序设计，可移植好
-
-工具：pl/sql developer一个声明部分 declare v_fname varchar2(10)；执行部分 begin select first_name into v_fname from employees where em">
-<meta property="og:updated_time" content="2016-04-11T03:42:48.055Z">
+<meta property="og:description" content="action是实现MVC设计模式的controller的具体实现。execute（）作为默认的执行方法。catalog
+struts.xml常用配置
+配置
+配置
+配置
+配置
+配置">
+<meta property="og:updated_time" content="2016-04-29T02:08:12.904Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="oracle-pl">
-<meta name="twitter:description" content="利用pl/sql来编程绑定数据库完成特定功能优点：
-
-与sql语言紧密集成
-减小网络流量，提高性能
-模块化设计程序，提高系统可靠性
-服务端程序设计，可移植好
-
-工具：pl/sql developer一个声明部分 declare v_fname varchar2(10)；执行部分 begin select first_name into v_fname from employees where em">
+<meta name="twitter:title" content="struts.xml配置文件详解">
+<meta name="twitter:description" content="action是实现MVC设计模式的controller的具体实现。execute（）作为默认的执行方法。catalog
+struts.xml常用配置
+配置
+配置
+配置
+配置
+配置">
   
     <link rel="alternative" href="/atom.xml" title="younger" type="application/atom+xml">
   
@@ -252,11 +249,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-oracle-pl" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-struts202" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/11/oracle-pl/" class="article-date">
-      <time datetime="2016-04-11T03:24:33.000Z" itemprop="datePublished">2016-04-11</time>
+      <a href="/2016/04/28/struts202/" class="article-date">
+      <time datetime="2016-04-28T06:34:56.000Z" itemprop="datePublished">2016-04-28</time>
 </a>
     </div>
   
@@ -269,7 +266,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      oracle-pl
+      struts.xml配置文件详解
     </h1>
   
 
@@ -278,13 +275,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/oracle/">oracle</a>
+    <a class="article-category-link" href="/categories/javaweb/">javaweb</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pl/">pl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts2/">struts2</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -294,16 +291,67 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="利用pl-sql来编程绑定数据库完成特定功能"><a href="#利用pl-sql来编程绑定数据库完成特定功能" class="headerlink" title="利用pl/sql来编程绑定数据库完成特定功能"></a>利用pl/sql来编程绑定数据库完成特定功能</h2><p>优点：</p>
-<ol>
-<li>与sql语言紧密集成</li>
-<li>减小网络流量，提高性能</li>
-<li>模块化设计程序，提高系统可靠性</li>
-<li>服务端程序设计，可移植好</li>
+        <p>action是实现MVC设计模式的controller的具体实现。<br>execute（）作为默认的执行方法。<br>catalog</p>
+<h2 id="struts-xml常用配置"><a href="#struts-xml常用配置" class="headerlink" title="struts.xml常用配置"></a>struts.xml常用配置</h2><ol>
+<li><bean>配置</bean></li>
+<li><constant>配置</constant></li>
+<li><package>配置</package></li>
+<li><include>配置</include></li>
+<li><globaresult>配置</globaresult></li>
 </ol>
-<p>工具：pl/sql developer<br>一个<br>声明部分 declare v_fname varchar2(10)；<br>执行部分 begin select first_name into v_fname from employees where employee_id=109; dbms_out.<br>异常部分<br>结束end；</p>
-<p>游标<br>存储过程</p>
+<a id="more"></a>
+<h2 id="配置概要"><a href="#配置概要" class="headerlink" title="配置概要"></a>配置概要</h2><ul>
+<li>Struts.xml 是Struts2的核心配置文件，默认放在classpath目录下。</li>
+<li>struts-default.xml—基础xml，默认配置，自动载入<ul>
+<li>struts2-core-2.3.28.jar下</li>
+</ul>
+</li>
+<li>default.properties—全局属性文件，默认配置，自动载入<ul>
+<li>org.apache.struts2包下</li>
+</ul>
+</li>
+<li>struts-plugin.xml—插件相关配置</li>
+<li>struts.xml—核心配置文件</li>
+<li>struts.properties –核心配置文件，通常定义文件在classpath下</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a><bean>配置</bean></h2><pre><code>&lt;struts&gt;
+&lt;!-- 该bean实现objectfactory接口，实现类myobjectfactory，实例名factory--&gt;
+&lt;bean
+    type=&quot;com.opensymphony.xwork2.objectfactory&quot;
+    name=&quot;factory&quot;
+    class=&quot;com.opensymphony.xwork2.myapp.myobjectfactory&quot;
+/&gt;
+&lt;/struts&gt;
+</code></pre><ul>
+<li>class：必填属性，它指定Bean实例的实现类。</li>
+<li>type：可选属性，它指定Bean实例实现的struts2的规范，通常为struts2接口。</li>
+<li>name：可选属性，该属性指定Bean实例的名字</li>
+</ul>
+<h2 id="常量配置"><a href="#常量配置" class="headerlink" title="常量配置"></a><constant>常量配置</constant></h2><ul>
+<li>struts提供了一个简单的方法来改变Struts应用程序的行为，通过配置关键常量，<br>可以方便的修改插件及框架行为。</li>
+<li>比如上传文件大小配置、启用开发者模式、启用DynamicMethodInvocation等。</li>
+</ul>
+<blockquote>
+<!-- 设置要加载的国际化资源文件，以逗号分隔. --> 
+<p><constant name="struts.i18n.encoding" value="UTF-8"><br><!-- 设置是否为开发模式，默认为false,测试阶段一般设为true. -->  </constant></p>
+<p><constant name="struts.devMode" value="true"><br><!-- 指定action的后缀，默认为action -->  </constant></p>
+<p><constant name="struts.action.extension" value="do"><br><!-- 是否支持动态方法调用true为支持false不支持-->  </constant></p>
+<p><constant name="struts.enable.DynamicMethodInvocation" value="true"><br><!-- 设置当struts.xml文件改动时，是否重新加载 -->  </constant></p>
+<cosntant name="struts.configuration.xml.reload" value="true">    
 
+
+</cosntant></blockquote>
+<h2 id="package配置"><a href="#package配置" class="headerlink" title="package配置"></a>package配置</h2><pre><code>- Struts框架中核心组件就是action 和 interceptors interceptors-stack
+- namespace  来区别前后台相当于加了一个文件夹
+- name:必填属性，用来指定包的名字，唯一。
+- extends:可选属性, 指定包继承关系, 当包继承另一包时,该包会继承父包中的所有配置默认继承自 struts-default
+</code></pre><h2 id="action-标签"><a href="#action-标签" class="headerlink" title="action 标签"></a>action 标签</h2><h1 id="子标签"><a href="#子标签" class="headerlink" title="#子标签:"></a>#<action>子标签:</action></h1><pre><code>所有的Action类都必须通过Action标签配置使用。
+</code></pre><p>主要属性有：<br>    name：必填项，用于匹配ActionMapping的请求路径<br>        请求路径规则：package的namespace + action的name<br>        <a href="http://localhost:8080/工程路径/namespace/请求" target="_blank" rel="external">http://localhost:8080/工程路径/namespace/请求</a><br>        <a href="http://localhost:8080/工程路径/namespace/请求.action" target="_blank" rel="external">http://localhost:8080/工程路径/namespace/请求.action</a><br>    class：非必填，配置ActionMapping关系<br>        注：不写class的执行路径<br>            default-action-ref标签制定的name请求<br>            如果没有指定default-class-ref那么执行ActionSupport<br>    method：非必填, 指定执行Action类的哪个方法，未指定则execute()</p>
+<h2 id="子标签-1"><a href="#子标签-1" class="headerlink" title="子标签"></a><result>子标签</result></h2><pre><code>struts2框架中，当Action处理完毕后，就应该向用户返回结果信息，该任务被分为两部分：结果类型和结果本身。
+</code></pre><p>主要属性：<br>    Action方法执行完的返回结果配置<br>        name属性：匹配Action方法返回结果值，指定逻辑视图名称（默认值：success）<br>        type属性：返回结果后的处理类型（默认dispatcher）<br>    <result> name属性<br>        SUCCESS：Action正确的执行完成，返回相应的视图，j是name属性的默认值。<br>        NONE：表示Action正确的执行完成，但并不返回任何视图。<br>        ERROR：表示Action执行失败，返回到错误处理视图。<br>        INPUT：Action的执行，需要从前端界面获取参数，INPUT就是代表这个参数输入的界面，一般在应用中，会对这些参数进行验证，如果验证没有通过，将自动返回到该视图。<br>        LOGIN：Action因为用户没有登陆的原因没有正确执行，将返回该登陆视图，要求用户进行登陆验证。<br>    type属性详解：<br>        结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。<br>        默认结果类型是dispatcher，该结果类型使用JSP来向用户显示结果。</result></p>
+<h2 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a><include>配置</include></h2><pre><code>引入其它的xml配置文件
+&lt;include file=&quot;example.xml&quot;/&gt;
+</code></pre>
       
       
     </div>
@@ -312,13 +360,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/04/11/oracle-pl/">oracle-pl</a></p>
+        <p><span>本文标题:</span><a href="/2016/04/28/struts202/">struts.xml配置文件详解</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
-        <p><span>发布时间:</span>2016-04-11, 11:24:33</p>
-        <p><span>最后更新:</span>2016-04-11, 11:42:48</p>
+        <p><span>发布时间:</span>2016-04-28, 14:34:56</p>
+        <p><span>最后更新:</span>2016-04-29, 10:08:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/04/11/oracle-pl/" title="oracle-pl">http://dongfengyz.github.io/2016/04/11/oracle-pl/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/04/11/oracle-pl/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/04/28/struts202/" title="struts.xml配置文件详解">http://dongfengyz.github.io/2016/04/28/struts202/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/04/28/struts202/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -331,16 +379,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/04/11/人生感悟-1/">
-                    人生感悟-1
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/11/oracle-grant/">
-                    oracle_grant
+                <a href="/2016/04/13/oracle-pl变量与常量的定义/">
+                    oracle-pl变量与常量的定义
                 </a>
             </div>
         
@@ -351,7 +393,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#利用pl-sql来编程绑定数据库完成特定功能"><span class="toc-number">1.</span> <span class="toc-text">利用pl/sql来编程绑定数据库完成特定功能</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#struts-xml常用配置"><span class="toc-number">1.</span> <span class="toc-text">struts.xml常用配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置概要"><span class="toc-number">2.</span> <span class="toc-text">配置概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量配置"><span class="toc-number">4.</span> <span class="toc-text">常量配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#package配置"><span class="toc-number">5.</span> <span class="toc-text">package配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#action-标签"><span class="toc-number">6.</span> <span class="toc-text">action 标签</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子标签"><span class="toc-number"></span> <span class="toc-text">#子标签:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#子标签-1"><span class="toc-number">1.</span> <span class="toc-text">子标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-1"><span class="toc-number">2.</span> <span class="toc-text">配置</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -413,7 +455,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/04/11/oracle-pl/" data-title="oracle-pl" data-url="http://dongfengyz.github.io/2016/04/11/oracle-pl/"></div>
+    <div class="ds-thread" data-thread-key="2016/04/28/struts202/" data-title="struts.xml配置文件详解" data-url="http://dongfengyz.github.io/2016/04/28/struts202/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -436,15 +478,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/11/人生感悟-1/" title="上一篇: 人生感悟-1">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/11/oracle-grant/" title="下一篇: oracle_grant">
+            <a href="/2016/04/13/oracle-pl变量与常量的定义/" title="下一篇: oracle-pl变量与常量的定义">
                 <i class="fa fa-angle-right"></i>
             </a>
         
