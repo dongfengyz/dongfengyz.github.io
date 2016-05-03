@@ -22,7 +22,7 @@ package配置
 include配置
 globaResult配置">
 <meta property="og:image" content="http://i.imgur.com/XvQ4Qcd.jpg">
-<meta property="og:updated_time" content="2016-05-03T12:42:44.256Z">
+<meta property="og:updated_time" content="2016-05-03T12:48:49.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="struts.xml配置文件详解">
 <meta name="twitter:description" content="struts.xml常用配置
@@ -343,11 +343,11 @@ globaResult配置">
 - namespace  来区别前后台相当于加了一个文件夹
 - name:必填属性，用来指定包的名字，唯一。
 - extends:可选属性, 指定包继承关系, 当包继承另一包时,该包会继承父包中的所有配置默认继承自 struts-default
-</code></pre><h1 id="子标签"><a href="#子标签" class="headerlink" title="\子标签"></a>\<action>子标签</action></h1><pre><code>所有的Action类都必须通过Action标签配置使用。
+</code></pre><h1 id="Action子标签"><a href="#Action子标签" class="headerlink" title="Action子标签"></a>Action子标签</h1><pre><code>所有的Action类都必须通过Action标签配置使用。
 </code></pre><p>主要属性有：<br>    name：必填项，用于匹配ActionMapping的请求路径<br>        请求路径规则：package的namespace + action的name<br>        <a href="http://localhost:8080/工程路径/namespace/请求" target="_blank" rel="external">http://localhost:8080/工程路径/namespace/请求</a><br>        <a href="http://localhost:8080/工程路径/namespace/请求.action" target="_blank" rel="external">http://localhost:8080/工程路径/namespace/请求.action</a><br>    class：非必填，配置ActionMapping关系<br>        注：不写class的执行路径<br>            default-action-ref标签制定的name请求<br>            如果没有指定default-class-ref那么执行ActionSupport<br>    method：非必填, 指定执行Action类的哪个方法，未指定则execute()</p>
-<h2 id="子标签-1"><a href="#子标签-1" class="headerlink" title="子标签"></a><result>子标签</result></h2><pre><code>struts2框架中，当Action处理完毕后，就应该向用户返回结果信息，该任务被分为两部分：结果类型和结果本身。
+<h2 id="result子标签"><a href="#result子标签" class="headerlink" title="result子标签"></a>result子标签</h2><pre><code>struts2框架中，当Action处理完毕后，就应该向用户返回结果信息，该任务被分为两部分：结果类型和结果本身。
 </code></pre><p>主要属性：<br>    Action方法执行完的返回结果配置<br>        name属性：匹配Action方法返回结果值，指定逻辑视图名称（默认值：success）<br>        type属性：返回结果后的处理类型（默认dispatcher）<br>    <result> name属性<br>        SUCCESS：Action正确的执行完成，返回相应的视图，j是name属性的默认值。<br>        NONE：表示Action正确的执行完成，但并不返回任何视图。<br>        ERROR：表示Action执行失败，返回到错误处理视图。<br>        INPUT：Action的执行，需要从前端界面获取参数，INPUT就是代表这个参数输入的界面，一般在应用中，会对这些参数进行验证，如果验证没有通过，将自动返回到该视图。<br>        LOGIN：Action因为用户没有登陆的原因没有正确执行，将返回该登陆视图，要求用户进行登陆验证。<br>    type属性详解：<br>        结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。<br>        默认结果类型是dispatcher，该结果类型使用JSP来向用户显示结果。</result></p>
-<h2 id="Struts2-type属性"><a href="#Struts2-type属性" class="headerlink" title="Struts2 \ type属性"></a>Struts2 \<result> type属性</result></h2><p>type属性详解：<br>    结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。</p>
+<h2 id="Struts2-result-type属性"><a href="#Struts2-result-type属性" class="headerlink" title="Struts2 result type属性"></a>Struts2 result type属性</h2><p>type属性详解：<br>    结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。</p>
 <p>主要参数值</p>
 <pre><code>1. dispatcher为默认结果类型，用于加载一个视图资源(如:jsp)，向用户显示页面结果。
 简写形式：
@@ -408,7 +408,7 @@ chain中的多个Action属于同一个http请求，共享相同的ActionContext�
         <p><span>本文标题:</span><a href="/2016/04/28/struts202/">struts.xml配置文件详解</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
         <p><span>发布时间:</span>2016-04-28, 14:34:56</p>
-        <p><span>最后更新:</span>2016-05-03, 20:42:44</p>
+        <p><span>最后更新:</span>2016-05-03, 20:48:49</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/04/28/struts202/" title="struts.xml配置文件详解">http://dongfengyz.github.io/2016/04/28/struts202/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/04/28/struts202/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -444,7 +444,7 @@ chain中的多个Action属于同一个http请求，共享相同的ActionContext�
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#struts-xml常用配置"><span class="toc-number">1.</span> <span class="toc-text">struts.xml常用配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置概要"><span class="toc-number">2.</span> <span class="toc-text">配置概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量配置"><span class="toc-number">4.</span> <span class="toc-text">常量配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#package配置"><span class="toc-number">5.</span> <span class="toc-text">package配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子标签"><span class="toc-number"></span> <span class="toc-text">\子标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#子标签-1"><span class="toc-number">1.</span> <span class="toc-text">子标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Struts2-type属性"><span class="toc-number">2.</span> <span class="toc-text">Struts2 \ type属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-1"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#课堂笔记"><span class="toc-number">4.</span> <span class="toc-text">课堂笔记</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#struts-xml常用配置"><span class="toc-number">1.</span> <span class="toc-text">struts.xml常用配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置概要"><span class="toc-number">2.</span> <span class="toc-text">配置概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量配置"><span class="toc-number">4.</span> <span class="toc-text">常量配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#package配置"><span class="toc-number">5.</span> <span class="toc-text">package配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Action子标签"><span class="toc-number"></span> <span class="toc-text">Action子标签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#result子标签"><span class="toc-number">1.</span> <span class="toc-text">result子标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Struts2-result-type属性"><span class="toc-number">2.</span> <span class="toc-text">Struts2 result type属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置-1"><span class="toc-number">3.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#课堂笔记"><span class="toc-number">4.</span> <span class="toc-text">课堂笔记</span></a></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
