@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-29T03:42:23.632Z</updated>
+  <updated>2016-04-29T07:34:51.951Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -16,11 +16,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>struts203</title>
+    <link href="http://dongfengyz.github.io/2016/04/29/struts203/"/>
+    <id>http://dongfengyz.github.io/2016/04/29/struts203/</id>
+    <published>2016-04-29T06:01:47.000Z</published>
+    <updated>2016-04-29T07:34:51.951Z</updated>
+    
+    <content type="html">&lt;p&gt;result&lt;br&gt;type类型：&lt;/p&gt;
+&lt;p&gt; dispatcher  action 和后台 fram.jsp  都可以读取后台数据。&lt;br&gt; redirect&lt;br&gt; redirectAction&lt;br&gt; plain&lt;br&gt; plainTest  做调试时  打印网页&lt;/p&gt;
+&lt;p&gt;onclick = “${‘#from’}[0].submit();”&lt;br&gt;javascript:;&lt;/p&gt;
+&lt;p&gt;第三种：通配符的方法{1} {1}   &lt;em&gt;下划线的使用方法  *&lt;/em&gt;*&lt;br&gt;第四种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;路由&lt;br&gt;页面改造：&lt;/li&gt;
+&lt;li&gt;欢迎ss&lt;/li&gt;
+&lt;li&gt;退出&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;result&lt;br&gt;type类型：&lt;/p&gt;
+&lt;p&gt; dispatcher  action 和后台 fram.jsp  都可以读取后台数据。&lt;br&gt; redirect&lt;br&gt; redirectAction&lt;br&gt; plain&lt;br&gt; plainTest  做调试时  打印网页
+    
+    </summary>
+    
+      <category term="javaweb" scheme="http://dongfengyz.github.io/categories/javaweb/"/>
+    
+    
+      <category term="struts2" scheme="http://dongfengyz.github.io/tags/struts2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>struts.xml配置文件详解</title>
     <link href="http://dongfengyz.github.io/2016/04/28/struts202/"/>
     <id>http://dongfengyz.github.io/2016/04/28/struts202/</id>
     <published>2016-04-28T06:34:56.000Z</published>
-    <updated>2016-04-29T03:42:23.632Z</updated>
+    <updated>2016-05-03T12:37:16.771Z</updated>
     
     <content type="html">&lt;h2 id=&quot;struts-xml常用配置&quot;&gt;&lt;a href=&quot;#struts-xml常用配置&quot; class=&quot;headerlink&quot; title=&quot;struts.xml常用配置&quot;&gt;&lt;/a&gt;struts.xml常用配置&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;bean配置&lt;/li&gt;
@@ -75,11 +115,45 @@
 - namespace  来区别前后台相当于加了一个文件夹
 - name:必填属性，用来指定包的名字，唯一。
 - extends:可选属性, 指定包继承关系, 当包继承另一包时,该包会继承父包中的所有配置默认继承自 struts-default
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;action-标签&quot;&gt;&lt;a href=&quot;#action-标签&quot; class=&quot;headerlink&quot; title=&quot;action 标签&quot;&gt;&lt;/a&gt;action 标签&lt;/h2&gt;&lt;h1 id=&quot;子标签&quot;&gt;&lt;a href=&quot;#子标签&quot; class=&quot;headerlink&quot; title=&quot;子标签 #:&quot;&gt;&lt;/a&gt;&lt;action&gt;子标签 #:&lt;/action&gt;&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;所有的Action类都必须通过Action标签配置使用。
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;action-标签&quot;&gt;&lt;a href=&quot;#action-标签&quot; class=&quot;headerlink&quot; title=&quot;action 标签&quot;&gt;&lt;/a&gt;action 标签&lt;/h2&gt;&lt;h1 id=&quot;子标签&quot;&gt;&lt;a href=&quot;#子标签&quot; class=&quot;headerlink&quot; title=&quot;\子标签 #:&quot;&gt;&lt;/a&gt;\&lt;action&gt;子标签 #:&lt;/action&gt;&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;所有的Action类都必须通过Action标签配置使用。
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要属性有：&lt;br&gt;    name：必填项，用于匹配ActionMapping的请求路径&lt;br&gt;        请求路径规则：package的namespace + action的name&lt;br&gt;        &lt;a href=&quot;http://localhost:8080/工程路径/namespace/请求&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8080/工程路径/namespace/请求&lt;/a&gt;&lt;br&gt;        &lt;a href=&quot;http://localhost:8080/工程路径/namespace/请求.action&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8080/工程路径/namespace/请求.action&lt;/a&gt;&lt;br&gt;    class：非必填，配置ActionMapping关系&lt;br&gt;        注：不写class的执行路径&lt;br&gt;            default-action-ref标签制定的name请求&lt;br&gt;            如果没有指定default-class-ref那么执行ActionSupport&lt;br&gt;    method：非必填, 指定执行Action类的哪个方法，未指定则execute()&lt;/p&gt;
-&lt;h2 id=&quot;子标签-1&quot;&gt;&lt;a href=&quot;#子标签-1&quot; class=&quot;headerlink&quot; title=&quot;子标签&quot;&gt;&lt;/a&gt;&lt;result&gt;子标签&lt;/result&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;struts2框架中，当Action处理完毕后，就应该向用户返回结果信息，该任务被分为两部分：结果类型和结果本身。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要属性：&lt;br&gt;    Action方法执行完的返回结果配置&lt;br&gt;        name属性：匹配Action方法返回结果值，指定逻辑视图名称（默认值：success）&lt;br&gt;        type属性：返回结果后的处理类型（默认dispatcher）&lt;br&gt;    &lt;result&gt; name属性&lt;br&gt;        SUCCESS：Action正确的执行完成，返回相应的视图，j是name属性的默认值。&lt;br&gt;        NONE：表示Action正确的执行完成，但并不返回任何视图。&lt;br&gt;        ERROR：表示Action执行失败，返回到错误处理视图。&lt;br&gt;        INPUT：Action的执行，需要从前端界面获取参数，INPUT就是代表这个参数输入的界面，一般在应用中，会对这些参数进行验证，如果验证没有通过，将自动返回到该视图。&lt;br&gt;        LOGIN：Action因为用户没有登陆的原因没有正确执行，将返回该登陆视图，要求用户进行登陆验证。&lt;br&gt;    type属性详解：&lt;br&gt;        结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。&lt;br&gt;        默认结果类型是dispatcher，该结果类型使用JSP来向用户显示结果。&lt;/result&gt;&lt;/p&gt;
-&lt;h2 id=&quot;配置-1&quot;&gt;&lt;a href=&quot;#配置-1&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;&lt;include&gt;配置&lt;/include&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;引入其它的xml配置文件
+&lt;h2 id=&quot;子标签-1&quot;&gt;&lt;a href=&quot;#子标签-1&quot; class=&quot;headerlink&quot; title=&quot;\子标签&quot;&gt;&lt;/a&gt;\&lt;result&gt;子标签&lt;/result&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;struts2框架中，当Action处理完毕后，就应该向用户返回结果信息，该任务被分为两部分：结果类型和结果本身。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;主要属性：&lt;br&gt;    Action方法执行完的返回结果配置&lt;br&gt;        name属性：匹配Action方法返回结果值，指定逻辑视图名称（默认值：success）&lt;br&gt;        type属性：返回结果后的处理类型（默认dispatcher）&lt;br&gt;    \&lt;result&gt; name属性&lt;br&gt;        SUCCESS：Action正确的执行完成，返回相应的视图，j是name属性的默认值。&lt;br&gt;        NONE：表示Action正确的执行完成，但并不返回任何视图。&lt;br&gt;        ERROR：表示Action执行失败，返回到错误处理视图。&lt;br&gt;        INPUT：Action的执行，需要从前端界面获取参数，INPUT就是代表这个参数输入的界面，一般在应用中，会对这些参数进行验证，如果验证没有通过，将自动返回到该视图。&lt;br&gt;        LOGIN：Action因为用户没有登陆的原因没有正确执行，将返回该登陆视图，要求用户进行登陆验证。&lt;br&gt;    type属性详解：&lt;br&gt;        结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。&lt;br&gt;        默认结果类型是dispatcher，该结果类型使用JSP来向用户显示结果。&lt;/result&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Struts2-type属性&quot;&gt;&lt;a href=&quot;#Struts2-type属性&quot; class=&quot;headerlink&quot; title=&quot;Struts2 \ type属性&quot;&gt;&lt;/a&gt;Struts2 \&lt;result&gt; type属性&lt;/result&gt;&lt;/h2&gt;&lt;p&gt;type属性详解：&lt;br&gt;    结果类型提供了返回给用户信息类型的实现细节。struts-default.xml中，可以参见细节。&lt;/p&gt;
+&lt;p&gt;主要参数值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. dispatcher为默认结果类型，用于加载一个视图资源(如:jsp)，向用户显示页面结果。
+简写形式：
+    \&amp;lt;result name=&amp;quot;success&amp;quot; type=&amp;quot;dispatcher&amp;quot;&amp;gt;/main.jsp\&amp;lt;/result&amp;gt;
+加载页面过程与Action为同一个线程，Action中的相关数据可以在页面中继续使用。
+使用param子元素配置结果的形式，其中param元素用于配置一个参数，配置参数需要指定参数名和参数值。参数名由name属性指定，此处的name属性可以为两种值：
+location:指定该逻辑视图对应的视图名称。
+parse:指定是否允许在视图中使用ognl表达式，默认为true
+2. redirect类型用于重定向到另一个页面，另一个action或另一个网址。
+    \&amp;lt;result name=&amp;quot;success&amp;quot; type=&amp;quot;redirect&amp;quot;&amp;gt;aaa.jsp\&amp;lt;/result&amp;gt; 
+    \&amp;lt;result name=&amp;quot;success&amp;quot; type=&amp;quot;redirect&amp;quot;&amp;gt;bbb.action\&amp;lt;/result&amp;gt; 
+    \&amp;lt;result name=&amp;quot;success&amp;quot; type=&amp;quot;redirect&amp;quot;&amp;gt;baidu.com\&amp;lt;/result&amp;gt;
+    重定向就是全新打开另一网页，struts会产生一个新的线程，处理新的web请求，保存在原来Action执行线程中的数据，将不能再使用。
+注：redirect时的数据传参：
+    \&amp;lt;result name=&amp;quot;topic&amp;quot; type=&amp;quot;redirect&amp;quot;&amp;gt;
+        /topicAction!findTopics?topicId=${topicId}
+    \&amp;lt;/result&amp;gt;
+3. redirectAction：重定向到Action、不共享数据 
+4. chian ：Action链式跳转，用于将几个action连起来执行，共同完成一个功能。
+    \&amp;lt;action name=&amp;quot;step1&amp;quot; class=&amp;quot;test.S1Action&amp;quot;&amp;gt;  
+    \&amp;lt;result name=&amp;quot;success&amp;quot; type=&amp;quot;chain&amp;quot;&amp;gt;s2.action&amp;lt;/result&amp;gt; 
+    \&amp;lt;/action&amp;gt; 
+    \&amp;lt;action name=&amp;quot;s2&amp;quot; class=&amp;quot;test.S2Action&amp;quot;&amp;gt;
+    &amp;lt;result name=&amp;quot;success&amp;quot;&amp;gt;finish.jsp\&amp;lt;/result&amp;gt; 
+    \&amp;lt;/action&amp;gt;
+
+chain中的多个Action属于同一个http请求，共享相同的ActionContext、相同的数据。
+
+5. plaintext 结果类型用于直接在页面上显示源代码
+    &amp;lt;result name=&amp;quot;error&amp;quot; type=&amp;quot;plainText&amp;quot;&amp;gt;
+    &amp;lt;param name=&amp;quot;location&amp;quot;&amp;gt;error.jsp&amp;lt;/param&amp;gt;
+    &amp;lt;param name=&amp;quot;charSet&amp;quot;&amp;gt;UTF-8&amp;lt;/param&amp;gt;
+    &amp;lt;/result&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;配置-1&quot;&gt;&lt;a href=&quot;#配置-1&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;&lt;include&gt;配置&lt;/include&gt;&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;引入其它的xml配置文件
 &amp;lt;include file=&amp;quot;example.xml&amp;quot;/&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;课堂笔记&quot;&gt;&lt;a href=&quot;#课堂笔记&quot; class=&quot;headerlink&quot; title=&quot;课堂笔记&quot;&gt;&lt;/a&gt;课堂笔记&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;先作jsp页面、Action类、Struts.xml配置&lt;br&gt; 1.Index.jsp&lt;/li&gt;
@@ -1336,33 +1410,6 @@ if (**userinfoList == null||userinfoList.size()&amp;lt;1**) {
     <summary type="html">
     
       &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span clas
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://dongfengyz.github.io/2016/03/28/hello-world/"/>
-    <id>http://dongfengyz.github.io/2016/03/28/hello-world/</id>
-    <published>2016-03-28T09:18:48.596Z</published>
-    <updated>2016-03-28T09:18:48.596Z</updated>
-    
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
     </summary>
     
