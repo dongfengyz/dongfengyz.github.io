@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-04-29T07:34:51.951Z</updated>
+  <updated>2016-05-03T13:08:07.410Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -20,31 +20,11 @@
     <link href="http://dongfengyz.github.io/2016/04/29/struts203/"/>
     <id>http://dongfengyz.github.io/2016/04/29/struts203/</id>
     <published>2016-04-29T06:01:47.000Z</published>
-    <updated>2016-04-29T07:34:51.951Z</updated>
+    <updated>2016-05-03T13:08:07.410Z</updated>
     
-    <content type="html">&lt;p&gt;result&lt;br&gt;type类型：&lt;/p&gt;
-&lt;p&gt; dispatcher  action 和后台 fram.jsp  都可以读取后台数据。&lt;br&gt; redirect&lt;br&gt; redirectAction&lt;br&gt; plain&lt;br&gt; plainTest  做调试时  打印网页&lt;/p&gt;
-&lt;p&gt;onclick = “${‘#from’}[0].submit();”&lt;br&gt;javascript:;&lt;/p&gt;
-&lt;p&gt;第三种：通配符的方法{1} {1}   &lt;em&gt;下划线的使用方法  *&lt;/em&gt;*&lt;br&gt;第四种：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;li&gt;路由&lt;br&gt;页面改造：&lt;/li&gt;
-&lt;li&gt;欢迎ss&lt;/li&gt;
-&lt;li&gt;退出&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
+    <content type="html"></content>
     
     <summary type="html">
-    
-      &lt;p&gt;result&lt;br&gt;type类型：&lt;/p&gt;
-&lt;p&gt; dispatcher  action 和后台 fram.jsp  都可以读取后台数据。&lt;br&gt; redirect&lt;br&gt; redirectAction&lt;br&gt; plain&lt;br&gt; plainTest  做调试时  打印网页
     
     </summary>
     
