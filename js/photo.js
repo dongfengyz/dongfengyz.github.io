@@ -1,3 +1,6 @@
+/**
+ * Created by zlw on 2016/1/2.
+ */
 define([], function () {
     return {
         page: 1,
@@ -19,9 +22,14 @@ define([], function () {
             for (var i = begin; i < end && i < data.length; i++) {
                 li += '<li><div class="img-box">' +
                     '<a class="img-bg" rel="example_group" href="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?raw=true"></a>' +
-                    '<img lazy-src="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?imageView2/1/w/300/h/300/q/100&raw=true" />' +
+                    '<img lazy-src="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?raw=true" />' +
                     '</li>';
             }
+
+            //html = '<section class="archives album">' +
+            //    '<ul class="img-box-ul">' + li + '</ul>' +
+            //    '</section>';
+
 
             $(".img-box-ul").append(li);
             $(".img-box-ul").lazyload();
@@ -43,4 +51,6 @@ define([], function () {
             })
         }
     }
+
 })
+
