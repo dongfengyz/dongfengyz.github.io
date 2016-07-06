@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dongfengyz.github.io/photo/output.json</loc>
+    
+    <lastmod>2016-07-06T03:21:42.339Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dongfengyz.github.io/photo/index.html</loc>
     
     <lastmod>2016-07-06T02:30:07.844Z</lastmod>

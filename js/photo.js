@@ -19,7 +19,7 @@ define([], function () {
             for (var i = begin; i < end && i < data.length; i++) {
                 li += '<li><div class="img-box">' +
                     '<a class="img-bg" rel="example_group" href="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?raw=true"></a>' +
-                    '<img lazy-src="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?raw=true" />' +
+                    '<img lazy-src="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?imageView2/1/w/300/h/300/q/100&raw=true" />' +
                     '</li>';
             }
 
