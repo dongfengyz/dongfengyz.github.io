@@ -158,6 +158,7 @@ require([], function (){
 
     // Hide Labels
     if(yiliaConfig.isArchive || yiliaConfig.isTag || yiliaConfig.isCategory) {
+
         $(document).ready(function() {
             $("#footer").after("<button class='hide-labels'>TAGS</button>");
             $(".hide-labels").click(function() {
@@ -165,5 +166,11 @@ require([], function (){
             });
         });
     }
+	
+	if($(".instagram").length) {
+    require(['/js/photo.js', '/fancybox/jquery.fancybox.js', '/js/jquery.lazyload.js'], function(obj) {
+        obj.init();
+    });
+	}
 
 });
