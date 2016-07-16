@@ -1,38 +1,48 @@
-define([],
-function() {
+define([], function () {
     return {
         page: 1,
         offset: 20,
-        init: function() {
-            var o = this;
-            $.getJSON("/photo/output.json",
-            function(e) {
-                o.render(o.page, e),
-                o.scroll(e)
-            })
+        init: function () {
+            var that = this;
+            $.getJSON("/photo/output.json", function (data) {
+                that.render(that.page, data);
+
+                that.scroll(data);
+            });
         },
-        render: function(o, e) {
-            var t = (o - 1) * this.offset,
-            i = o * this.offset;
-            if (! (t >= e.length)) {
-                for (var n = "",r = t; i > r && r < e.length; r++)
-					n += '<li><div class="img-box">
-				<a class="img-bg" rel="example_group" href="http://o6y0q0v31.bkt.clouddn.com/' + e[r] + '"></a>
-				<img lazy-src="http://o6y0q0v31.bkt.clouddn.com/' + e[r] + '?imageView2/1/w/200/h/200/interlace/1" /></li>';
-                $(".img-box-ul").append(n),
-                $(".img-box-ul").lazyload(),
-                $("a[rel=example_group]").fancybox()
+
+        render: function (page, data) {
+            var begin = (page - 1) * this.offset;
+            var end = page * this.offset;
+            if (begin >= data.length) return;
+            var html, li = "";
+            for (var i = begin; i < end && i < data.length; i++) {
+                li += '<li><div class="img-box">' +
+                    '<a class="img-bg" rel="example_group" href="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?raw=true"></a>' +
+                    '<img lazy-src="http://o6y0q0v31.bkt.clouddn.com/' + data[i] + '?imageView2/1/w/200/h/200/interlace/1" />' +
+                    '</li>';
             }
+
+            $(".img-box-ul").append(li);
+            $(".img-box-ul").lazyload();
+            $("a[rel=example_group]").fancybox();
         },
-        scroll: function(o) {
-            var e = this;
+
+        scroll: function (data) {
+            var that = this;
             $(window).scroll(function() {
-                var t = window.pageYOffset,
-                i = t + window.innerHeight,
-                n = 0,
-                r = $(".photos").offset().top + $(".photos").height();
-                r >= t && i + n > r && e.render(++e.page, o)
+                var windowPageYOffset = window.pageYOffset;
+                var windowPageYOffsetAddHeight = windowPageYOffset + window.innerHeight;
+                var sensitivity = 0;
+
+                var offsetTop = $(".instagram").offset().top + $(".instagram").height();
+
+                if (offsetTop >= windowPageYOffset && offsetTop < windowPageYOffsetAddHeight + sensitivity) {
+                    that.render(++that.page, data);
+                }
             })
         }
     }
-});
+
+})
+
