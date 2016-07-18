@@ -120,17 +120,16 @@ var Instagram = (function(){
 	return {
 		init:function(){
 			//getList("https://api.instagram.com/v1/users/438522285/media/recent/?access_token=438522285.2082eef.ead70f432f444a2e8b1b341617637bf6&count=100");
-			var insid = $(".instagram").attr("a09be9f5e2fd4f03898d985ed297ad68");
-            var userId = $(".instagram").attr("a33d640b54104511850c54d72caddc66");
-			var redirect_uri = $(".instagram").attr("http://yangze.win");
+			var insid = $(".instagram").attr("data-client-id");
+            var userId = $(".instagram").attr("data-user-id");
 			if(!insid){
 				alert("Didn't set your instagram client_id.\nPlease see the info on the console of your brower.");
 				console.log("Please open 'http://instagram.com/developer/clients/manage/' to get your client-id.");
 				return;
 				https://api.instagram.com/v1/users/a33d640b54104511850c54d72caddc66/media/recent/?client_id=a09be9f5e2fd4f03898d985ed297ad68&count=100
 			}
-			//getList("https://api.instagram.com/v1/users/"+ userId +"/media/recent/?client_id="+insid+"&count=100");
-			getList("https://instagram.com/oauth/authorize/?client_id="+insid+"&redirect_uri="+redirect_uri+"&response_type=token");
+			getList("https://api.instagram.com/v1/users/"+ userId +"/media/recent/?client_id="+insid+"&count=100");
+			//getList("https://instagram.com/oauth/authorize/?client_id="+insid+"&redirect_uri="+redirect_uri+"&response_type=token");
 			bind();
 		}
 	}
