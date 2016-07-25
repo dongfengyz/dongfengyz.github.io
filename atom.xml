@@ -148,7 +148,7 @@ Decrypt(&amp;quot;gtmd123&amp;quot;)`
     <link href="http://dongfengyz.github.io/2016/07/23/%E6%B1%87%E7%BC%96/"/>
     <id>http://dongfengyz.github.io/2016/07/23/汇编/</id>
     <published>2016-07-23T02:21:30.000Z</published>
-    <updated>2016-07-25T12:28:01.945Z</updated>
+    <updated>2016-07-25T13:48:31.073Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/TQXDo7n.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;要点:&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -157,7 +157,297 @@ Decrypt(&amp;quot;gtmd123&amp;quot;)`
 &lt;li&gt;汇编的地址转换&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-</content>
+&lt;h2 id=&quot;寄存器与存储器&quot;&gt;&lt;a href=&quot;#寄存器与存储器&quot; class=&quot;headerlink&quot; title=&quot;寄存器与存储器&quot;&gt;&lt;/a&gt;寄存器与存储器&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;寄存器功能&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 寄存器的一般用途和专用用途
+. CS:IP 控制程序执行流程
+. SS:SP 提供堆栈栈顶单元地址
+. DS:BX(SI,DI) 提供数据段内单元地址
+. SS:BP 提供堆栈内单元地址
+. ES:BX(SI,DI) 提供附加段内单元地址
+. AX,CX,BX和CX寄存器多用于运算和暂存中间计算结果,但又专用于某些指令(查阅 指令表)。
+. PSW程序状态字寄存器只能通过专用指令（LAHF, SAHF)和堆栈(PUSHF,POPF)进行存取。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;存储器分段管理&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 解决了16位寄存器构成20位地址的问题
+. 便于程序重定位
+. 20位物理地址=段地址 * 16 + 偏移地址
+. 程序分段组织: 一般由代码段,堆栈段,数据段和附加段组成,不设置堆栈段时 则使用系    统内部的堆栈。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;堆栈&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 堆栈是一种先进后出的数据结构 , 数据的存取在栈顶进行 , 数据入栈使堆栈向地址减    小的方向扩展。
+. 堆栈常用于保存子程序调用和中断响应时的断点以及暂存数据或中间计算结果 。
+. 堆栈总是以字为单位存取
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;指令系统与寻址方式&quot;&gt;&lt;a href=&quot;#指令系统与寻址方式&quot; class=&quot;headerlink&quot; title=&quot;指令系统与寻址方式&quot;&gt;&lt;/a&gt;指令系统与寻址方式&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;指令系统&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 计算机提供给用户使用的机器指令集称为指令系统,大多数指令为双操作数指令。执行指令后,一般源操作数不变,目的操作数被计算结果替代。
+. 机器指令由CPU执行,完成某种运算或操作,8086/8088指令系统中的指令分为6类: 数据传送,算术运算,逻辑运算,串操作,控制转移和处理机控制。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;寻址方式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 寻址方式确定执行指令时获得操作数地址的方法
+. 分为与数据有关的寻址方式(7种)和与转移地址有关的寻址方式(4)种。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;与数据有关的寻址方式的一般用途:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; (1) 立即数寻址方式--将常量赋给寄存器或存储单元
+ (2) 直接寻址方式--存取单个变量
+ (3) 寄存器寻址方式--访问寄存器的速度快于访问存储单元的速度
+ (4) 寄存器间接寻址方式--访问数组元素
+ (5) 变址寻址方式
+ (6) 基址变址寻址方式
+ (7) 相对基址变址寻址方式
+(5),(6),(7)都便于处理数组元素
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;与数据有关的寻址方式中,提供地址的寄存器只能是BX,SI,DI或BP&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;与转移地址有关的寻址方式的一般用途:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(1) 段内直接寻址--段内直接转移或子程序调用
+(2) 段内间接寻址--段内间接转移或子程序调用
+(3) 段间直接寻址--段间直接转移或子程序调用
+(4) 段间间接寻址--段间间接转移或子程序调用
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/1N6zXDB.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;汇编程序和汇编语言&quot;&gt;&lt;a href=&quot;#汇编程序和汇编语言&quot; class=&quot;headerlink&quot; title=&quot;汇编程序和汇编语言&quot;&gt;&lt;/a&gt;汇编程序和汇编语言&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;汇编程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 汇编程序是将汇编语言源程序翻译成二进制代码程序的语言处理程序,翻译的过程称为汇编。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;汇编语言&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 汇编语言是用指令助记符,各种标识变量,地址,过程等的标识符书写程序的语言, 汇编语言指令与机器指令一 一对应。
+. 伪指令,宏指令不是由CPU执行的指令,而是由汇编程序在汇编期间处理的指令。
+. 伪指令指示汇编程序如何完成数据定义,存储空间分配,组织段等工作。
+. 宏指令可简化程序并减少程序书写量。
+. 条件汇编伪指令的功能是确定是否汇编某段源程序,而不是实现程序分支,对未汇编的程序将不产生相应的目标代码。
+. 结构作为一种数据结构可将一组类型不同但有逻辑关联的数据组织在一起,便于 整体处理数据。
+. 记录可用于提高存储单元的利用率,将若干不足一个字节或字且有逻辑关联的信 息压缩存放在一个字节或字中。
+. 指令中的表达式在汇编期间计算,并且只能对常量或地址进行计算。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;程序设计基础&quot;&gt;&lt;a href=&quot;#程序设计基础&quot; class=&quot;headerlink&quot; title=&quot;程序设计基础&quot;&gt;&lt;/a&gt;程序设计基础&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;分支程序设计&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 程序分支由条件转移指令或无条件转移指令实现
+. 存放若干目的转移地址或跳转指令的跳转表常用于实现多路分支
+. 条件转移指令只能实现偏移量为-128至+127字节范围的转移
+. 无条件转移指令根据寻址方式可实现短转移(偏移量为-128至+127字节),段内转 移,段间转移。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;循环程序设计&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 可由循环控制指令或条件转移指令组织循环结构
+. 内层循环结构必须完全包含在外层循环结构内,并不能发生从循环结构外向循环 结构内的转移。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;子程序设计&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 子程序中应保护寄存器内容,并正确使用堆栈, 成对执行PUSH和POP指令，保证执行RET指令时堆栈栈顶为返回地址。
+. 主程序可通过寄存器,参数表,或堆栈传递参数给子程序  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;EXE文件和COM文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 二者都是可执行文件
+. COM文件源程序的特点是: 第一条可执行指令的起始存放地址必须是100H,不能分段,不用定义堆栈,所有过程为NEAR类型,直接用INT 20H 指令返回DOS。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DOS功能调用与BIOS中断调用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 二者都是完成DOS系统提供给用户的输入/输出等常用功能,通过执行软中断指令 完成一次软中断服务。
+. DOS功能调用的中断服务程序是操作系统的一部分,存于RAM中; 而BIOS中断调用的中断服务程序存放在ROM中。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/7WgL4su.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;输入-输出与中断系统&quot;&gt;&lt;a href=&quot;#输入-输出与中断系统&quot; class=&quot;headerlink&quot; title=&quot;输入/输出与中断系统&quot;&gt;&lt;/a&gt;输入/输出与中断系统&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;输入/输出的方式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 程序直接I/O方式: 用IN和OUT指令直接在端口级上进行I/O操作,数据传送方式 分为无条件传送方式和查询传送方式。
+. 中断传送方式: 由CPU响应中断请求完成中断服务。
+. DMA传送方式: 直接在存储器与外设之间传送数据。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;有关中断的概念&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 中断、中断源、中断请求、中断服务、中断向量、中断向量表、中断响应过程、 中断指令、开中断、关中断、内部中断、外部中断、可屏蔽中断、非屏蔽中断。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;键盘I/O、显示器I/O操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. 键盘的输入操作用BIOS的16H中断调用控制,也可直接访问60H端口(数据端口), 61H端口(状态端口)检测键盘的按键操作。
+. 对于特殊键（如Shift , Ctrl , Alt , NumLock , ScrollLock等键）的按动情况，可以直接从来40:17H单元取得有关信息。
+. 显示器的图形显示可以用BIOS的10H中断调用实现,另一种速度更快的方法是直 接读写视频缓冲区。
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打印机I/O操作由 INT   17H中断调用实现， 串行通讯口操作由 INT 14H中断调用实现。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;. CLD Clear the direction flag (set to forward direction)
+
+. 将方向标志置0，使si和di增量，串处理从低地址向高地址处理
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;8088-汇编速查手册&quot;&gt;&lt;a href=&quot;#8088-汇编速查手册&quot; class=&quot;headerlink&quot; title=&quot;8088 汇编速查手册 　&quot;&gt;&lt;/a&gt;8088 汇编速查手册 　&lt;/h2&gt;&lt;p&gt;　　　　　　　&lt;/p&gt;
+&lt;h3 id=&quot;一、数据传输指令&quot;&gt;&lt;a href=&quot;#一、数据传输指令&quot; class=&quot;headerlink&quot; title=&quot;一、数据传输指令&quot;&gt;&lt;/a&gt;一、数据传输指令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;它们在存贮器和寄存器、寄存器和输入输出端口之间传送数据.
+&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;通用数据传送指令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MOV　　传送字或字节.
+MOVSX　先符号扩展,再传送.
+MOVZX　先零扩展,再传送.
+PUSH　　把字压入堆栈.
+POP　　把字弹出堆栈.
+PUSHA　把AX,CX,DX,BX,SP,BP,SI,DI依次压入堆栈.
+POPA　　把DI,SI,BP,SP,BX,DX,CX,AX依次弹出堆栈.
+PUSHAD　把EAX,ECX,EDX, EBX,ESP,EBP,ESI,EDI依次压入堆栈.
+POPAD　把EDI,ESI,EBP,ESP,EBX,EDX, ECX,EAX依次弹出堆栈.
+BSWAP　交换32位寄存器里字节的顺序
+XCHG　　交换字或字节.( 至少有一个操作数为寄存器,段寄存器不可作为操作数)
+CMPXCHG 比较并交换操作数.( 第二个操作数必须为累加器AL/AX/EAX )
+XADD　　先交换再累加.( 结果在第一个操作数里 )
+XLAT　　字节查表转换.
+── BX 指向一张 256 字节的表的起点, AL 为表的索引值 (0-255,即0-FFH); 返回 AL 为查表结果. ( [BX+AL]-&amp;gt;AL )
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入输出端口传送指令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;IN　　　I/O端口输入. ( 语法: IN 累加器, {端口号│DX} )
+OUT　　I/O端口输出. ( 语法: OUT {端口号│DX},累加器 )
+输入输出端口由立即方式指定时, 其范围是 0-255; 由寄存器 DX 指定时,其范围是 0-65535.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目的地址传送指令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LEA　　装入有效地址.
+    例: LEA DX,string　;把偏移地址存到DX.
+LDS　　传送目标指针,把指针内容装入DS.
+    例: LDS SI,string　;把段地址:偏移地址存到DS:SI.
+LES　　传送目标指针,把指针内容装入ES.
+例: LES DI,string　;把段地址:偏移地址存到ES:DI.
+LFS　　传送目标指针,把指针内容装入FS.
+    例: LFS DI,string　;把段地址:偏移地址存到FS:DI.
+LGS　　传送目标指针,把指针内容装入GS.
+    例: LGS DI,string　;把段地址:偏移地址存到GS:DI.
+LSS　　传送目标指针,把指针内容装入SS.
+    例: LSS DI,string　;把段地址:偏移地址存到SS:DI.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;标志传送指令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LAHF　　标志寄存器传送,把标志装入AH.
+SAHF　　标志寄存器传送,把 AH内容装入标志寄存器.
+PUSHF　标志入栈.
+POPF　　标志出栈.
+PUSHD　32位标志入栈.
+POPD　　32位标志出栈.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;二、算术运算指令&quot;&gt;&lt;a href=&quot;#二、算术运算指令&quot; class=&quot;headerlink&quot; title=&quot;二、算术运算指令&quot;&gt;&lt;/a&gt;二、算术运算指令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;ADD 加法.
+ADC　　带进位加法.
+INC　　加 1.
+AAA　　加法的ASCII码调整.
+DAA　　加法的十进制调整.
+SUB　　减法.
+SBB　　带借位减法.
+DEC　　减 1.
+NEC　　求反(以 0 减之).
+CMP　　比较.(两操作数作减法,仅修改标志位,不回送结果).
+AAS　　减法的 ASCII码调整.
+DAS　　减法的十进制调整.
+MUL　　无符号乘法.
+IMUL　　整数乘法.
+以上两条,结果回送AH和AL(字节运算),或DX和AX(字运算),
+AAM　　乘法的ASCII码调整.
+DIV　　无符号除法.
+IDIV　　整数除法.
+    以上两条,结果回送:
+    商回送AL,余数回送AH, (字节运算);
+    或　商回送AX,余数回送DX, (字运算).
+AAD　　除法的ASCII码调整.
+CBW　　字节转换为字. (把AL中字节的符号扩展到AH中去)
+CWD　　字转换为双字. (把AX中的字的符号扩展到DX中去)
+CWDE　　字转换为双字. (把AX中的字符号扩展到EAX中去)
+CDQ　　双字扩展.　　(把EAX中的字的符号扩展到EDX中去)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/q1ILazq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;三、逻辑运算指令&quot;&gt;&lt;a href=&quot;#三、逻辑运算指令&quot; class=&quot;headerlink&quot; title=&quot;三、逻辑运算指令&quot;&gt;&lt;/a&gt;三、逻辑运算指令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;AND　　与运算.
+OR　　　或运算.
+XOR　　异或运算.
+NOT　　取反.
+TEST　　测试.(两操作数作与运算,仅修改标志位,不回送结果).
+SHL　　逻辑左移.
+SAL　　算术左移.(=SHL)
+SHR　　逻辑右移.
+SAR　　算术右移.(=SHR)
+ROL　　循环左移.
+ROR　　循环右移.
+RCL　　通过进位的循环左移.
+RCR　　通过进位的循环右移.
+    以上八种移位指令,其移位次数可达255次.
+    移位一次时, 可直接用操作码.　如 SHL AX,1.
+    移位&amp;gt;1次时, 则由寄存器CL给出移位次数.
+        如　MOV CL,04
+            SHL AX,CL
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;四、串指令&quot;&gt;&lt;a href=&quot;#四、串指令&quot; class=&quot;headerlink&quot; title=&quot;四、串指令&quot;&gt;&lt;/a&gt;四、串指令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;DS:SI　源串段寄存器　:源串变址.
+ES:DI　目标串段寄存器:目标串变址.
+CX　　　重复次数计数器.
+    AL/AX　扫描值.
+    D标志　0表示重复操作中SI和DI应自动增量; 1表示应自动减量.
+    Z标志　用来控制扫描或比较操作的结束.
+MOVS　　串传送.
+    ( MOVSB　传送字符.　　MOVSW　传送字.　　MOVSD　传送双字. )
+CMPS　　串比较.
+    ( CMPSB　比较字符.　　CMPSW　比较字. )
+SCAS　　串扫描.
+    把AL或AX的内容与目标串作比较,比较结果反映在标志位.
+LODS　　装入串.
+    把源串中的元素(字或字节)逐一装入AL或AX中.
+    ( LODSB　传送字符.　　LODSW　传送字.　　LODSD　传送双字. )
+STOS　　保存串. 是LODS的逆过程.
+REP　　　　　　当CX/ECX&amp;lt;&amp;gt;0时重复.
+REPE/REPZ　　　当ZF=1或比较结果相等,且 CX/ECX&amp;lt;&amp;gt;0时重复.
+REPNE/REPNZ　　当ZF=0或比较结果不相等,且 CX/ECX&amp;lt;&amp;gt;0时重复.
+REPC　　　　　当CF=1且CX/ECX&amp;lt; &amp;gt;0时重复.
+REPNC　　　　　当CF=0且CX/ECX&amp;lt;&amp;gt;0时重复.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;五、程序转移指令&quot;&gt;&lt;a href=&quot;#五、程序转移指令&quot; class=&quot;headerlink&quot; title=&quot;五、程序转移指令&quot;&gt;&lt;/a&gt;五、程序转移指令&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;无条件转移指令 (长转移)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;JMP　　无条件转移指令
+CALL　　过程调用
+RET/RETF过程返回.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;条件转移指令 (短转移,-128到+127的距离内)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;( 当且仅当(SF XOR OF)=1时,OP1&amp;lt;OP2 )
+JA/JNBE 不小于或不等于时转移.
+JAE/JNB 大于或等于转移.
+JB/JNAE 小于转移.
+JBE/JNA 小于或等于转移.
+    以上四条,测试无符号整数运算的结果(标志C和Z).
+JG/JNLE 大于转移.
+JGE/JNL 大于或等于转移.
+JL/JNGE 小于转移.
+JLE/JNG 小于或等于转移.
+    以上四条,测试带符号整数运算的结果(标志S,O和Z).
+JE/JZ　等于转移.
+JNE/JNZ 不等于时转移.
+JC　　　有进位时转移.
+JNC　　无进位时转移.
+JNO　　不溢出时转移.
+JNP/JPO 奇偶性为奇数时转移.
+JNS　　符号位为 &amp;quot;0&amp;quot; 时转移.
+JO　　　溢出转移.
+JP/JPE　奇偶性为偶数时转移.
+JS　　　符号位为 &amp;quot;1&amp;quot; 时转移.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;循环控制指令(短转移)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LOOP　　　　　　CX不为零时循环.
+LOOPE/LOOPZ　　CX不为零且标志Z=1时循环.
+LOOPNE/LOOPNZ　CX 不为零且标志Z=0时循环.
+JCXZ　　　　　　CX为零时转移.
+JECXZ　　　　　ECX 为零时转移.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;中断指令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INT　　中断指令
+INTO 　　溢出中断
+IRET　　中断返回
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;　　&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;处理器控制指令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HLT　　处理器暂停, 直到出现中断或复位信号才继续.
+WAIT　　当芯片引线TEST为高电平时使CPU进入等待状态.
+ESC　　转换到外处理器.
+LOCK　　封锁总线.
+NOP　　空操作.
+STC　　置进位标志位.
+CLC　　清进位标志位.
+CMC　　进位标志取反.
+STD　　置方向标志位.
+CLD　　清方向标志位.
+STI　　置中断允许位.
+CLI　　清中断允许位.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;六、伪指令&quot;&gt;&lt;a href=&quot;#六、伪指令&quot; class=&quot;headerlink&quot; title=&quot;六、伪指令&quot;&gt;&lt;/a&gt;六、伪指令&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;DW　　　定义字(2字节).
+PROC　　定义过程.
+ENDP　　过程结束.
+SEGMENT 定义段.
+ASSUME　建立段寄存器寻址.
+ENDS　　段结束.
+END　　程序结束.
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     

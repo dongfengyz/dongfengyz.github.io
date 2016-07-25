@@ -20,7 +20,10 @@
 汇编的用法
 汇编的地址转换">
 <meta property="og:image" content="http://i.imgur.com/TQXDo7n.jpg">
-<meta property="og:updated_time" content="2016-07-25T12:28:01.945Z">
+<meta property="og:image" content="http://i.imgur.com/1N6zXDB.jpg">
+<meta property="og:image" content="http://i.imgur.com/7WgL4su.jpg">
+<meta property="og:image" content="http://i.imgur.com/q1ILazq.jpg">
+<meta property="og:updated_time" content="2016-07-25T13:48:31.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编">
 <meta name="twitter:description" content="要点:
@@ -120,13 +123,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -294,7 +297,297 @@
 <li>汇编的地址转换<a id="more"></a>
 </li>
 </ol>
+<h2 id="寄存器与存储器"><a href="#寄存器与存储器" class="headerlink" title="寄存器与存储器"></a>寄存器与存储器</h2><ol>
+<li><p>寄存器功能</p>
+<pre><code>. 寄存器的一般用途和专用用途
+. CS:IP 控制程序执行流程
+. SS:SP 提供堆栈栈顶单元地址
+. DS:BX(SI,DI) 提供数据段内单元地址
+. SS:BP 提供堆栈内单元地址
+. ES:BX(SI,DI) 提供附加段内单元地址
+. AX,CX,BX和CX寄存器多用于运算和暂存中间计算结果,但又专用于某些指令(查阅 指令表)。
+. PSW程序状态字寄存器只能通过专用指令（LAHF, SAHF)和堆栈(PUSHF,POPF)进行存取。
+</code></pre></li>
+<li><p>存储器分段管理</p>
+<pre><code>. 解决了16位寄存器构成20位地址的问题
+. 便于程序重定位
+. 20位物理地址=段地址 * 16 + 偏移地址
+. 程序分段组织: 一般由代码段,堆栈段,数据段和附加段组成,不设置堆栈段时 则使用系    统内部的堆栈。
+</code></pre></li>
+<li><p>堆栈</p>
+<pre><code>. 堆栈是一种先进后出的数据结构 , 数据的存取在栈顶进行 , 数据入栈使堆栈向地址减    小的方向扩展。
+. 堆栈常用于保存子程序调用和中断响应时的断点以及暂存数据或中间计算结果 。
+. 堆栈总是以字为单位存取
+</code></pre></li>
+</ol>
+<h2 id="指令系统与寻址方式"><a href="#指令系统与寻址方式" class="headerlink" title="指令系统与寻址方式"></a>指令系统与寻址方式</h2><ol>
+<li><p>指令系统</p>
+<pre><code>. 计算机提供给用户使用的机器指令集称为指令系统,大多数指令为双操作数指令。执行指令后,一般源操作数不变,目的操作数被计算结果替代。
+. 机器指令由CPU执行,完成某种运算或操作,8086/8088指令系统中的指令分为6类: 数据传送,算术运算,逻辑运算,串操作,控制转移和处理机控制。
+</code></pre></li>
+<li><p>寻址方式</p>
+<pre><code>. 寻址方式确定执行指令时获得操作数地址的方法
+. 分为与数据有关的寻址方式(7种)和与转移地址有关的寻址方式(4)种。
+</code></pre></li>
+<li><p>与数据有关的寻址方式的一般用途:</p>
+<pre><code> (1) 立即数寻址方式--将常量赋给寄存器或存储单元
+ (2) 直接寻址方式--存取单个变量
+ (3) 寄存器寻址方式--访问寄存器的速度快于访问存储单元的速度
+ (4) 寄存器间接寻址方式--访问数组元素
+ (5) 变址寻址方式
+ (6) 基址变址寻址方式
+ (7) 相对基址变址寻址方式
+(5),(6),(7)都便于处理数组元素
+</code></pre></li>
+<li><p>与数据有关的寻址方式中,提供地址的寄存器只能是BX,SI,DI或BP</p>
+</li>
+<li><p>与转移地址有关的寻址方式的一般用途:</p>
+<pre><code>(1) 段内直接寻址--段内直接转移或子程序调用
+(2) 段内间接寻址--段内间接转移或子程序调用
+(3) 段间直接寻址--段间直接转移或子程序调用
+(4) 段间间接寻址--段间间接转移或子程序调用
+</code></pre></li>
+</ol>
+<p><img src="http://i.imgur.com/1N6zXDB.jpg" alt=""></p>
+<h2 id="汇编程序和汇编语言"><a href="#汇编程序和汇编语言" class="headerlink" title="汇编程序和汇编语言"></a>汇编程序和汇编语言</h2><ol>
+<li><p>汇编程序</p>
+<pre><code>. 汇编程序是将汇编语言源程序翻译成二进制代码程序的语言处理程序,翻译的过程称为汇编。
+</code></pre></li>
+<li><p>汇编语言</p>
+<pre><code>. 汇编语言是用指令助记符,各种标识变量,地址,过程等的标识符书写程序的语言, 汇编语言指令与机器指令一 一对应。
+. 伪指令,宏指令不是由CPU执行的指令,而是由汇编程序在汇编期间处理的指令。
+. 伪指令指示汇编程序如何完成数据定义,存储空间分配,组织段等工作。
+. 宏指令可简化程序并减少程序书写量。
+. 条件汇编伪指令的功能是确定是否汇编某段源程序,而不是实现程序分支,对未汇编的程序将不产生相应的目标代码。
+. 结构作为一种数据结构可将一组类型不同但有逻辑关联的数据组织在一起,便于 整体处理数据。
+. 记录可用于提高存储单元的利用率,将若干不足一个字节或字且有逻辑关联的信 息压缩存放在一个字节或字中。
+. 指令中的表达式在汇编期间计算,并且只能对常量或地址进行计算。
+</code></pre></li>
+</ol>
+<h2 id="程序设计基础"><a href="#程序设计基础" class="headerlink" title="程序设计基础"></a>程序设计基础</h2><ol>
+<li><p>分支程序设计</p>
+<pre><code>. 程序分支由条件转移指令或无条件转移指令实现
+. 存放若干目的转移地址或跳转指令的跳转表常用于实现多路分支
+. 条件转移指令只能实现偏移量为-128至+127字节范围的转移
+. 无条件转移指令根据寻址方式可实现短转移(偏移量为-128至+127字节),段内转 移,段间转移。
+</code></pre></li>
+<li><p>循环程序设计</p>
+<pre><code>. 可由循环控制指令或条件转移指令组织循环结构
+. 内层循环结构必须完全包含在外层循环结构内,并不能发生从循环结构外向循环 结构内的转移。
+</code></pre></li>
+<li><p>子程序设计</p>
+<pre><code>. 子程序中应保护寄存器内容,并正确使用堆栈, 成对执行PUSH和POP指令，保证执行RET指令时堆栈栈顶为返回地址。
+. 主程序可通过寄存器,参数表,或堆栈传递参数给子程序  
+</code></pre></li>
+<li><p>EXE文件和COM文件</p>
+<pre><code>. 二者都是可执行文件
+. COM文件源程序的特点是: 第一条可执行指令的起始存放地址必须是100H,不能分段,不用定义堆栈,所有过程为NEAR类型,直接用INT 20H 指令返回DOS。
+</code></pre></li>
+<li><p>DOS功能调用与BIOS中断调用</p>
+<pre><code>. 二者都是完成DOS系统提供给用户的输入/输出等常用功能,通过执行软中断指令 完成一次软中断服务。
+. DOS功能调用的中断服务程序是操作系统的一部分,存于RAM中; 而BIOS中断调用的中断服务程序存放在ROM中。
+</code></pre></li>
+</ol>
+<p><img src="http://i.imgur.com/7WgL4su.jpg" alt=""></p>
+<h2 id="输入-输出与中断系统"><a href="#输入-输出与中断系统" class="headerlink" title="输入/输出与中断系统"></a>输入/输出与中断系统</h2><ol>
+<li><p>输入/输出的方式</p>
+<pre><code>. 程序直接I/O方式: 用IN和OUT指令直接在端口级上进行I/O操作,数据传送方式 分为无条件传送方式和查询传送方式。
+. 中断传送方式: 由CPU响应中断请求完成中断服务。
+. DMA传送方式: 直接在存储器与外设之间传送数据。
+</code></pre></li>
+<li><p>有关中断的概念</p>
+<pre><code>. 中断、中断源、中断请求、中断服务、中断向量、中断向量表、中断响应过程、 中断指令、开中断、关中断、内部中断、外部中断、可屏蔽中断、非屏蔽中断。
+</code></pre></li>
+<li><p>键盘I/O、显示器I/O操作</p>
+<pre><code>. 键盘的输入操作用BIOS的16H中断调用控制,也可直接访问60H端口(数据端口), 61H端口(状态端口)检测键盘的按键操作。
+. 对于特殊键（如Shift , Ctrl , Alt , NumLock , ScrollLock等键）的按动情况，可以直接从来40:17H单元取得有关信息。
+. 显示器的图形显示可以用BIOS的10H中断调用实现,另一种速度更快的方法是直 接读写视频缓冲区。
+</code></pre></li>
+<li><p>打印机I/O操作由 INT   17H中断调用实现， 串行通讯口操作由 INT 14H中断调用实现。</p>
+<pre><code>. CLD Clear the direction flag (set to forward direction)
 
+. 将方向标志置0，使si和di增量，串处理从低地址向高地址处理
+</code></pre></li>
+</ol>
+<h2 id="8088-汇编速查手册"><a href="#8088-汇编速查手册" class="headerlink" title="8088 汇编速查手册 　"></a>8088 汇编速查手册 　</h2><p>　　　　　　　</p>
+<h3 id="一、数据传输指令"><a href="#一、数据传输指令" class="headerlink" title="一、数据传输指令"></a>一、数据传输指令</h3><pre><code>它们在存贮器和寄存器、寄存器和输入输出端口之间传送数据.
+</code></pre><ol>
+<li><p>通用数据传送指令.</p>
+<pre><code>MOV　　传送字或字节.
+MOVSX　先符号扩展,再传送.
+MOVZX　先零扩展,再传送.
+PUSH　　把字压入堆栈.
+POP　　把字弹出堆栈.
+PUSHA　把AX,CX,DX,BX,SP,BP,SI,DI依次压入堆栈.
+POPA　　把DI,SI,BP,SP,BX,DX,CX,AX依次弹出堆栈.
+PUSHAD　把EAX,ECX,EDX, EBX,ESP,EBP,ESI,EDI依次压入堆栈.
+POPAD　把EDI,ESI,EBP,ESP,EBX,EDX, ECX,EAX依次弹出堆栈.
+BSWAP　交换32位寄存器里字节的顺序
+XCHG　　交换字或字节.( 至少有一个操作数为寄存器,段寄存器不可作为操作数)
+CMPXCHG 比较并交换操作数.( 第二个操作数必须为累加器AL/AX/EAX )
+XADD　　先交换再累加.( 结果在第一个操作数里 )
+XLAT　　字节查表转换.
+── BX 指向一张 256 字节的表的起点, AL 为表的索引值 (0-255,即0-FFH); 返回 AL 为查表结果. ( [BX+AL]-&gt;AL )
+</code></pre></li>
+<li><p>输入输出端口传送指令.</p>
+<pre><code>IN　　　I/O端口输入. ( 语法: IN 累加器, {端口号│DX} )
+OUT　　I/O端口输出. ( 语法: OUT {端口号│DX},累加器 )
+输入输出端口由立即方式指定时, 其范围是 0-255; 由寄存器 DX 指定时,其范围是 0-65535.
+</code></pre></li>
+<li><p>目的地址传送指令.</p>
+<pre><code>LEA　　装入有效地址.
+    例: LEA DX,string　;把偏移地址存到DX.
+LDS　　传送目标指针,把指针内容装入DS.
+    例: LDS SI,string　;把段地址:偏移地址存到DS:SI.
+LES　　传送目标指针,把指针内容装入ES.
+例: LES DI,string　;把段地址:偏移地址存到ES:DI.
+LFS　　传送目标指针,把指针内容装入FS.
+    例: LFS DI,string　;把段地址:偏移地址存到FS:DI.
+LGS　　传送目标指针,把指针内容装入GS.
+    例: LGS DI,string　;把段地址:偏移地址存到GS:DI.
+LSS　　传送目标指针,把指针内容装入SS.
+    例: LSS DI,string　;把段地址:偏移地址存到SS:DI.
+</code></pre></li>
+<li><p>标志传送指令.</p>
+<pre><code>LAHF　　标志寄存器传送,把标志装入AH.
+SAHF　　标志寄存器传送,把 AH内容装入标志寄存器.
+PUSHF　标志入栈.
+POPF　　标志出栈.
+PUSHD　32位标志入栈.
+POPD　　32位标志出栈.
+</code></pre></li>
+</ol>
+<h3 id="二、算术运算指令"><a href="#二、算术运算指令" class="headerlink" title="二、算术运算指令"></a>二、算术运算指令</h3><pre><code>ADD 加法.
+ADC　　带进位加法.
+INC　　加 1.
+AAA　　加法的ASCII码调整.
+DAA　　加法的十进制调整.
+SUB　　减法.
+SBB　　带借位减法.
+DEC　　减 1.
+NEC　　求反(以 0 减之).
+CMP　　比较.(两操作数作减法,仅修改标志位,不回送结果).
+AAS　　减法的 ASCII码调整.
+DAS　　减法的十进制调整.
+MUL　　无符号乘法.
+IMUL　　整数乘法.
+以上两条,结果回送AH和AL(字节运算),或DX和AX(字运算),
+AAM　　乘法的ASCII码调整.
+DIV　　无符号除法.
+IDIV　　整数除法.
+    以上两条,结果回送:
+    商回送AL,余数回送AH, (字节运算);
+    或　商回送AX,余数回送DX, (字运算).
+AAD　　除法的ASCII码调整.
+CBW　　字节转换为字. (把AL中字节的符号扩展到AH中去)
+CWD　　字转换为双字. (把AX中的字的符号扩展到DX中去)
+CWDE　　字转换为双字. (把AX中的字符号扩展到EAX中去)
+CDQ　　双字扩展.　　(把EAX中的字的符号扩展到EDX中去)
+</code></pre><p><img src="http://i.imgur.com/q1ILazq.jpg" alt=""></p>
+<h3 id="三、逻辑运算指令"><a href="#三、逻辑运算指令" class="headerlink" title="三、逻辑运算指令"></a>三、逻辑运算指令</h3><pre><code>AND　　与运算.
+OR　　　或运算.
+XOR　　异或运算.
+NOT　　取反.
+TEST　　测试.(两操作数作与运算,仅修改标志位,不回送结果).
+SHL　　逻辑左移.
+SAL　　算术左移.(=SHL)
+SHR　　逻辑右移.
+SAR　　算术右移.(=SHR)
+ROL　　循环左移.
+ROR　　循环右移.
+RCL　　通过进位的循环左移.
+RCR　　通过进位的循环右移.
+    以上八种移位指令,其移位次数可达255次.
+    移位一次时, 可直接用操作码.　如 SHL AX,1.
+    移位&gt;1次时, 则由寄存器CL给出移位次数.
+        如　MOV CL,04
+            SHL AX,CL
+</code></pre><h3 id="四、串指令"><a href="#四、串指令" class="headerlink" title="四、串指令"></a>四、串指令</h3><pre><code>DS:SI　源串段寄存器　:源串变址.
+ES:DI　目标串段寄存器:目标串变址.
+CX　　　重复次数计数器.
+    AL/AX　扫描值.
+    D标志　0表示重复操作中SI和DI应自动增量; 1表示应自动减量.
+    Z标志　用来控制扫描或比较操作的结束.
+MOVS　　串传送.
+    ( MOVSB　传送字符.　　MOVSW　传送字.　　MOVSD　传送双字. )
+CMPS　　串比较.
+    ( CMPSB　比较字符.　　CMPSW　比较字. )
+SCAS　　串扫描.
+    把AL或AX的内容与目标串作比较,比较结果反映在标志位.
+LODS　　装入串.
+    把源串中的元素(字或字节)逐一装入AL或AX中.
+    ( LODSB　传送字符.　　LODSW　传送字.　　LODSD　传送双字. )
+STOS　　保存串. 是LODS的逆过程.
+REP　　　　　　当CX/ECX&lt;&gt;0时重复.
+REPE/REPZ　　　当ZF=1或比较结果相等,且 CX/ECX&lt;&gt;0时重复.
+REPNE/REPNZ　　当ZF=0或比较结果不相等,且 CX/ECX&lt;&gt;0时重复.
+REPC　　　　　当CF=1且CX/ECX&lt; &gt;0时重复.
+REPNC　　　　　当CF=0且CX/ECX&lt;&gt;0时重复.
+</code></pre><h3 id="五、程序转移指令"><a href="#五、程序转移指令" class="headerlink" title="五、程序转移指令"></a>五、程序转移指令</h3><ol>
+<li><p>无条件转移指令 (长转移)</p>
+<pre><code>JMP　　无条件转移指令
+CALL　　过程调用
+RET/RETF过程返回.
+</code></pre></li>
+<li><p>条件转移指令 (短转移,-128到+127的距离内)</p>
+<pre><code>( 当且仅当(SF XOR OF)=1时,OP1&lt;OP2 )
+JA/JNBE 不小于或不等于时转移.
+JAE/JNB 大于或等于转移.
+JB/JNAE 小于转移.
+JBE/JNA 小于或等于转移.
+    以上四条,测试无符号整数运算的结果(标志C和Z).
+JG/JNLE 大于转移.
+JGE/JNL 大于或等于转移.
+JL/JNGE 小于转移.
+JLE/JNG 小于或等于转移.
+    以上四条,测试带符号整数运算的结果(标志S,O和Z).
+JE/JZ　等于转移.
+JNE/JNZ 不等于时转移.
+JC　　　有进位时转移.
+JNC　　无进位时转移.
+JNO　　不溢出时转移.
+JNP/JPO 奇偶性为奇数时转移.
+JNS　　符号位为 &quot;0&quot; 时转移.
+JO　　　溢出转移.
+JP/JPE　奇偶性为偶数时转移.
+JS　　　符号位为 &quot;1&quot; 时转移.
+</code></pre></li>
+<li><p>循环控制指令(短转移)</p>
+<pre><code>LOOP　　　　　　CX不为零时循环.
+LOOPE/LOOPZ　　CX不为零且标志Z=1时循环.
+LOOPNE/LOOPNZ　CX 不为零且标志Z=0时循环.
+JCXZ　　　　　　CX为零时转移.
+JECXZ　　　　　ECX 为零时转移.
+</code></pre></li>
+<li><p>中断指令</p>
+<pre><code>INT　　中断指令
+INTO 　　溢出中断
+IRET　　中断返回
+</code></pre><p>　　</p>
+</li>
+<li><p>处理器控制指令</p>
+<pre><code>HLT　　处理器暂停, 直到出现中断或复位信号才继续.
+WAIT　　当芯片引线TEST为高电平时使CPU进入等待状态.
+ESC　　转换到外处理器.
+LOCK　　封锁总线.
+NOP　　空操作.
+STC　　置进位标志位.
+CLC　　清进位标志位.
+CMC　　进位标志取反.
+STD　　置方向标志位.
+CLD　　清方向标志位.
+STI　　置中断允许位.
+CLI　　清中断允许位.
+</code></pre></li>
+</ol>
+<h3 id="六、伪指令"><a href="#六、伪指令" class="headerlink" title="六、伪指令"></a>六、伪指令</h3><pre><code>DW　　　定义字(2字节).
+PROC　　定义过程.
+ENDP　　过程结束.
+SEGMENT 定义段.
+ASSUME　建立段寄存器寻址.
+ENDS　　段结束.
+END　　程序结束.
+</code></pre>
       
       
     </div>
@@ -303,18 +596,18 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/07/23/汇编/">汇编</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">younger</a></p>
-        <p><span>Created:</span>2016-07-23, 10:21:30</p>
-        <p><span>Updated:</span>2016-07-25, 20:28:01</p>
+        <p><span>本文标题:</span><a href="/2016/07/23/汇编/">汇编</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
+        <p><span>发布时间:</span>2016-07-23, 10:21:30</p>
+        <p><span>最后更新:</span>2016-07-25, 21:48:31</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/07/23/汇编/" title="汇编">http://dongfengyz.github.io/2016/07/23/汇编/</a>
-            <span class="copy-path" data-clipboard-text="From http://dongfengyz.github.io/2016/07/23/汇编/　　By younger" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/23/汇编/" title="汇编">http://dongfengyz.github.io/2016/07/23/汇编/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/07/23/汇编/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -341,8 +634,8 @@
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#寄存器与存储器"><span class="toc-number">1.</span> <span class="toc-text">寄存器与存储器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#指令系统与寻址方式"><span class="toc-number">2.</span> <span class="toc-text">指令系统与寻址方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#汇编程序和汇编语言"><span class="toc-number">3.</span> <span class="toc-text">汇编程序和汇编语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序设计基础"><span class="toc-number">4.</span> <span class="toc-text">程序设计基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输入-输出与中断系统"><span class="toc-number">5.</span> <span class="toc-text">输入/输出与中断系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8088-汇编速查手册"><span class="toc-number">6.</span> <span class="toc-text">8088 汇编速查手册 　</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、数据传输指令"><span class="toc-number">6.1.</span> <span class="toc-text">一、数据传输指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、算术运算指令"><span class="toc-number">6.2.</span> <span class="toc-text">二、算术运算指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、逻辑运算指令"><span class="toc-number">6.3.</span> <span class="toc-text">三、逻辑运算指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、串指令"><span class="toc-number">6.4.</span> <span class="toc-text">四、串指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、程序转移指令"><span class="toc-number">6.5.</span> <span class="toc-text">五、程序转移指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、伪指令"><span class="toc-number">6.6.</span> <span class="toc-text">六、伪指令</span></a></li></ol></li></ol>
 </div>
 <style>
     .left-col .switch-btn {
@@ -353,10 +646,10 @@
     }
 </style>
 
-<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 <script>
-    var valueHide = "Hide";
-    var valueShow = "Show";
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
 
     if ($(".left-col").is(":hidden")) {
         $("#tocButton").attr("value", valueShow);
@@ -427,15 +720,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/23/Django/" title="Pre: Django">
+            <a href="/2016/07/23/Django/" title="上一篇: Django">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/28/struts202/" title="Next: struts.xml配置文件详解">
+            <a href="/2016/04/28/struts202/" title="下一篇: struts.xml配置文件详解">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -457,14 +750,14 @@
                 &copy; 2016 younger
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo">Yelee</a> by MOxFIVE
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >Site Visitors: 
+                        <span id="site-visit" >本站到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -474,7 +767,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">Page Hits: 
+                        <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
@@ -507,9 +800,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
