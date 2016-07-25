@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-25T12:27:58.217Z</updated>
+  <updated>2016-07-25T12:37:11.397Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,109 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>反汇编</title>
+    <link href="http://dongfengyz.github.io/2016/07/25/%E5%8F%8D%E6%B1%87%E7%BC%96/"/>
+    <id>http://dongfengyz.github.io/2016/07/25/反汇编/</id>
+    <published>2016-07-25T11:55:20.000Z</published>
+    <updated>2016-07-25T12:37:11.397Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Ab1HBV3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;爆破 搜索字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入一个数字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据treeme 来破解相应的密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解决秒退的情况 isdebuggerpresent&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;level-10  是解决当遇见错误的时候进行错误的跳转&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;实验一：&quot;&gt;&lt;a href=&quot;#实验一：&quot; class=&quot;headerlink&quot; title=&quot;实验一：&quot;&gt;&lt;/a&gt;实验一：&lt;/h2&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;实验描述：-对一个输入的用户名和密码进行校验。&quot;&gt;&lt;a href=&quot;#实验描述：-对一个输入的用户名和密码进行校验。&quot; class=&quot;headerlink&quot; title=&quot;实验描述： 对一个输入的用户名和密码进行校验。&quot;&gt;&lt;/a&gt;实验描述： 对一个输入的用户名和密码进行校验。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：-当输入用户名和密码的时候进行判断，此时爆破就是搜索关键字，来查看关键流程的跳转，比较粗暴的做法就是直接把判断条件直接就Nop掉，使其不可以执行。暴力破解&quot;&gt;&lt;a href=&quot;#实验思路：-当输入用户名和密码的时候进行判断，此时爆破就是搜索关键字，来查看关键流程的跳转，比较粗暴的做法就是直接把判断条件直接就Nop掉，使其不可以执行。暴力破解&quot; class=&quot;headerlink&quot; title=&quot;实验思路： 当输入用户名和密码的时候进行判断，此时爆破就是搜索关键字，来查看关键流程的跳转，比较粗暴的做法就是直接把判断条件直接就Nop掉，使其不可以执行。暴力破解&quot;&gt;&lt;/a&gt;实验思路： 当输入用户名和密码的时候进行判断，此时爆破就是搜索关键字，来查看关键流程的跳转，比较粗暴的做法就是直接把判断条件直接就Nop掉，使其不可以执行。暴力破解&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/CA27Y8g.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 使用nop填充，使得在哪一步，不可以跳转&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/bW6CMcu.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/9URpstr.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://i.imgur.com/3TYSKIc.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实验二：&quot;&gt;&lt;a href=&quot;#实验二：&quot; class=&quot;headerlink&quot; title=&quot;实验二：&quot;&gt;&lt;/a&gt;实验二：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：根据弹出来一个实验文本框，根据提示输入一个数字，最后判断输入是否正确。&quot;&gt;&lt;a href=&quot;#实验描述：根据弹出来一个实验文本框，根据提示输入一个数字，最后判断输入是否正确。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：根据弹出来一个实验文本框，根据提示输入一个数字，最后判断输入是否正确。&quot;&gt;&lt;/a&gt;实验描述：根据弹出来一个实验文本框，根据提示输入一个数字，最后判断输入是否正确。&lt;/h3&gt;&lt;h3 id=&quot;解题思路：每当遇见输入进行校验的时候，其中必然会涉及到文本的获取，以及最后文本满足某种算法，或者直接写死候，进行cmp比较，一次来返回数字的校验。&quot;&gt;&lt;a href=&quot;#解题思路：每当遇见输入进行校验的时候，其中必然会涉及到文本的获取，以及最后文本满足某种算法，或者直接写死候，进行cmp比较，一次来返回数字的校验。&quot; class=&quot;headerlink&quot; title=&quot;解题思路：每当遇见输入进行校验的时候，其中必然会涉及到文本的获取，以及最后文本满足某种算法，或者直接写死候，进行cmp比较，一次来返回数字的校验。&quot;&gt;&lt;/a&gt;解题思路：每当遇见输入进行校验的时候，其中必然会涉及到文本的获取，以及最后文本满足某种算法，或者直接写死候，进行cmp比较，一次来返回数字的校验。&lt;/h3&gt;&lt;p&gt;当点击运行后的界面截图：O(∩_∩)O&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/eC8Ttc3.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 随便输入后，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/8tqqTbS.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 可以看见有NO的存在，我们就顺藤摸瓜，在智能搜索里面就搜索no  或者 yes  这两者的肯定是异或的关系：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/WLBCn0x.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 根据图片的信息，此时分析的信息量就是比较大了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/fQ8SwmT.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 可以看出主要就是jnz 进行判断跳转，然后对上面一步的cmp进行分析就会发现我们其实就是把输入的数字获取到以后 ，和 0x8 进行比较。至此我们就可以得出结论在本实验当中0x8 转化为十进制的时候也是8，得出结果就是实验的解就是数字八。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/FQkO2sL.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实验三：&quot;&gt;&lt;a href=&quot;#实验三：&quot; class=&quot;headerlink&quot; title=&quot;实验三：&quot;&gt;&lt;/a&gt;实验三：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：类似于一个产品的注册验证的功能。&quot;&gt;&lt;a href=&quot;#实验描述：类似于一个产品的注册验证的功能。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：类似于一个产品的注册验证的功能。&quot;&gt;&lt;/a&gt;实验描述：类似于一个产品的注册验证的功能。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：因为本次试验涉及的文本框的发现使用的本实验工具的辅助功能BP当中的getdlgitemtextA功能，目的就是帮助打开一个文本框的断点，根据自己本人的理解就是因为文本框有两个就是会获取两次，然后在本实验当中当根据一步一步的调试的过程的当中发现到某一步的时候，屏幕下方就会出现一串数字。此时程序本身会自己生产自己相应的注册码。&quot;&gt;&lt;a href=&quot;#实验思路：因为本次试验涉及的文本框的发现使用的本实验工具的辅助功能BP当中的getdlgitemtextA功能，目的就是帮助打开一个文本框的断点，根据自己本人的理解就是因为文本框有两个就是会获取两次，然后在本实验当中当根据一步一步的调试的过程的当中发现到某一步的时候，屏幕下方就会出现一串数字。此时程序本身会自己生产自己相应的注册码。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：因为本次试验涉及的文本框的发现使用的本实验工具的辅助功能ＢＰ当中的getdlgitemtextA功能，目的就是帮助打开一个文本框的断点，根据自己本人的理解就是因为文本框有两个就是会获取两次，然后在本实验当中当根据一步一步的调试的过程的当中发现到某一步的时候，屏幕下方就会出现一串数字。此时程序本身会自己生产自己相应的注册码。&quot;&gt;&lt;/a&gt;实验思路：因为本次试验涉及的文本框的发现使用的本实验工具的辅助功能ＢＰ当中的getdlgitemtextA功能，目的就是帮助打开一个文本框的断点，根据自己本人的理解就是因为文本框有两个就是会获取两次，然后在本实验当中当根据一步一步的调试的过程的当中发现到某一步的时候，屏幕下方就会出现一串数字。此时程序本身会自己生产自己相应的注册码。&lt;/h3&gt;&lt;p&gt;实验初步的运行情况：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/VSxXjBt.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/bkcFLuD.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 随便输入一下验证   &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/YJSMR3t.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;接下来就是使用辅助的获取文本值：注意在BP当中哦&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Csy7Mc2.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 点击b来查看断点：&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/8GqEZ1H.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 点击c进行切换到程序的主页面，进行调试：第一步&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Mvg4LIi.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;这一次是获取用户名：&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/ZLjoijU.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;获取验证码：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/kAjgwU4.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 第三步是把获取的数据进行cmp校验准备&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/dkpI5da.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/K91irrx.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 通过次步的观察我们就可以发现，当执行完上一步的时候，就会出现那个后面就会又出现一个校验的码&lt;br&gt;证明主要进行校验的基本上就是上面call 调用的方法，因此打个断点再来一回。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/lCqvkN6.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;点击F7 进入call 查看进一步的代码&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/S6rze8g.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 经过仔细的研究本实验当中的关键代码就是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/PV8tt4l.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;经过仔细的研究可以写成python的版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def Decrypt(gtmd):
+       string = [12,10,19,9,12,11,10,8]
+       s1 = len(gtmd)
+    j=3
+    key = 0
+    i=0
+    while(1):
+            if j&amp;gt;=s1:
+                break
+           key += ord(gtmd[j])*string[i]
+        j = j+1
+        if i == 7:i=-1
+        i=i+1
+    print key
+Decrypt(&amp;quot;gtmd123&amp;quot;)`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; 执行破解的校验码自己写的具体的字母代表什么意思：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/wWxcTor.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实验四&quot;&gt;&lt;a href=&quot;#实验四&quot; class=&quot;headerlink&quot; title=&quot;实验四:&quot;&gt;&lt;/a&gt;实验四:&lt;/h2&gt;&lt;h3 id=&quot;实验描述：在win10、和win7当中运行的时候，会瞬间消失，无法看清具体的。&quot;&gt;&lt;a href=&quot;#实验描述：在win10、和win7当中运行的时候，会瞬间消失，无法看清具体的。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：在win10、和win7当中运行的时候，会瞬间消失，无法看清具体的。&quot;&gt;&lt;/a&gt;实验描述：在win10、和win7当中运行的时候，会瞬间消失，无法看清具体的。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：程序本身做了一层防护，防止汇编，主要的函数就是-isdebuggerpresent，仔细研究跳过就好。&quot;&gt;&lt;a href=&quot;#实验思路：程序本身做了一层防护，防止汇编，主要的函数就是-isdebuggerpresent，仔细研究跳过就好。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：程序本身做了一层防护，防止汇编，主要的函数就是 isdebuggerpresent，仔细研究跳过就好。&quot;&gt;&lt;/a&gt;实验思路：程序本身做了一层防护，防止汇编，主要的函数就是 isdebuggerpresent，仔细研究跳过就好。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/AVEVw2v.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/NvE68Ww.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 使用强制的跳转，不要进行判断再进行跳转，此时就是会用到jmp跳转。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/7Oq7WFg.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 直接进行修改，保存后再次进行运行，就会看见要运行的程序。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/oMy69Om.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实验五&quot;&gt;&lt;a href=&quot;#实验五&quot; class=&quot;headerlink&quot; title=&quot;实验五:&quot;&gt;&lt;/a&gt;实验五:&lt;/h2&gt;&lt;h3 id=&quot;实验描述：实验要跳过error，使其可以顺利进行。&quot;&gt;&lt;a href=&quot;#实验描述：实验要跳过error，使其可以顺利进行。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：实验要跳过error，使其可以顺利进行。&quot;&gt;&lt;/a&gt;实验描述：实验要跳过error，使其可以顺利进行。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：实验主要就是使用爆破的思路，因为要顺利进行，当然实验当中的error就要跳过，但是经过老师的指点开到就是，我们可以使用jmp进行强制的大跳转，来使各种error跳过。&quot;&gt;&lt;a href=&quot;#实验思路：实验主要就是使用爆破的思路，因为要顺利进行，当然实验当中的error就要跳过，但是经过老师的指点开到就是，我们可以使用jmp进行强制的大跳转，来使各种error跳过。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：实验主要就是使用爆破的思路，因为要顺利进行，当然实验当中的error就要跳过，但是经过老师的指点开到就是，我们可以使用jmp进行强制的大跳转，来使各种error跳过。&quot;&gt;&lt;/a&gt;实验思路：实验主要就是使用爆破的思路，因为要顺利进行，当然实验当中的error就要跳过，但是经过老师的指点开到就是，我们可以使用jmp进行强制的大跳转，来使各种error跳过。&lt;/h3&gt;&lt;p&gt;此题的研究比较一般只是知道，在白色括号括起来的就是一个循环，根据程序可以观察到，跳转到最终有效的代码段当中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ywxWerf.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;会有很多错误提示，但是一个一个的修改，都使其跳过了。。。&lt;br&gt;但是其实程序在逃过了大多的时候其实也没有什么。&lt;br&gt;点击第一个error&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ObgxDKv.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;第二个error。。。。第三个error 略过了。第四个可以看见上边有跳转，此时我们需要做的就是摧毁敌方的跳闸。。。&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/jemjKFz.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/0p4sQPJ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 这个判断跳过就好了，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/so0AvUo.png&quot; alt=&quot;&quot;&gt;    &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;004013A4            |.  8325 00204000 00       and dword ptr ds:[0x402000],0x0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/3YFL35a.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 修改使其进行一个大大的跳转。&lt;br&gt;最后就是执行~(≧▽≦)/~啦啦啦，&lt;img src=&quot;http://i.imgur.com/l7MBivR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 关键块就是一步跳过去，遇见很多错误时直接跳到程序分析的某一行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;004013A4       |.  8325 00204000 00     and dword ptr ds:[0x402000],0x0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/EB4TOyb.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/5SMSVDJ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Ab1HBV3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;爆破 搜索字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;输入一个数字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据treeme 来破解相应的密码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解决秒退的情况 isdebuggerpresent&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;level-10  是解决当遇见错误的时候进行错误的跳转&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="汇编" scheme="http://dongfengyz.github.io/categories/%E6%B1%87%E7%BC%96/"/>
+    
+    
+      <category term="反汇编" scheme="http://dongfengyz.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Django</title>
