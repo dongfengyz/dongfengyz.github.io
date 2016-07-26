@@ -68,7 +68,7 @@ level-10  是解决当遇见错误的时候进行错误的跳转">
 <meta property="og:image" content="http://i.imgur.com/l7MBivR.png">
 <meta property="og:image" content="http://i.imgur.com/EB4TOyb.png">
 <meta property="og:image" content="http://i.imgur.com/5SMSVDJ.png">
-<meta property="og:updated_time" content="2016-07-25T12:37:11.397Z">
+<meta property="og:updated_time" content="2016-07-26T07:36:00.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反汇编">
 <meta name="twitter:description" content="要点：
@@ -376,15 +376,15 @@ level-10  是解决当遇见错误的时候进行错误的跳转">
 <p><img src="http://i.imgur.com/PV8tt4l.png" alt=""></p>
 <p>经过仔细的研究可以写成python的版本：</p>
 <pre><code>def Decrypt(gtmd):
-       string = [12,10,19,9,12,11,10,8]
-       s1 = len(gtmd)
+    string = [12,10,19,9,12,11,10,8]
+    s1 = len(gtmd)
     j=3
     key = 0
     i=0
     while(1):
-            if j&gt;=s1:
-                break
-           key += ord(gtmd[j])*string[i]
+        if j&gt;=s1:
+            break
+        key += ord(gtmd[j])*string[i]
         j = j+1
         if i == 7:i=-1
         i=i+1
@@ -424,7 +424,7 @@ Decrypt(&quot;gtmd123&quot;)`
         <p><span>本文标题:</span><a href="/2016/07/25/反汇编/">反汇编</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
         <p><span>发布时间:</span>2016-07-25, 19:55:20</p>
-        <p><span>最后更新:</span>2016-07-25, 20:37:11</p>
+        <p><span>最后更新:</span>2016-07-26, 15:36:00</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/25/反汇编/" title="反汇编">http://dongfengyz.github.io/2016/07/25/反汇编/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/07/25/反汇编/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

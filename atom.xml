@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-25T12:37:11.397Z</updated>
+  <updated>2016-07-26T07:36:00.985Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://dongfengyz.github.io/2016/07/25/%E5%8F%8D%E6%B1%87%E7%BC%96/"/>
     <id>http://dongfengyz.github.io/2016/07/25/反汇编/</id>
     <published>2016-07-25T11:55:20.000Z</published>
-    <updated>2016-07-25T12:37:11.397Z</updated>
+    <updated>2016-07-26T07:36:00.985Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Ab1HBV3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -57,15 +57,15 @@
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/PV8tt4l.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;经过仔细的研究可以写成python的版本：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def Decrypt(gtmd):
-       string = [12,10,19,9,12,11,10,8]
-       s1 = len(gtmd)
+    string = [12,10,19,9,12,11,10,8]
+    s1 = len(gtmd)
     j=3
     key = 0
     i=0
     while(1):
-            if j&amp;gt;=s1:
-                break
-           key += ord(gtmd[j])*string[i]
+        if j&amp;gt;=s1:
+            break
+        key += ord(gtmd[j])*string[i]
         j = j+1
         if i == 7:i=-1
         i=i+1
