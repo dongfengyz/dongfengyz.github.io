@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-26T07:41:28.819Z</updated>
+  <updated>2016-07-26T14:26:21.569Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -16,11 +16,136 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>反汇编</title>
-    <link href="http://dongfengyz.github.io/2016/07/25/%E5%8F%8D%E6%B1%87%E7%BC%96/"/>
-    <id>http://dongfengyz.github.io/2016/07/25/反汇编/</id>
+    <title>汇编（二）</title>
+    <link href="http://dongfengyz.github.io/2016/07/26/%E5%8F%8D%E6%B1%87%E7%BC%96%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://dongfengyz.github.io/2016/07/26/反汇编（二）/</id>
+    <published>2016-07-26T10:54:55.000Z</published>
+    <updated>2016-07-26T14:26:21.569Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/jEjgfX0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;一个数字进行猜解（基于api的追踪）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;试验七、字符串的猜解（弹窗的跟踪）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验八、登录的破解（基础）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验九、登录的破解（适中）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验十、登录的破解（高级）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验十一、base64破解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验十二、基于十六进制到ASCii码转换&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;实验六&quot;&gt;&lt;a href=&quot;#实验六&quot; class=&quot;headerlink&quot; title=&quot;实验六&quot;&gt;&lt;/a&gt;实验六&lt;/h2&gt;&lt;h3 id=&quot;实验描述：-输入一个number，进行猜解。&quot;&gt;&lt;a href=&quot;#实验描述：-输入一个number，进行猜解。&quot; class=&quot;headerlink&quot; title=&quot;实验描述： 输入一个number，进行猜解。&quot;&gt;&lt;/a&gt;实验描述： 输入一个number，进行猜解。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳&quot;&gt;&lt;a href=&quot;#实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳&quot; class=&quot;headerlink&quot; title=&quot;实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳&quot;&gt;&lt;/a&gt;实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳&lt;/h3&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实验刚开始截图：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/XHI89Tc.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;大于号  关键跳转过来的   api断点的使用，，，，，，，，文件，，，注册表&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/jLByBNn.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;选择之后的断点处，表示为：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/1VT3eUn.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;之后进行执行&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/AcIsiHQ.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;再随便输入一个数字之后的实验结果为：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/6vIFCL4.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;主要是调用了系统的dll文件，接下来就是进行return返回寻找关键点，&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/ePMmxIm.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;next&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/XvDtFPe.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://i.imgur.com/Vx4p9uX.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/SM2hfjB.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 本次实验的补充：&lt;br&gt;MessageBox&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/18BsQG3.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://i.imgur.com/QAEF6nN.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/sr76LIX.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实验七&quot;&gt;&lt;a href=&quot;#实验七&quot; class=&quot;headerlink&quot; title=&quot;实验七&quot;&gt;&lt;/a&gt;实验七&lt;/h2&gt;&lt;h3 id=&quot;实验描述：根据实验的弹框，对于字符串的猜解&quot;&gt;&lt;a href=&quot;#实验描述：根据实验的弹框，对于字符串的猜解&quot; class=&quot;headerlink&quot; title=&quot;实验描述：根据实验的弹框，对于字符串的猜解&quot;&gt;&lt;/a&gt;实验描述：根据实验的弹框，对于字符串的猜解&lt;/h3&gt;&lt;h3 id=&quot;实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，&quot;&gt;&lt;a href=&quot;#实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，&quot; class=&quot;headerlink&quot; title=&quot;实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，&quot;&gt;&lt;/a&gt;实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/llfazf5.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 可以看到在ok的上面的关键跳有两处，分别是&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/mmRPD94.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 可以看出 主要是计算字符串的长度，下一处是，&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/RpCtjK4.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 此处获取到的要比较的字符串和自己输入的字符串进行比较，下一张图是细节比较，&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/6kEjtrp.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 可以看出此时将字符串都拆开来逐个比较。当有一个错误时就会跳出不会继续下去，&lt;br&gt;由此处我们就可以知道此原理。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/gvLV8R2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实验八&quot;&gt;&lt;a href=&quot;#实验八&quot; class=&quot;headerlink&quot; title=&quot;实验八&quot;&gt;&lt;/a&gt;实验八&lt;/h2&gt;&lt;h3 id=&quot;实验描述：-就是对于登录的验证，猜解相对应的序列号。&quot;&gt;&lt;a href=&quot;#实验描述：-就是对于登录的验证，猜解相对应的序列号。&quot; class=&quot;headerlink&quot; title=&quot;实验描述： 就是对于登录的验证，猜解相对应的序列号。&quot;&gt;&lt;/a&gt;实验描述： 就是对于登录的验证，猜解相对应的序列号。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。&quot;&gt;&lt;a href=&quot;#实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。&quot;&gt;&lt;/a&gt;实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。&lt;/h3&gt;&lt;p&gt;智能搜索：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/iCqIw5E.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;执行登录：&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/LwC0dQu.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;此处打一个断点：&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/X9Tt8IU.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/X9PDk7r.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 此时获取了所属用户的第一个字母：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/BM2Qr6J.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 关键代码就是这几行，经过拼接以后的代码就是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/dY9Iaen.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 这就是生成的相对应的序号。&lt;br&gt;关键跳进行最后的跳转：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/E5Cbg1a.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;分析实验的关键点：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1.输入要大于等于4位输入admin第一位是a，对应的ascii码就是61，eax=61 是第一位
+2.imul 乘法 eax * ds【】 61*29 =f89  3977
+    0f89 + 0f89 = 7954 
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;第九个实验：&quot;&gt;&lt;a href=&quot;#第九个实验：&quot; class=&quot;headerlink&quot; title=&quot;第九个实验：&quot;&gt;&lt;/a&gt;第九个实验：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：就是一个登录框，进行分析寻找结果。&quot;&gt;&lt;a href=&quot;#实验描述：就是一个登录框，进行分析寻找结果。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：就是一个登录框，进行分析寻找结果。&quot;&gt;&lt;/a&gt;实验描述：就是一个登录框，进行分析寻找结果。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot;&gt;&lt;a href=&quot;#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot;&gt;&lt;/a&gt;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&lt;/h3&gt;&lt;p&gt;首先是根据智能搜索来查找关键字，之后进行查找关键跳，实验当中设计到很多&lt;img src=&quot;http://i.imgur.com/p95TZWE.png&quot; alt=&quot;&quot;&gt;类似的函数，然后就是根据函数的表面的意思进行猜解，然后设置断点进行分析。&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/idVPFXR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;strcmp  进行比较&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/kyKErV3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;lenstr  计算长度的时候就开始算 编码&lt;br&gt;此时&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/RyFQtky.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/pZg1oa7.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/qgDah7m.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 一般乘法下面就会判断溢出  跳转。。。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def gtmd(input):
+    edi = len(input)
+    edi *= int (&amp;apos;17cfb&amp;apos;,16) + ord(input[0])
+print edi
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;第十个实验：&quot;&gt;&lt;a href=&quot;#第十个实验：&quot; class=&quot;headerlink&quot; title=&quot;第十个实验：&quot;&gt;&lt;/a&gt;第十个实验：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。&quot;&gt;&lt;a href=&quot;#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。&quot; class=&quot;headerlink&quot; title=&quot;实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。&quot;&gt;&lt;/a&gt;实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot;&gt;&lt;a href=&quot;#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot; class=&quot;headerlink&quot; title=&quot;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot;&gt;&lt;/a&gt;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;55 push ebp
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是对于复杂程序的入口定位，我们接下来就可以进行逐步的调试，来观察关联值的变化。&lt;/p&gt;
+&lt;p&gt;实验开始：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/zpckNGN.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 根据智能搜索，查找关键字：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/IFW40Xb.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 查找实验的入口&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/9RP8vzl.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 根据经验进行分析：&lt;/p&gt;
+&lt;p&gt;一步一步的往下走，进行单步测试!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://i.imgur.com/gvmwSyQ.png&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/IAgWudD.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;edi=5&lt;/p&gt;
+&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/gTsAWWw.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; &lt;img src=&quot;http://i.imgur.com/ENKpv0q.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;进行乘法计算：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;edi = edi*15b38 =5*15b38= 0x6c818 = 44440
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt; &lt;img src=&quot;http://i.imgur.com/Cfyrm4a.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;edx =  a  = 61 取第一位
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/PdW4YWs.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;edi = edi+edx = 6c818+61=44537
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/dDSSaAP.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 之后就是  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;edx = 44537+2=44539
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/aV1xLFq.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;进行接下来的运算就是，乘以3 ==》1333615&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/sseU8XC.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;再减去负十五就是加上15。&lt;br&gt;最后的结果就是：1333630&lt;/p&gt;
+&lt;h2 id=&quot;实验十一&quot;&gt;&lt;a href=&quot;#实验十一&quot; class=&quot;headerlink&quot; title=&quot;实验十一&quot;&gt;&lt;/a&gt;实验十一&lt;/h2&gt;&lt;h3 id=&quot;实验描述：输入一个字符串，然后进行判断。&quot;&gt;&lt;a href=&quot;#实验描述：输入一个字符串，然后进行判断。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：输入一个字符串，然后进行判断。&quot;&gt;&lt;/a&gt;实验描述：输入一个字符串，然后进行判断。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。&quot;&gt;&lt;a href=&quot;#实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。&quot;&gt;&lt;/a&gt;实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。&lt;/h3&gt;&lt;p&gt;实验的关键点：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/1aHFitw.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 根据ok处我们可以进行关键跳的寻找，此题经过寻找可以发现有两处要进行判断，分析如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/DcfTlG0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 次步的主要目的就是进行输入字符串的长度的判断，0xa就是10的意思，因此可以推测我们的字符串的长度至少应该10位；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/kCPJjRa.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 第二部的判断我们根据经验就肯定是输入的字符串和生成的字符串的检验判断，打个断点看一哈，各位看官别急，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/miYcQxV.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt; 可以看出是把我们输入的字符串进行了base64加密以后，与原来的字符加密的比较，至此本实验基本完毕。&lt;/p&gt;
+&lt;h2 id=&quot;实验十二&quot;&gt;&lt;a href=&quot;#实验十二&quot; class=&quot;headerlink&quot; title=&quot;实验十二&quot;&gt;&lt;/a&gt;实验十二&lt;/h2&gt;&lt;h3 id=&quot;实验描述：提示输入一个字符串，进行校验。&quot;&gt;&lt;a href=&quot;#实验描述：提示输入一个字符串，进行校验。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：提示输入一个字符串，进行校验。&quot;&gt;&lt;/a&gt;实验描述：提示输入一个字符串，进行校验。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：本实验的解题思路和上面的类似。&quot;&gt;&lt;a href=&quot;#实验思路：本实验的解题思路和上面的类似。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：本实验的解题思路和上面的类似。&quot;&gt;&lt;/a&gt;实验思路：本实验的解题思路和上面的类似。&lt;/h3&gt;&lt;p&gt;话不多说，上图：（随意输入一下，测试观察使用的文本框）&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/u95G1LN.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 智能搜索：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/eLGEzsq.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 转到ok成功代码寻找关键点，和关键跳：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/OQvj48R.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 然后对程序进行仔细的分析：（由于程序非常的短，切关键跳也不多因此直接读程序）&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/5UpDRYQ.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 由图中可以看出，要想让箭头跳转到下面，我们就要字符串的长度为0x7。接着走，&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/CVx6ByX.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;         进行判断，当看到这个图的时候我只想说，这个题我见过，和前面的实验类似，就是一位一位进行&lt;br&gt;比较，所不同的就是这个把比较的都给固定了。&lt;br&gt;因此进行转码进行破解咯！&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/nbBqIZY.png&quot; alt=&quot;&quot;&gt;&lt;br&gt; 搞定了！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/z8jMTUX.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/jEjgfX0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;一个数字进行猜解（基于api的追踪）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;试验七、字符串的猜解（弹窗的跟踪）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验八、登录的破解（基础）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验九、登录的破解（适中）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验十、登录的破解（高级）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验十一、base64破解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;实验十二、基于十六进制到ASCii码转换&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="汇编" scheme="http://dongfengyz.github.io/categories/%E6%B1%87%E7%BC%96/"/>
+    
+    
+      <category term="反汇编" scheme="http://dongfengyz.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反汇编（一）</title>
+    <link href="http://dongfengyz.github.io/2016/07/25/%E5%8F%8D%E6%B1%87%E7%BC%96%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://dongfengyz.github.io/2016/07/25/反汇编（一）/</id>
     <published>2016-07-25T11:55:20.000Z</published>
-    <updated>2016-07-26T07:41:28.819Z</updated>
+    <updated>2016-07-26T10:56:14.235Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Ab1HBV3.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;

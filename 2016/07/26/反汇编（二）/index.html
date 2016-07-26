@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>汇编（二） | younger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="要点：
+
+一个数字进行猜解（基于api的追踪）
+
+试验七、字符串的猜解（弹窗的跟踪）
+
+实验八、登录的破解（基础）
+
+实验九、登录的破解（适中）
+
+实验十、登录的破解（高级）
+
+实验十一、base64破解
+
+实验十二、基于十六进制到ASCii码转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编（二）">
+<meta property="og:url" content="http://dongfengyz.github.io/2016/07/26/反汇编（二）/index.html">
+<meta property="og:site_name" content="younger">
+<meta property="og:description" content="要点：
+
+一个数字进行猜解（基于api的追踪）
+
+试验七、字符串的猜解（弹窗的跟踪）
+
+实验八、登录的破解（基础）
+
+实验九、登录的破解（适中）
+
+实验十、登录的破解（高级）
+
+实验十一、base64破解
+
+实验十二、基于十六进制到ASCii码转换">
+<meta property="og:image" content="http://i.imgur.com/jEjgfX0.jpg">
+<meta property="og:image" content="http://i.imgur.com/XHI89Tc.png">
+<meta property="og:image" content="http://i.imgur.com/jLByBNn.png">
+<meta property="og:image" content="http://i.imgur.com/1VT3eUn.png">
+<meta property="og:image" content="http://i.imgur.com/AcIsiHQ.png">
+<meta property="og:image" content="http://i.imgur.com/6vIFCL4.png">
+<meta property="og:image" content="http://i.imgur.com/ePMmxIm.png">
+<meta property="og:image" content="http://i.imgur.com/XvDtFPe.jpg">
+<meta property="og:image" content="http://i.imgur.com/Vx4p9uX.jpg">
+<meta property="og:image" content="http://i.imgur.com/SM2hfjB.png">
+<meta property="og:image" content="http://i.imgur.com/18BsQG3.png">
+<meta property="og:image" content="http://i.imgur.com/QAEF6nN.png">
+<meta property="og:image" content="http://i.imgur.com/sr76LIX.png">
+<meta property="og:image" content="http://i.imgur.com/llfazf5.png">
+<meta property="og:image" content="http://i.imgur.com/mmRPD94.png">
+<meta property="og:image" content="http://i.imgur.com/RpCtjK4.png">
+<meta property="og:image" content="http://i.imgur.com/6kEjtrp.png">
+<meta property="og:image" content="http://i.imgur.com/gvLV8R2.png">
+<meta property="og:image" content="http://i.imgur.com/iCqIw5E.png">
+<meta property="og:image" content="http://i.imgur.com/LwC0dQu.jpg">
+<meta property="og:image" content="http://i.imgur.com/X9Tt8IU.png">
+<meta property="og:image" content="http://i.imgur.com/X9PDk7r.png">
+<meta property="og:image" content="http://i.imgur.com/BM2Qr6J.png">
+<meta property="og:image" content="http://i.imgur.com/dY9Iaen.png">
+<meta property="og:image" content="http://i.imgur.com/E5Cbg1a.png">
+<meta property="og:image" content="http://i.imgur.com/p95TZWE.png">
+<meta property="og:image" content="http://i.imgur.com/idVPFXR.png">
+<meta property="og:image" content="http://i.imgur.com/kyKErV3.png">
+<meta property="og:image" content="http://i.imgur.com/RyFQtky.png">
+<meta property="og:image" content="http://i.imgur.com/pZg1oa7.png">
+<meta property="og:image" content="http://i.imgur.com/qgDah7m.png">
+<meta property="og:image" content="http://i.imgur.com/zpckNGN.png">
+<meta property="og:image" content="http://i.imgur.com/IFW40Xb.png">
+<meta property="og:image" content="http://i.imgur.com/9RP8vzl.png">
+<meta property="og:image" content="http://i.imgur.com/IAgWudD.png">
+<meta property="og:image" content="http://i.imgur.com/gTsAWWw.png">
+<meta property="og:image" content="http://i.imgur.com/ENKpv0q.png">
+<meta property="og:image" content="http://i.imgur.com/Cfyrm4a.png">
+<meta property="og:image" content="http://i.imgur.com/PdW4YWs.png">
+<meta property="og:image" content="http://i.imgur.com/dDSSaAP.png">
+<meta property="og:image" content="http://i.imgur.com/aV1xLFq.png">
+<meta property="og:image" content="http://i.imgur.com/sseU8XC.png">
+<meta property="og:image" content="http://i.imgur.com/1aHFitw.png">
+<meta property="og:image" content="http://i.imgur.com/DcfTlG0.png">
+<meta property="og:image" content="http://i.imgur.com/kCPJjRa.png">
+<meta property="og:image" content="http://i.imgur.com/miYcQxV.png">
+<meta property="og:image" content="http://i.imgur.com/u95G1LN.png">
+<meta property="og:image" content="http://i.imgur.com/eLGEzsq.png">
+<meta property="og:image" content="http://i.imgur.com/OQvj48R.png">
+<meta property="og:image" content="http://i.imgur.com/5UpDRYQ.png">
+<meta property="og:image" content="http://i.imgur.com/CVx6ByX.png">
+<meta property="og:image" content="http://i.imgur.com/nbBqIZY.png">
+<meta property="og:image" content="http://i.imgur.com/z8jMTUX.jpg">
+<meta property="og:updated_time" content="2016-07-26T14:26:21.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="汇编（二）">
+<meta name="twitter:description" content="要点：
+
+一个数字进行猜解（基于api的追踪）
+
+试验七、字符串的猜解（弹窗的跟踪）
+
+实验八、登录的破解（基础）
+
+实验九、登录的破解（适中）
+
+实验十、登录的破解（高级）
+
+实验十一、base64破解
+
+实验十二、基于十六进制到ASCii码转换">
+<meta name="twitter:image" content="http://i.imgur.com/jEjgfX0.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="younger" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">younger</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                                <li id="知乎"><a class="知乎" target="_blank" href="/东风" title="知乎"></a></li>
+                            
+                                <li id="QQ"><a class="QQ" target="_blank" href="/398893925" title="QQ"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/grant/" style="font-size: 10px;">grant</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/pl/" style="font-size: 20px;">pl</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/上传/" style="font-size: 10px;">上传</a> <a href="/tags/反汇编/" style="font-size: 20px;">反汇编</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/感触/" style="font-size: 10px;">感触</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/汇编/" style="font-size: 10px;">汇编</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ishadowsocks.net/">桥</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/#signin">知乎</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.v2ex.com/">V2EX</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">孤独膨胀成猪</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">younger</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">younger</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                                <li id="知乎"><a class="知乎" target="_blank" href="/东风" title="知乎"></a></li>
+                            
+                                <li id="QQ"><a class="QQ" target="_blank" href="/398893925" title="QQ"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-反汇编（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/26/反汇编（二）/" class="article-date">
+      <time datetime="2016-07-26T10:54:55.000Z" itemprop="datePublished">2016-07-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      汇编（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/汇编/">汇编</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反汇编/">反汇编</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="http://i.imgur.com/jEjgfX0.jpg" alt=""></p>
+<p><strong>要点：</strong></p>
+<ol>
+<li><p>一个数字进行猜解（基于api的追踪）</p>
+</li>
+<li><p>试验七、字符串的猜解（弹窗的跟踪）</p>
+</li>
+<li><p>实验八、登录的破解（基础）</p>
+</li>
+<li><p>实验九、登录的破解（适中）</p>
+</li>
+<li><p>实验十、登录的破解（高级）</p>
+</li>
+<li><p>实验十一、base64破解</p>
+</li>
+<li><p>实验十二、基于十六进制到ASCii码转换</p>
+<a id="more"></a>
+<h2 id="实验六"><a href="#实验六" class="headerlink" title="实验六"></a>实验六</h2><h3 id="实验描述：-输入一个number，进行猜解。"><a href="#实验描述：-输入一个number，进行猜解。" class="headerlink" title="实验描述： 输入一个number，进行猜解。"></a>实验描述： 输入一个number，进行猜解。</h3><h3 id="实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳"><a href="#实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳" class="headerlink" title="实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳"></a>实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳</h3></li>
+</ol>
+<p>实验刚开始截图：<br><img src="http://i.imgur.com/XHI89Tc.png" alt=""><br>大于号  关键跳转过来的   api断点的使用，，，，，，，，文件，，，注册表<br><img src="http://i.imgur.com/jLByBNn.png" alt=""></p>
+<p>选择之后的断点处，表示为：<br><img src="http://i.imgur.com/1VT3eUn.png" alt=""><br>之后进行执行<br><img src="http://i.imgur.com/AcIsiHQ.png" alt=""><br>再随便输入一个数字之后的实验结果为：<br><img src="http://i.imgur.com/6vIFCL4.png" alt=""><br>主要是调用了系统的dll文件，接下来就是进行return返回寻找关键点，<br><img src="http://i.imgur.com/ePMmxIm.png" alt=""><br>next<br><img src="http://i.imgur.com/XvDtFPe.jpg" alt=""><br> <img src="http://i.imgur.com/Vx4p9uX.jpg" alt=""><br><img src="http://i.imgur.com/SM2hfjB.png" alt=""></p>
+<p> 本次实验的补充：<br>MessageBox<br><img src="http://i.imgur.com/18BsQG3.png" alt=""><br> <img src="http://i.imgur.com/QAEF6nN.png" alt=""><br><img src="http://i.imgur.com/sr76LIX.png" alt=""></p>
+<h2 id="实验七"><a href="#实验七" class="headerlink" title="实验七"></a>实验七</h2><h3 id="实验描述：根据实验的弹框，对于字符串的猜解"><a href="#实验描述：根据实验的弹框，对于字符串的猜解" class="headerlink" title="实验描述：根据实验的弹框，对于字符串的猜解"></a>实验描述：根据实验的弹框，对于字符串的猜解</h3><h3 id="实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，"><a href="#实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，" class="headerlink" title="实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，"></a>实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，</h3><p><img src="http://i.imgur.com/llfazf5.png" alt=""><br> 可以看到在ok的上面的关键跳有两处，分别是<br><img src="http://i.imgur.com/mmRPD94.png" alt=""><br> 可以看出 主要是计算字符串的长度，下一处是，<br><img src="http://i.imgur.com/RpCtjK4.png" alt=""><br> 此处获取到的要比较的字符串和自己输入的字符串进行比较，下一张图是细节比较，<br><img src="http://i.imgur.com/6kEjtrp.png" alt=""><br> 可以看出此时将字符串都拆开来逐个比较。当有一个错误时就会跳出不会继续下去，<br>由此处我们就可以知道此原理。</p>
+<p><img src="http://i.imgur.com/gvLV8R2.png" alt=""></p>
+<h2 id="实验八"><a href="#实验八" class="headerlink" title="实验八"></a>实验八</h2><h3 id="实验描述：-就是对于登录的验证，猜解相对应的序列号。"><a href="#实验描述：-就是对于登录的验证，猜解相对应的序列号。" class="headerlink" title="实验描述： 就是对于登录的验证，猜解相对应的序列号。"></a>实验描述： 就是对于登录的验证，猜解相对应的序列号。</h3><h3 id="实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。"><a href="#实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。" class="headerlink" title="实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。"></a>实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。</h3><p>智能搜索：</p>
+<p><img src="http://i.imgur.com/iCqIw5E.png" alt=""></p>
+<p>执行登录：</p>
+<p> <img src="http://i.imgur.com/LwC0dQu.jpg" alt=""></p>
+<p>此处打一个断点：</p>
+<p> <img src="http://i.imgur.com/X9Tt8IU.png" alt=""><br><img src="http://i.imgur.com/X9PDk7r.png" alt=""></p>
+<p> 此时获取了所属用户的第一个字母：</p>
+<p><img src="http://i.imgur.com/BM2Qr6J.png" alt=""></p>
+<p> 关键代码就是这几行，经过拼接以后的代码就是：</p>
+<p><img src="http://i.imgur.com/dY9Iaen.png" alt=""></p>
+<p> 这就是生成的相对应的序号。<br>关键跳进行最后的跳转：</p>
+<p><img src="http://i.imgur.com/E5Cbg1a.png" alt=""></p>
+<p>分析实验的关键点：</p>
+<pre><code>1.输入要大于等于4位输入admin第一位是a，对应的ascii码就是61，eax=61 是第一位
+2.imul 乘法 eax * ds【】 61*29 =f89  3977
+    0f89 + 0f89 = 7954 
+</code></pre><h2 id="第九个实验："><a href="#第九个实验：" class="headerlink" title="第九个实验："></a>第九个实验：</h2><h3 id="实验描述：就是一个登录框，进行分析寻找结果。"><a href="#实验描述：就是一个登录框，进行分析寻找结果。" class="headerlink" title="实验描述：就是一个登录框，进行分析寻找结果。"></a>实验描述：就是一个登录框，进行分析寻找结果。</h3><h3 id="实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"><a href="#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。" class="headerlink" title="实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"></a>实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。</h3><p>首先是根据智能搜索来查找关键字，之后进行查找关键跳，实验当中设计到很多<img src="http://i.imgur.com/p95TZWE.png" alt="">类似的函数，然后就是根据函数的表面的意思进行猜解，然后设置断点进行分析。</p>
+<p> <img src="http://i.imgur.com/idVPFXR.png" alt=""></p>
+<p>strcmp  进行比较</p>
+<p><img src="http://i.imgur.com/kyKErV3.png" alt=""></p>
+<p>lenstr  计算长度的时候就开始算 编码<br>此时</p>
+<p><img src="http://i.imgur.com/RyFQtky.png" alt=""><br><img src="http://i.imgur.com/pZg1oa7.png" alt=""><br><img src="http://i.imgur.com/qgDah7m.png" alt=""></p>
+<p> 一般乘法下面就会判断溢出  跳转。。。</p>
+<pre><code>def gtmd(input):
+    edi = len(input)
+    edi *= int (&apos;17cfb&apos;,16) + ord(input[0])
+print edi
+</code></pre><h2 id="第十个实验："><a href="#第十个实验：" class="headerlink" title="第十个实验："></a>第十个实验：</h2><h3 id="实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。"><a href="#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。" class="headerlink" title="实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。"></a>实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。</h3><h3 id="实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"><a href="#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找" class="headerlink" title="实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"></a>实验思路：更加专业的寻找程序的入口就是自己在程序中寻找</h3><pre><code>55 push ebp
+</code></pre><p>这是对于复杂程序的入口定位，我们接下来就可以进行逐步的调试，来观察关联值的变化。</p>
+<p>实验开始：</p>
+<p><img src="http://i.imgur.com/zpckNGN.png" alt=""></p>
+<p> 根据智能搜索，查找关键字：</p>
+<p><img src="http://i.imgur.com/IFW40Xb.png" alt=""></p>
+<p> 查找实验的入口</p>
+<p><img src="http://i.imgur.com/9RP8vzl.png" alt=""></p>
+<p> 根据经验进行分析：</p>
+<p>一步一步的往下走，进行单步测试!</p>
+<p><a href="http://i.imgur.com/gvmwSyQ.png" target="_blank" rel="external"></a><br><img src="http://i.imgur.com/IAgWudD.png" alt=""></p>
+<p>edi=5</p>
+<p> <img src="http://i.imgur.com/gTsAWWw.png" alt=""><br> <img src="http://i.imgur.com/ENKpv0q.png" alt=""></p>
+<p>进行乘法计算：</p>
+<pre><code>edi = edi*15b38 =5*15b38= 0x6c818 = 44440
+</code></pre><p> <img src="http://i.imgur.com/Cfyrm4a.png" alt=""></p>
+<pre><code>edx =  a  = 61 取第一位
+</code></pre><p><img src="http://i.imgur.com/PdW4YWs.png" alt=""></p>
+<pre><code>edi = edi+edx = 6c818+61=44537
+</code></pre><p><img src="http://i.imgur.com/dDSSaAP.png" alt=""></p>
+<p> 之后就是  </p>
+<pre><code>edx = 44537+2=44539
+</code></pre><p><img src="http://i.imgur.com/aV1xLFq.png" alt=""></p>
+<p>进行接下来的运算就是，乘以3 ==》1333615</p>
+<p><img src="http://i.imgur.com/sseU8XC.png" alt=""></p>
+<p>再减去负十五就是加上15。<br>最后的结果就是：1333630</p>
+<h2 id="实验十一"><a href="#实验十一" class="headerlink" title="实验十一"></a>实验十一</h2><h3 id="实验描述：输入一个字符串，然后进行判断。"><a href="#实验描述：输入一个字符串，然后进行判断。" class="headerlink" title="实验描述：输入一个字符串，然后进行判断。"></a>实验描述：输入一个字符串，然后进行判断。</h3><h3 id="实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。"><a href="#实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。" class="headerlink" title="实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。"></a>实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。</h3><p>实验的关键点：</p>
+<p><img src="http://i.imgur.com/1aHFitw.png" alt=""></p>
+<p> 根据ok处我们可以进行关键跳的寻找，此题经过寻找可以发现有两处要进行判断，分析如下：</p>
+<p><img src="http://i.imgur.com/DcfTlG0.png" alt=""></p>
+<p> 次步的主要目的就是进行输入字符串的长度的判断，0xa就是10的意思，因此可以推测我们的字符串的长度至少应该10位；</p>
+<p><img src="http://i.imgur.com/kCPJjRa.png" alt=""></p>
+<p> 第二部的判断我们根据经验就肯定是输入的字符串和生成的字符串的检验判断，打个断点看一哈，各位看官别急，</p>
+<p><img src="http://i.imgur.com/miYcQxV.png" alt=""></p>
+<p> 可以看出是把我们输入的字符串进行了base64加密以后，与原来的字符加密的比较，至此本实验基本完毕。</p>
+<h2 id="实验十二"><a href="#实验十二" class="headerlink" title="实验十二"></a>实验十二</h2><h3 id="实验描述：提示输入一个字符串，进行校验。"><a href="#实验描述：提示输入一个字符串，进行校验。" class="headerlink" title="实验描述：提示输入一个字符串，进行校验。"></a>实验描述：提示输入一个字符串，进行校验。</h3><h3 id="实验思路：本实验的解题思路和上面的类似。"><a href="#实验思路：本实验的解题思路和上面的类似。" class="headerlink" title="实验思路：本实验的解题思路和上面的类似。"></a>实验思路：本实验的解题思路和上面的类似。</h3><p>话不多说，上图：（随意输入一下，测试观察使用的文本框）<br><img src="http://i.imgur.com/u95G1LN.png" alt=""><br> 智能搜索：<br><img src="http://i.imgur.com/eLGEzsq.png" alt=""><br> 转到ok成功代码寻找关键点，和关键跳：<br><img src="http://i.imgur.com/OQvj48R.png" alt=""><br> 然后对程序进行仔细的分析：（由于程序非常的短，切关键跳也不多因此直接读程序）<br><img src="http://i.imgur.com/5UpDRYQ.png" alt=""><br> 由图中可以看出，要想让箭头跳转到下面，我们就要字符串的长度为0x7。接着走，<br><img src="http://i.imgur.com/CVx6ByX.png" alt=""><br>         进行判断，当看到这个图的时候我只想说，这个题我见过，和前面的实验类似，就是一位一位进行<br>比较，所不同的就是这个把比较的都给固定了。<br>因此进行转码进行破解咯！<br><img src="http://i.imgur.com/nbBqIZY.png" alt=""><br> 搞定了！</p>
+<p><img src="http://i.imgur.com/z8jMTUX.jpg" alt=""></p>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/26/反汇编（二）/">汇编（二）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
+        <p><span>发布时间:</span>2016-07-26, 18:54:55</p>
+        <p><span>最后更新:</span>2016-07-26, 22:26:21</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/26/反汇编（二）/" title="汇编（二）">http://dongfengyz.github.io/2016/07/26/反汇编（二）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/07/26/反汇编（二）/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/07/25/反汇编（一）/">
+                    反汇编（一）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验六"><span class="toc-number">1.</span> <span class="toc-text">实验六</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：-输入一个number，进行猜解。"><span class="toc-number">1.1.</span> <span class="toc-text">实验描述： 输入一个number，进行猜解。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳"><span class="toc-number">1.2.</span> <span class="toc-text">实验思路：本题根据以往经验，换一个套路，当点击登录检验失败以后或弹出来一个框框，来根据次线索去找关键点和关键跳</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验七"><span class="toc-number">2.</span> <span class="toc-text">实验七</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：根据实验的弹框，对于字符串的猜解"><span class="toc-number">2.1.</span> <span class="toc-text">实验描述：根据实验的弹框，对于字符串的猜解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，"><span class="toc-number">2.2.</span> <span class="toc-text">实验思路：根据调用系统的弹出窗口进行跟踪，先进行智能搜索OK进行观察，</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验八"><span class="toc-number">3.</span> <span class="toc-text">实验八</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：-就是对于登录的验证，猜解相对应的序列号。"><span class="toc-number">3.1.</span> <span class="toc-text">实验描述： 就是对于登录的验证，猜解相对应的序列号。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。"><span class="toc-number">3.2.</span> <span class="toc-text">实验思路：根据用户名，来进行计算序列号，本实验关键就是寻找对的算法。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第九个实验："><span class="toc-number">4.</span> <span class="toc-text">第九个实验：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：就是一个登录框，进行分析寻找结果。"><span class="toc-number">4.1.</span> <span class="toc-text">实验描述：就是一个登录框，进行分析寻找结果。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"><span class="toc-number">4.2.</span> <span class="toc-text">实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十个实验："><span class="toc-number">5.</span> <span class="toc-text">第十个实验：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。"><span class="toc-number">5.1.</span> <span class="toc-text">实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"><span class="toc-number">5.2.</span> <span class="toc-text">实验思路：更加专业的寻找程序的入口就是自己在程序中寻找</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验十一"><span class="toc-number">6.</span> <span class="toc-text">实验十一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：输入一个字符串，然后进行判断。"><span class="toc-number">6.1.</span> <span class="toc-text">实验描述：输入一个字符串，然后进行判断。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。"><span class="toc-number">6.2.</span> <span class="toc-text">实验思路：此实验没有跟以往不同就是，在进行对比的字符串进行了加密，使得我们在解决的时候赢先进行解密，然后得到关键点，和关键跳。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验十二"><span class="toc-number">7.</span> <span class="toc-text">实验十二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实验描述：提示输入一个字符串，进行校验。"><span class="toc-number">7.1.</span> <span class="toc-text">实验描述：提示输入一个字符串，进行校验。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实验思路：本实验的解题思路和上面的类似。"><span class="toc-number">7.2.</span> <span class="toc-text">实验思路：本实验的解题思路和上面的类似。</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/07/26/反汇编（二）/" data-title="汇编（二）" data-url="http://dongfengyz.github.io/2016/07/26/反汇编（二）/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangze1"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://yangze.win/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/07/25/反汇编（一）/" title="下一篇: 反汇编（一）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/反汇编（二）/">汇编（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/反汇编（一）/">反汇编（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Django/">Django</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/汇编/">汇编</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/struts202/">struts.xml配置文件详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/oracle-pl变量与常量的定义/">oracle-pl变量与常量的定义</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/项目管理复习/">项目管理复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/人生感悟-1/">人生感悟-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/oracle-pl/">oracle-pl</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/oracle-grant/">oracle_grant</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/10/将文件上传coding/">将文件上传coding</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/08/android17/">android17</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/08/上传/">上传</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/程序员的弊病/">程序员的弊病</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/jsp-标签/">jsp-标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/oracle/">oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/05/web-分页/">web-分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/文章题目/">文章题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/biaoti/">biaoti</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 younger
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
