@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-27T11:56:02.913Z</updated>
+  <updated>2016-07-27T12:01:37.706Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://dongfengyz.github.io/2016/07/27/%E5%8F%8D%E6%B1%87%E7%BC%96%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://dongfengyz.github.io/2016/07/27/反汇编（三）/</id>
     <published>2016-07-27T00:51:33.000Z</published>
-    <updated>2016-07-27T11:56:02.913Z</updated>
+    <updated>2016-07-27T12:01:37.706Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/CBHcoF9.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;关键点：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -77,7 +77,7 @@ else
 &lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132153-cf1c51f9bd3f4c4f826ac296647fa515.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;再次运行，可以看到结果已改变！&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132153-df1bf24d8a2d4d8bac1b2accdc4b5c0e.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;示例只是修改了字符串，只需更改数据段内容就可以了，不用更改指令。假如需要更改指令，需要参考&amp;lt; a href=”&lt;a href=&quot;http://courses.engr.illinois.edu/ece390/resources/opcodes.html#Main&amp;quot;&amp;gt;8086指令操作表写出对应指今的16进制形式，再修改。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://courses.engr.illinois.edu/ece390/resources/opcodes.html#Main&amp;quot;&amp;gt;8086指令操作表写出对应指今的16进制形式，再修改。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;示例只是修改了字符串，只需更改数据段内容就可以了，不用更改指令。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/dMaznuA.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;要点二&quot;&gt;&lt;a href=&quot;#要点二&quot; class=&quot;headerlink&quot; title=&quot;要点二&quot;&gt;&lt;/a&gt;要点二&lt;/h2&gt;&lt;h3 id=&quot;对于程序流程的理解以及自己编写&quot;&gt;&lt;a href=&quot;#对于程序流程的理解以及自己编写&quot; class=&quot;headerlink&quot; title=&quot;对于程序流程的理解以及自己编写&quot;&gt;&lt;/a&gt;对于程序流程的理解以及自己编写&lt;/h3&gt;&lt;p&gt;实验工具：IDA、VC、OD&lt;/p&gt;
 &lt;p&gt;实验流程：&lt;br&gt;程序事先运行一下知道运行结果 为：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/QyzSjJS.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -105,7 +105,7 @@ return 0;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对于程序&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/hhWeyVq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/hmy03rE.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;要点三、静下心来-再来一发&quot;&gt;&lt;a href=&quot;#要点三、静下心来-再来一发&quot; class=&quot;headerlink&quot; title=&quot;要点三、静下心来 再来一发&quot;&gt;&lt;/a&gt;要点三、静下心来 再来一发&lt;/h2&gt;&lt;h3 id=&quot;话不多说上图&quot;&gt;&lt;a href=&quot;#话不多说上图&quot; class=&quot;headerlink&quot; title=&quot;话不多说上图&quot;&gt;&lt;/a&gt;话不多说上图&lt;/h3&gt;&lt;p&gt;最后科普一下C语言的数据结构：&lt;/p&gt;
+&lt;h2 id=&quot;要点三、静下心来-再来一发&quot;&gt;&lt;a href=&quot;#要点三、静下心来-再来一发&quot; class=&quot;headerlink&quot; title=&quot;要点三、静下心来 再来一发&quot;&gt;&lt;/a&gt;要点三、静下心来 再来一发&lt;/h2&gt;&lt;h3 id=&quot;话不多说上图&quot;&gt;&lt;a href=&quot;#话不多说上图&quot; class=&quot;headerlink&quot; title=&quot;话不多说上图&quot;&gt;&lt;/a&gt;话不多说上图&lt;/h3&gt;&lt;p&gt;先科普一下C语言的数据结构：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/dbeFgar.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;进行对比的结果：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/psRXw3x.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -128,7 +128,7 @@ return 0;
 &lt;p&gt;程序的逆向模仿生成和运行：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/qoNfy3D.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/yRKnYVV.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;要点四、-脱壳半日游&quot;&gt;&lt;a href=&quot;#要点四、-脱壳半日游&quot; class=&quot;headerlink&quot; title=&quot;要点四、 脱壳半日游&quot;&gt;&lt;/a&gt;要点四、 脱壳半日游&lt;/h2&gt;&lt;h3 id=&quot;发现加壳&quot;&gt;&lt;a href=&quot;#发现加壳&quot; class=&quot;headerlink&quot; title=&quot;发现加壳&quot;&gt;&lt;/a&gt;发现加壳&lt;/h3&gt;&lt;p&gt;发下加壳：&lt;/p&gt;
+&lt;h2 id=&quot;要点四、-脱壳半日游&quot;&gt;&lt;a href=&quot;#要点四、-脱壳半日游&quot; class=&quot;headerlink&quot; title=&quot;要点四、 脱壳半日游&quot;&gt;&lt;/a&gt;要点四、 脱壳半日游&lt;/h2&gt;&lt;h3 id=&quot;发现加壳&quot;&gt;&lt;a href=&quot;#发现加壳&quot; class=&quot;headerlink&quot; title=&quot;发现加壳&quot;&gt;&lt;/a&gt;发现加壳&lt;/h3&gt;&lt;p&gt;加壳：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/PU8Oumw.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;此处有两个判断要点：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 观察程序的入口点和偏移位移的参数，两者如果不同表示有加壳。
@@ -137,7 +137,7 @@ return 0;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Bbr6aaZ.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;执行命令：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;upx.exe  -d  要破解的程序.exe
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;OD进行破壳-：&quot;&gt;&lt;a href=&quot;#OD进行破壳-：&quot; class=&quot;headerlink&quot; title=&quot;OD进行破壳 ###：&quot;&gt;&lt;/a&gt;OD进行破壳 ###：&lt;/h3&gt;&lt;h4 id=&quot;原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律&quot;&gt;&lt;a href=&quot;#原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律&quot; class=&quot;headerlink&quot; title=&quot;原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律&quot;&gt;&lt;/a&gt;原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律&lt;/h4&gt;&lt;p&gt;截图开始：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;OD进行破壳：&quot;&gt;&lt;a href=&quot;#OD进行破壳：&quot; class=&quot;headerlink&quot; title=&quot;OD进行破壳：&quot;&gt;&lt;/a&gt;OD进行破壳：&lt;/h3&gt;&lt;h4 id=&quot;原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律&quot;&gt;&lt;a href=&quot;#原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律&quot; class=&quot;headerlink&quot; title=&quot;原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律&quot;&gt;&lt;/a&gt;原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律&lt;/h4&gt;&lt;p&gt;截图开始：&lt;/p&gt;
 &lt;p&gt;首先单步执行以下来发现就旁边的ESP就他唯一的变红了，&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/IInwnQ1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;next，变红的esp  右键  数据窗口中跟随&lt;/p&gt;
