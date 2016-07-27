@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-27T00:07:23.078Z</updated>
+  <updated>2016-07-27T11:49:56.658Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -14,6 +14,183 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>反汇编（三）</title>
+    <link href="http://dongfengyz.github.io/2016/07/27/%E5%8F%8D%E6%B1%87%E7%BC%96%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>http://dongfengyz.github.io/2016/07/27/反汇编（三）/</id>
+    <published>2016-07-27T00:51:33.000Z</published>
+    <updated>2016-07-27T11:49:56.658Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/CBHcoF9.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;关键点：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、实验环境的搭建（ida）（vc）（下载程序进行运行）&lt;/p&gt;
+&lt;p&gt;2、了解了ida的各部分主要功能。&lt;/p&gt;
+&lt;p&gt;3、根据ida程序流程，分析程序，返回调用。&lt;/p&gt;
+&lt;p&gt;4、脱壳半日游：）&lt;/p&gt;
+&lt;p&gt;5、一些小tips&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;要点一&quot;&gt;&lt;a href=&quot;#要点一&quot; class=&quot;headerlink&quot; title=&quot;要点一&quot;&gt;&lt;/a&gt;要点一&lt;/h2&gt;&lt;h3 id=&quot;IDA工具简介&quot;&gt;&lt;a href=&quot;#IDA工具简介&quot; class=&quot;headerlink&quot; title=&quot;IDA工具简介&quot;&gt;&lt;/a&gt;IDA工具简介&lt;/h3&gt;&lt;p&gt;IDA Pro是一款强大的反汇编软件，特有的IDA视图和交叉引用，可以方便理解程序逻辑和快速定位代码片断，以方便修改。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132135-2b1b1af4110f46c2b332c43b2ba89d19.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;IDA视图&quot;&gt;&lt;a href=&quot;#IDA视图&quot; class=&quot;headerlink&quot; title=&quot;IDA视图&quot;&gt;&lt;/a&gt;IDA视图&lt;/h4&gt;&lt;h4 id=&quot;示例程序&quot;&gt;&lt;a href=&quot;#示例程序&quot; class=&quot;headerlink&quot; title=&quot;示例程序&quot;&gt;&lt;/a&gt;示例程序&lt;/h4&gt;&lt;p&gt;下面会通过修改示例程序的输出字符串，来讲解如何使用IDA Pro。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include
+void main()
+{
+int n;
+scanf (&amp;quot;%d&amp;quot;,&amp;amp;n);
+if (n &amp;gt; 0)
+    printf(&amp;quot;a &amp;gt; 0&amp;quot;);  //后面会用IDA Pro把&amp;apos;a&amp;apos;改成&amp;apos;n&amp;apos;
+else
+    printf(&amp;quot;n &amp;lt; 0&amp;quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;编译后的程序下载：&lt;a href=&quot;files.cnblogs.com/vento/test.zip&quot;&gt;demo&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;运行IDA-Pro&quot;&gt;&lt;a href=&quot;#运行IDA-Pro&quot; class=&quot;headerlink&quot; title=&quot;运行IDA Pro&quot;&gt;&lt;/a&gt;运行IDA Pro&lt;/h4&gt;&lt;p&gt;运行IDA Pro，并使用PE文件的方式打开示例的test.exe文件。IDA Pro会新建一个工程，并开始反汇编程序。反汇编完成后，在[IDA-View]窗口中，可以看到程序逻辑的树形图，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132139-9087f4046dd64702ba04c493627f534b.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;树形图把条件分支清晰地显示出来了，绿色线连着的表示条件为true时执行的逻辑，而红色线表示条件为false时执行的逻辑。右下角有IDA视图的缩略图，在上面点击可以快速定位到视图的指定位置。 IDA的工具栏有几个按钮对定位代码很重要，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132140-2e1b6c88dfa741f798dd9d3c3e74391d.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;从左到右分别是： Open exports window:打开导出窗口 Open import window:打开导入窗口 &lt;em&gt;Open names window:函数和参数的命名列表 &lt;/em&gt;Open functions window:程序调用的所有函数窗口 *Open strings window: 打开字符串显示窗口，会列出程序中的所有字符串，该窗口有助于你通过程序的运行输出逆向找出对应的代码片断。&lt;/p&gt;
+&lt;h4 id=&quot;定位代码片断&quot;&gt;&lt;a href=&quot;#定位代码片断&quot; class=&quot;headerlink&quot; title=&quot;定位代码片断&quot;&gt;&lt;/a&gt;定位代码片断&lt;/h4&gt;&lt;p&gt;假设我们现在接到个任务，需修正程序，把输出“a &amp;gt; 0”修正为“n &amp;gt; 0”。示例程序比较简单，直接看IDA视图我们就能找到需修改的代码片断，但实际处理时，可能程序有几m大，通过一个个看IDA视图已没法有效找到相关的执行代码片断，这时怎么办？ 使用字符串窗口和IDA强大的交叉引用！ 点击工具栏的[Open strings windows]按钮，可以看到如下的程序字符串：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132141-7a89250d10114495928a081e1facb10d.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;程序的字符串较少，可以很快地看到我们需要的字符串“a &amp;gt; 0”在数据段00403003位置。假如字符串多到已不能肉眼定位查找，因为字符串窗口是没有查找功能的，这时需要借助其他的文本编辑器，如notepad，editplus等。在字符串窗口内右键，选择菜单[copy]命令，会把字符串窗口的所有内容复制到剪贴板，再粘贴到记事本中查找就可以了。 双击字符串窗口的该行字符串，会跳转到IDA视图的00403003位置，如下图所示： &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132142-0b206ba8c8d544ff8f5005a1cb16f532.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;该位置的字符串后面会注释有DATA XREF的字样，这是程序中引用到该字符串的代码片断的地址！在该行上右键，选择[Jump to cross reference…]项，会立即跳转到引用该字符串的代码片断位置！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132143-988112ed870c46979699cc75a70e20e1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132144-38aea776e36046c19526a014c33e77dd.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最后定位的代码片断 上图显示的汇编指令即是我们要找的代码片断，这时点击[Hex View-A]窗口，会切换到二进制浏览模式，并高亮了汇编代码的二进制格式指令，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132145-314bc6c869b44577863e8fb5cb657b01.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;已找到需修改的代码片断，剩下的只需把a改成n。&lt;/p&gt;
+&lt;h4 id=&quot;修改程序文件&quot;&gt;&lt;a href=&quot;#修改程序文件&quot; class=&quot;headerlink&quot; title=&quot;修改程序文件&quot;&gt;&lt;/a&gt;修改程序文件&lt;/h4&gt;&lt;p&gt;在IDA中，可以在[Hex View-A]窗口右键选择[Edit]来修改二进制指令。修改后通过右键选择[Commit Change]可以看到修改后的IDA视图。但需要注意的是，这种方式的修改并不会更新原始程序文件，实际只是修改了IDA的项目文件！IDA中只适合做一些验证性的修改，确保正确后再使用其他工具修改原始程序文件。 在IDA中验证修改正确后，可以使用UltraEdit或Hex Workshop来修改原始程序文件。下面会以UltraEdit为例来说明如何修改。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132147-6a9f4ec95de8492db763f5360d4e4578.png&quot; alt=&quot;&quot;&gt; &lt;/p&gt;
+&lt;p&gt;用UltraEdit直接打开程序文件，UltraEdit会以16进制模式显示程序文件。UltraEdit显示的地址和IDA显示的地址是不同的，为了找到对应代码片断在UltraEdit中的实际地址，需要使用到UltraEdit的查找功能。在IDA中复制需修改的16进制模式显示的指令，在UltraEdit中打开查找，粘贴并查找该16进制字符串，UltrEdit会很快定位到该指令处，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132149-c93ff9b317bd4ca5a3cea58d4763c60a.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在IDA中使得右键来复制&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132150-8db32128faca412db7d61df0c270670d.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在UltraEdit打开查找功能&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132152-a9f3e74b6d7c4b33b5ab0a4a2876bf75.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;找到了UltraEdit的对应位置 现在我们要把“a &amp;gt; 0”改成“n &amp;gt; 0”，a对应的ASCII码是61，而n对应的ASCII码是6E，只需把61改成6E就可以了，修改后保存。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132153-cf1c51f9bd3f4c4f826ac296647fa515.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;再次运行，可以看到结果已改变！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132153-df1bf24d8a2d4d8bac1b2accdc4b5c0e.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;示例只是修改了字符串，只需更改数据段内容就可以了，不用更改指令。假如需要更改指令，需要参考&amp;lt; a href=”&lt;a href=&quot;http://courses.engr.illinois.edu/ece390/resources/opcodes.html#Main&amp;quot;&amp;gt;8086指令操作表写出对应指今的16进制形式，再修改。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://courses.engr.illinois.edu/ece390/resources/opcodes.html#Main&amp;quot;&amp;gt;8086指令操作表写出对应指今的16进制形式，再修改。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/dMaznuA.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;要点二&quot;&gt;&lt;a href=&quot;#要点二&quot; class=&quot;headerlink&quot; title=&quot;要点二&quot;&gt;&lt;/a&gt;要点二&lt;/h2&gt;&lt;h3 id=&quot;对于程序流程的理解以及自己编写&quot;&gt;&lt;a href=&quot;#对于程序流程的理解以及自己编写&quot; class=&quot;headerlink&quot; title=&quot;对于程序流程的理解以及自己编写&quot;&gt;&lt;/a&gt;对于程序流程的理解以及自己编写&lt;/h3&gt;&lt;p&gt;实验工具：IDA、VC、OD&lt;/p&gt;
+&lt;p&gt;实验流程：&lt;br&gt;程序事先运行一下知道运行结果 为：&lt;br&gt;&lt;img src=&quot;http://i.imgur.com/QyzSjJS.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;之后运行ida进行猜测：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ZmpAEMh.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Nh3YdGU.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/LgcwWcP.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/GGcA9QZ.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/r5Avj5G.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最后还原的C语言代码为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#include &amp;quot;stdafx.h&amp;quot;
+
+int main(int argc, char* argv[])
+{
+int var_4 = 192;
+int var_8 = 10;
+while(var_8&amp;gt;0){
+    if(var_4 == 4) break;
+    var_4 -= var_8;
+    var_8 -=2;
+    }
+printf(&amp;quot;num=%d&amp;quot;,var_4);
+return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;对于程序&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/hhWeyVq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/hmy03rE.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;要点三、静下心来-再来一发&quot;&gt;&lt;a href=&quot;#要点三、静下心来-再来一发&quot; class=&quot;headerlink&quot; title=&quot;要点三、静下心来 再来一发&quot;&gt;&lt;/a&gt;要点三、静下心来 再来一发&lt;/h2&gt;&lt;h3 id=&quot;话不多说上图&quot;&gt;&lt;a href=&quot;#话不多说上图&quot; class=&quot;headerlink&quot; title=&quot;话不多说上图&quot;&gt;&lt;/a&gt;话不多说上图&lt;/h3&gt;&lt;p&gt;最后科普一下C语言的数据结构：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/dbeFgar.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;进行对比的结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/psRXw3x.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;同样道理首先运行程序，查看程序原本运行的结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/7QYLZwK.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;掏出神器：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/l9Rc1Q1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;首先进行&lt;strong&gt;字符串&lt;/strong&gt;的识别：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/WDRgZfm.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;对于&lt;strong&gt;数组&lt;/strong&gt;的识别：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/aOBUJIK.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;接下来就是进行程序流程分析：（关键点如下）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/YWEJZp6.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这一步主要是把字符串数组&lt;strong&gt;高位&lt;/strong&gt;，给了数组的&lt;strong&gt;低位&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ZLZA2R9.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这一步是为了循环的进行，循环变量的赋值。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/ZjX0Xaf.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;进行循环判断了，由于ebp+var_18最开始其值为0，并且每次循环都自增一，故分析可以知道会循环七次。&lt;/p&gt;
+&lt;p&gt;最后程序分析：&lt;br&gt;    把字符串每一个字母倒着输出类似于python中array[::-1]&lt;/p&gt;
+&lt;p&gt;程序的逆向模仿生成和运行：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/qoNfy3D.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/yRKnYVV.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;要点四、-脱壳半日游&quot;&gt;&lt;a href=&quot;#要点四、-脱壳半日游&quot; class=&quot;headerlink&quot; title=&quot;要点四、 脱壳半日游&quot;&gt;&lt;/a&gt;要点四、 脱壳半日游&lt;/h2&gt;&lt;h3 id=&quot;发现加壳&quot;&gt;&lt;a href=&quot;#发现加壳&quot; class=&quot;headerlink&quot; title=&quot;发现加壳&quot;&gt;&lt;/a&gt;发现加壳&lt;/h3&gt;&lt;p&gt;发下加壳：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/PU8Oumw.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;此处有两个判断要点：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. 观察程序的入口点和偏移位移的参数，两者如果不同表示有加壳。
+2. 程序下方表示不为编程语言，为其他的多半是加壳滴！
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;脱壳工具杀一波：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/Bbr6aaZ.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;执行命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;upx.exe  -d  要破解的程序.exe
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;OD进行破壳-：&quot;&gt;&lt;a href=&quot;#OD进行破壳-：&quot; class=&quot;headerlink&quot; title=&quot;OD进行破壳 ###：&quot;&gt;&lt;/a&gt;OD进行破壳 ###：&lt;/h3&gt;&lt;h4 id=&quot;原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律&quot;&gt;&lt;a href=&quot;#原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律&quot; class=&quot;headerlink&quot; title=&quot;原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律&quot;&gt;&lt;/a&gt;原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律&lt;/h4&gt;&lt;p&gt;截图开始：&lt;/p&gt;
+&lt;p&gt;首先单步执行以下来发现就旁边的ESP就他唯一的变红了，&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/IInwnQ1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;next，变红的esp  右键  数据窗口中跟随&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/re2MfSV.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;选中四个字节 右键 断点  dw&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/f4SszME.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;调试里面  硬件访问   硬件断点 &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/1T4En3C.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;单步运行，注意比较大的跳转&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/EZDdOcA.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;分析 右键  从模块中删除&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/BkiiiTb.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;右键 用od脱壳脱壳  重建输入表 有时候  无输入表的可以运行 &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/tvrl8MQ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;大功告成！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/rPEH26f.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一些小tips&quot;&gt;&lt;a href=&quot;#一些小tips&quot; class=&quot;headerlink&quot; title=&quot;一些小tips&quot;&gt;&lt;/a&gt;一些小tips&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;什么情况使用esp定律 ，看寄存器的变化 （55）60 esp&lt;br&gt;所有的寄存器入栈 汇编的第一步  较大的跳转，出了壳  进出真正的程序  出了壳就是oep&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ntdll  程序错误了 360误杀啦！程序错误&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;调用破解的时候出现权限问题，注意此时改程序是否正在被调用中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;所使用的函数不一样，调用的方法不一样因此就是不能使用加一个系统的断点使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;f4：跳转到某一步，其前面的也会执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一串0ccccccc  int3  中断&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用调试模式 出来的额是_printf&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;绿色的 do while  蓝色是 for  while 都可以&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;IDA中 f5 进入伪代码  h  十进制的转换   a 字符串的转换&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;rep stosd 程序的开始&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&quot;参考的文章：&quot;&gt;&lt;a href=&quot;#参考的文章：&quot; class=&quot;headerlink&quot; title=&quot;参考的文章：&quot;&gt;&lt;/a&gt;参考的文章：&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/vento/archive/2013/02/09/2909579.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;利用IDA Pro反汇编程序&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/CBHcoF9.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;关键点：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1、实验环境的搭建（ida）（vc）（下载程序进行运行）&lt;/p&gt;
+&lt;p&gt;2、了解了ida的各部分主要功能。&lt;/p&gt;
+&lt;p&gt;3、根据ida程序流程，分析程序，返回调用。&lt;/p&gt;
+&lt;p&gt;4、脱壳半日游：）&lt;/p&gt;
+&lt;p&gt;5、一些小tips&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="汇编" scheme="http://dongfengyz.github.io/categories/%E6%B1%87%E7%BC%96/"/>
+    
+    
+      <category term="反汇编" scheme="http://dongfengyz.github.io/tags/%E5%8F%8D%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
   
   <entry>
     <title>汇编（二）</title>

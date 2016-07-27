@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  
+  <title>反汇编（三） | younger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="关键点：
+1、实验环境的搭建（ida）（vc）（下载程序进行运行）
+2、了解了ida的各部分主要功能。
+3、根据ida程序流程，分析程序，返回调用。
+4、脱壳半日游：）
+5、一些小tips">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反汇编（三）">
+<meta property="og:url" content="http://dongfengyz.github.io/2016/07/27/反汇编（三）/index.html">
+<meta property="og:site_name" content="younger">
+<meta property="og:description" content="关键点：
+1、实验环境的搭建（ida）（vc）（下载程序进行运行）
+2、了解了ida的各部分主要功能。
+3、根据ida程序流程，分析程序，返回调用。
+4、脱壳半日游：）
+5、一些小tips">
+<meta property="og:image" content="http://i.imgur.com/CBHcoF9.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132135-2b1b1af4110f46c2b332c43b2ba89d19.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132139-9087f4046dd64702ba04c493627f534b.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132140-2e1b6c88dfa741f798dd9d3c3e74391d.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132141-7a89250d10114495928a081e1facb10d.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132142-0b206ba8c8d544ff8f5005a1cb16f532.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132143-988112ed870c46979699cc75a70e20e1.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132144-38aea776e36046c19526a014c33e77dd.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132145-314bc6c869b44577863e8fb5cb657b01.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132147-6a9f4ec95de8492db763f5360d4e4578.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132149-c93ff9b317bd4ca5a3cea58d4763c60a.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132150-8db32128faca412db7d61df0c270670d.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132152-a9f3e74b6d7c4b33b5ab0a4a2876bf75.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132153-cf1c51f9bd3f4c4f826ac296647fa515.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132153-df1bf24d8a2d4d8bac1b2accdc4b5c0e.png">
+<meta property="og:image" content="http://i.imgur.com/dMaznuA.jpg">
+<meta property="og:image" content="http://i.imgur.com/QyzSjJS.jpg">
+<meta property="og:image" content="http://i.imgur.com/ZmpAEMh.png">
+<meta property="og:image" content="http://i.imgur.com/Nh3YdGU.jpg">
+<meta property="og:image" content="http://i.imgur.com/LgcwWcP.jpg">
+<meta property="og:image" content="http://i.imgur.com/GGcA9QZ.jpg">
+<meta property="og:image" content="http://i.imgur.com/r5Avj5G.jpg">
+<meta property="og:image" content="http://i.imgur.com/hhWeyVq.jpg">
+<meta property="og:image" content="http://i.imgur.com/hmy03rE.jpg">
+<meta property="og:image" content="http://i.imgur.com/dbeFgar.jpg">
+<meta property="og:image" content="http://i.imgur.com/psRXw3x.jpg">
+<meta property="og:image" content="http://i.imgur.com/7QYLZwK.jpg">
+<meta property="og:image" content="http://i.imgur.com/l9Rc1Q1.jpg">
+<meta property="og:image" content="http://i.imgur.com/WDRgZfm.jpg">
+<meta property="og:image" content="http://i.imgur.com/aOBUJIK.jpg">
+<meta property="og:image" content="http://i.imgur.com/YWEJZp6.jpg">
+<meta property="og:image" content="http://i.imgur.com/ZLZA2R9.jpg">
+<meta property="og:image" content="http://i.imgur.com/ZjX0Xaf.jpg">
+<meta property="og:image" content="http://i.imgur.com/qoNfy3D.jpg">
+<meta property="og:image" content="http://i.imgur.com/yRKnYVV.jpg">
+<meta property="og:image" content="http://i.imgur.com/PU8Oumw.png">
+<meta property="og:image" content="http://i.imgur.com/Bbr6aaZ.jpg">
+<meta property="og:image" content="http://i.imgur.com/IInwnQ1.png">
+<meta property="og:image" content="http://i.imgur.com/re2MfSV.png">
+<meta property="og:image" content="http://i.imgur.com/f4SszME.png">
+<meta property="og:image" content="http://i.imgur.com/1T4En3C.png">
+<meta property="og:image" content="http://i.imgur.com/EZDdOcA.png">
+<meta property="og:image" content="http://i.imgur.com/BkiiiTb.png">
+<meta property="og:image" content="http://i.imgur.com/tvrl8MQ.png">
+<meta property="og:image" content="http://i.imgur.com/rPEH26f.png">
+<meta property="og:updated_time" content="2016-07-27T11:49:56.658Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="反汇编（三）">
+<meta name="twitter:description" content="关键点：
+1、实验环境的搭建（ida）（vc）（下载程序进行运行）
+2、了解了ida的各部分主要功能。
+3、根据ida程序流程，分析程序，返回调用。
+4、脱壳半日游：）
+5、一些小tips">
+<meta name="twitter:image" content="http://i.imgur.com/CBHcoF9.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="younger" type="application/atom+xml">
+  
+  
+    <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  
+  
+      <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+      <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">younger</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/tags">标签云</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                                <li id="知乎"><a class="知乎" target="_blank" href="/东风" title="知乎"></a></li>
+                            
+                                <li id="QQ"><a class="QQ" target="_blank" href="/398893925" title="QQ"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Django/" style="font-size: 10px;">Django</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/grant/" style="font-size: 10px;">grant</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/javaweb/" style="font-size: 10px;">javaweb</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a> <a href="/tags/pl/" style="font-size: 15px;">pl</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/struts2/" style="font-size: 10px;">struts2</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/上传/" style="font-size: 10px;">上传</a> <a href="/tags/反汇编/" style="font-size: 20px;">反汇编</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/感触/" style="font-size: 10px;">感触</a> <a href="/tags/标签/" style="font-size: 10px;">标签</a> <a href="/tags/汇编/" style="font-size: 10px;">汇编</a> <a href="/tags/测试/" style="font-size: 10px;">测试</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.ishadowsocks.net/">桥</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.zhihu.com/#signin">知乎</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.v2ex.com/">V2EX</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">孤独膨胀成猪</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">younger</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">younger</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/tags">标签云</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                                <li id="知乎"><a class="知乎" target="_blank" href="/东风" title="知乎"></a></li>
+                            
+                                <li id="QQ"><a class="QQ" target="_blank" href="/398893925" title="QQ"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-反汇编（三）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/27/反汇编（三）/" class="article-date">
+      <time datetime="2016-07-27T00:51:33.000Z" itemprop="datePublished">2016-07-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      反汇编（三）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/汇编/">汇编</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/反汇编/">反汇编</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="http://i.imgur.com/CBHcoF9.jpg" alt=""><br><strong>关键点：</strong></p>
+<p>1、实验环境的搭建（ida）（vc）（下载程序进行运行）</p>
+<p>2、了解了ida的各部分主要功能。</p>
+<p>3、根据ida程序流程，分析程序，返回调用。</p>
+<p>4、脱壳半日游：）</p>
+<p>5、一些小tips</p>
+<a id="more"></a>
+<h2 id="要点一"><a href="#要点一" class="headerlink" title="要点一"></a>要点一</h2><h3 id="IDA工具简介"><a href="#IDA工具简介" class="headerlink" title="IDA工具简介"></a>IDA工具简介</h3><p>IDA Pro是一款强大的反汇编软件，特有的IDA视图和交叉引用，可以方便理解程序逻辑和快速定位代码片断，以方便修改。</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132135-2b1b1af4110f46c2b332c43b2ba89d19.png" alt=""></p>
+<h4 id="IDA视图"><a href="#IDA视图" class="headerlink" title="IDA视图"></a>IDA视图</h4><h4 id="示例程序"><a href="#示例程序" class="headerlink" title="示例程序"></a>示例程序</h4><p>下面会通过修改示例程序的输出字符串，来讲解如何使用IDA Pro。</p>
+<pre><code>#include
+void main()
+{
+int n;
+scanf (&quot;%d&quot;,&amp;n);
+if (n &gt; 0)
+    printf(&quot;a &gt; 0&quot;);  //后面会用IDA Pro把&apos;a&apos;改成&apos;n&apos;
+else
+    printf(&quot;n &lt; 0&quot;);
+}
+</code></pre><p>编译后的程序下载：<a href="files.cnblogs.com/vento/test.zip">demo</a></p>
+<h4 id="运行IDA-Pro"><a href="#运行IDA-Pro" class="headerlink" title="运行IDA Pro"></a>运行IDA Pro</h4><p>运行IDA Pro，并使用PE文件的方式打开示例的test.exe文件。IDA Pro会新建一个工程，并开始反汇编程序。反汇编完成后，在[IDA-View]窗口中，可以看到程序逻辑的树形图，如下：</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132139-9087f4046dd64702ba04c493627f534b.png" alt=""></p>
+<p>树形图把条件分支清晰地显示出来了，绿色线连着的表示条件为true时执行的逻辑，而红色线表示条件为false时执行的逻辑。右下角有IDA视图的缩略图，在上面点击可以快速定位到视图的指定位置。 IDA的工具栏有几个按钮对定位代码很重要，如下图所示：</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132140-2e1b6c88dfa741f798dd9d3c3e74391d.png" alt=""></p>
+<p>从左到右分别是： Open exports window:打开导出窗口 Open import window:打开导入窗口 <em>Open names window:函数和参数的命名列表 </em>Open functions window:程序调用的所有函数窗口 *Open strings window: 打开字符串显示窗口，会列出程序中的所有字符串，该窗口有助于你通过程序的运行输出逆向找出对应的代码片断。</p>
+<h4 id="定位代码片断"><a href="#定位代码片断" class="headerlink" title="定位代码片断"></a>定位代码片断</h4><p>假设我们现在接到个任务，需修正程序，把输出“a &gt; 0”修正为“n &gt; 0”。示例程序比较简单，直接看IDA视图我们就能找到需修改的代码片断，但实际处理时，可能程序有几m大，通过一个个看IDA视图已没法有效找到相关的执行代码片断，这时怎么办？ 使用字符串窗口和IDA强大的交叉引用！ 点击工具栏的[Open strings windows]按钮，可以看到如下的程序字符串：</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132141-7a89250d10114495928a081e1facb10d.png" alt=""></p>
+<p>程序的字符串较少，可以很快地看到我们需要的字符串“a &gt; 0”在数据段00403003位置。假如字符串多到已不能肉眼定位查找，因为字符串窗口是没有查找功能的，这时需要借助其他的文本编辑器，如notepad，editplus等。在字符串窗口内右键，选择菜单[copy]命令，会把字符串窗口的所有内容复制到剪贴板，再粘贴到记事本中查找就可以了。 双击字符串窗口的该行字符串，会跳转到IDA视图的00403003位置，如下图所示： </p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132142-0b206ba8c8d544ff8f5005a1cb16f532.png" alt=""></p>
+<p>该位置的字符串后面会注释有DATA XREF的字样，这是程序中引用到该字符串的代码片断的地址！在该行上右键，选择[Jump to cross reference…]项，会立即跳转到引用该字符串的代码片断位置！</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132143-988112ed870c46979699cc75a70e20e1.png" alt=""></p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132144-38aea776e36046c19526a014c33e77dd.png" alt=""></p>
+<p>最后定位的代码片断 上图显示的汇编指令即是我们要找的代码片断，这时点击[Hex View-A]窗口，会切换到二进制浏览模式，并高亮了汇编代码的二进制格式指令，如下图所示：</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132145-314bc6c869b44577863e8fb5cb657b01.png" alt=""></p>
+<p>已找到需修改的代码片断，剩下的只需把a改成n。</p>
+<h4 id="修改程序文件"><a href="#修改程序文件" class="headerlink" title="修改程序文件"></a>修改程序文件</h4><p>在IDA中，可以在[Hex View-A]窗口右键选择[Edit]来修改二进制指令。修改后通过右键选择[Commit Change]可以看到修改后的IDA视图。但需要注意的是，这种方式的修改并不会更新原始程序文件，实际只是修改了IDA的项目文件！IDA中只适合做一些验证性的修改，确保正确后再使用其他工具修改原始程序文件。 在IDA中验证修改正确后，可以使用UltraEdit或Hex Workshop来修改原始程序文件。下面会以UltraEdit为例来说明如何修改。</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132147-6a9f4ec95de8492db763f5360d4e4578.png" alt=""> </p>
+<p>用UltraEdit直接打开程序文件，UltraEdit会以16进制模式显示程序文件。UltraEdit显示的地址和IDA显示的地址是不同的，为了找到对应代码片断在UltraEdit中的实际地址，需要使用到UltraEdit的查找功能。在IDA中复制需修改的16进制模式显示的指令，在UltraEdit中打开查找，粘贴并查找该16进制字符串，UltrEdit会很快定位到该指令处，如下图所示：</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132149-c93ff9b317bd4ca5a3cea58d4763c60a.png" alt=""></p>
+<p>在IDA中使得右键来复制</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132150-8db32128faca412db7d61df0c270670d.png" alt=""></p>
+<p>在UltraEdit打开查找功能</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132152-a9f3e74b6d7c4b33b5ab0a4a2876bf75.png" alt=""></p>
+<p>找到了UltraEdit的对应位置 现在我们要把“a &gt; 0”改成“n &gt; 0”，a对应的ASCII码是61，而n对应的ASCII码是6E，只需把61改成6E就可以了，修改后保存。</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132153-cf1c51f9bd3f4c4f826ac296647fa515.png" alt=""></p>
+<p>再次运行，可以看到结果已改变！</p>
+<p><img src="http://images.cnitblog.com/blog/27038/201302/09132153-df1bf24d8a2d4d8bac1b2accdc4b5c0e.png" alt=""></p>
+<p>示例只是修改了字符串，只需更改数据段内容就可以了，不用更改指令。假如需要更改指令，需要参考&lt; a href=”<a href="http://courses.engr.illinois.edu/ece390/resources/opcodes.html#Main&quot;&gt;8086指令操作表写出对应指今的16进制形式，再修改。" target="_blank" rel="external">http://courses.engr.illinois.edu/ece390/resources/opcodes.html#Main&quot;&gt;8086指令操作表写出对应指今的16进制形式，再修改。</a></p>
+<p><img src="http://i.imgur.com/dMaznuA.jpg" alt=""></p>
+<h2 id="要点二"><a href="#要点二" class="headerlink" title="要点二"></a>要点二</h2><h3 id="对于程序流程的理解以及自己编写"><a href="#对于程序流程的理解以及自己编写" class="headerlink" title="对于程序流程的理解以及自己编写"></a>对于程序流程的理解以及自己编写</h3><p>实验工具：IDA、VC、OD</p>
+<p>实验流程：<br>程序事先运行一下知道运行结果 为：<br><img src="http://i.imgur.com/QyzSjJS.jpg" alt=""></p>
+<p>之后运行ida进行猜测：</p>
+<p><img src="http://i.imgur.com/ZmpAEMh.png" alt=""></p>
+<p><img src="http://i.imgur.com/Nh3YdGU.jpg" alt=""></p>
+<p><img src="http://i.imgur.com/LgcwWcP.jpg" alt=""></p>
+<p><img src="http://i.imgur.com/GGcA9QZ.jpg" alt=""></p>
+<p><img src="http://i.imgur.com/r5Avj5G.jpg" alt=""></p>
+<p>最后还原的C语言代码为：</p>
+<pre><code>#include &quot;stdafx.h&quot;
+
+int main(int argc, char* argv[])
+{
+int var_4 = 192;
+int var_8 = 10;
+while(var_8&gt;0){
+    if(var_4 == 4) break;
+    var_4 -= var_8;
+    var_8 -=2;
+    }
+printf(&quot;num=%d&quot;,var_4);
+return 0;
+}
+</code></pre><p>对于程序</p>
+<p><img src="http://i.imgur.com/hhWeyVq.jpg" alt=""></p>
+<p><img src="http://i.imgur.com/hmy03rE.jpg" alt=""></p>
+<h2 id="要点三、静下心来-再来一发"><a href="#要点三、静下心来-再来一发" class="headerlink" title="要点三、静下心来 再来一发"></a>要点三、静下心来 再来一发</h2><h3 id="话不多说上图"><a href="#话不多说上图" class="headerlink" title="话不多说上图"></a>话不多说上图</h3><p>最后科普一下C语言的数据结构：</p>
+<p><img src="http://i.imgur.com/dbeFgar.jpg" alt=""></p>
+<p>进行对比的结果：</p>
+<p><img src="http://i.imgur.com/psRXw3x.jpg" alt=""></p>
+<p>同样道理首先运行程序，查看程序原本运行的结果：</p>
+<p><img src="http://i.imgur.com/7QYLZwK.jpg" alt=""></p>
+<p>掏出神器：</p>
+<p><img src="http://i.imgur.com/l9Rc1Q1.jpg" alt=""></p>
+<p>首先进行<strong>字符串</strong>的识别：</p>
+<p><img src="http://i.imgur.com/WDRgZfm.jpg" alt=""></p>
+<p>对于<strong>数组</strong>的识别：</p>
+<p><img src="http://i.imgur.com/aOBUJIK.jpg" alt=""></p>
+<p>接下来就是进行程序流程分析：（关键点如下）</p>
+<p><img src="http://i.imgur.com/YWEJZp6.jpg" alt=""></p>
+<p>这一步主要是把字符串数组<strong>高位</strong>，给了数组的<strong>低位</strong>。</p>
+<p><img src="http://i.imgur.com/ZLZA2R9.jpg" alt=""></p>
+<p>这一步是为了循环的进行，循环变量的赋值。</p>
+<p><img src="http://i.imgur.com/ZjX0Xaf.jpg" alt=""></p>
+<p>进行循环判断了，由于ebp+var_18最开始其值为0，并且每次循环都自增一，故分析可以知道会循环七次。</p>
+<p>最后程序分析：<br>    把字符串每一个字母倒着输出类似于python中array[::-1]</p>
+<p>程序的逆向模仿生成和运行：</p>
+<p><img src="http://i.imgur.com/qoNfy3D.jpg" alt=""></p>
+<p><img src="http://i.imgur.com/yRKnYVV.jpg" alt=""></p>
+<h2 id="要点四、-脱壳半日游"><a href="#要点四、-脱壳半日游" class="headerlink" title="要点四、 脱壳半日游"></a>要点四、 脱壳半日游</h2><h3 id="发现加壳"><a href="#发现加壳" class="headerlink" title="发现加壳"></a>发现加壳</h3><p>发下加壳：</p>
+<p><img src="http://i.imgur.com/PU8Oumw.png" alt=""></p>
+<p>此处有两个判断要点：</p>
+<pre><code>1. 观察程序的入口点和偏移位移的参数，两者如果不同表示有加壳。
+2. 程序下方表示不为编程语言，为其他的多半是加壳滴！
+</code></pre><p>脱壳工具杀一波：</p>
+<p><img src="http://i.imgur.com/Bbr6aaZ.jpg" alt=""></p>
+<p>执行命令：</p>
+<pre><code>upx.exe  -d  要破解的程序.exe
+</code></pre><h3 id="OD进行破壳-："><a href="#OD进行破壳-：" class="headerlink" title="OD进行破壳 ###："></a>OD进行破壳 ###：</h3><h4 id="原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律"><a href="#原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律" class="headerlink" title="原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律"></a>原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律</h4><p>截图开始：</p>
+<p>首先单步执行以下来发现就旁边的ESP就他唯一的变红了，</p>
+<p><img src="http://i.imgur.com/IInwnQ1.png" alt=""></p>
+<p>next，变红的esp  右键  数据窗口中跟随</p>
+<p><img src="http://i.imgur.com/re2MfSV.png" alt=""></p>
+<p>选中四个字节 右键 断点  dw</p>
+<p><img src="http://i.imgur.com/f4SszME.png" alt=""></p>
+<p>调试里面  硬件访问   硬件断点 </p>
+<p><img src="http://i.imgur.com/1T4En3C.png" alt=""></p>
+<p>单步运行，注意比较大的跳转</p>
+<p><img src="http://i.imgur.com/EZDdOcA.png" alt=""></p>
+<p>分析 右键  从模块中删除</p>
+<p><img src="http://i.imgur.com/BkiiiTb.png" alt=""></p>
+<p>右键 用od脱壳脱壳  重建输入表 有时候  无输入表的可以运行 </p>
+<p><img src="http://i.imgur.com/tvrl8MQ.png" alt=""></p>
+<p>大功告成！</p>
+<p><img src="http://i.imgur.com/rPEH26f.png" alt=""></p>
+<h2 id="一些小tips"><a href="#一些小tips" class="headerlink" title="一些小tips"></a>一些小tips</h2><ol>
+<li><p>什么情况使用esp定律 ，看寄存器的变化 （55）60 esp<br>所有的寄存器入栈 汇编的第一步  较大的跳转，出了壳  进出真正的程序  出了壳就是oep</p>
+</li>
+<li><p>ntdll  程序错误了 360误杀啦！程序错误</p>
+</li>
+<li><p>调用破解的时候出现权限问题，注意此时改程序是否正在被调用中</p>
+</li>
+<li><p>所使用的函数不一样，调用的方法不一样因此就是不能使用加一个系统的断点使用</p>
+</li>
+<li><p>f4：跳转到某一步，其前面的也会执行。</p>
+</li>
+<li><p>一串0ccccccc  int3  中断</p>
+</li>
+<li><p>使用调试模式 出来的额是_printf</p>
+</li>
+<li><p>绿色的 do while  蓝色是 for  while 都可以</p>
+</li>
+<li><p>IDA中 f5 进入伪代码  h  十进制的转换   a 字符串的转换</p>
+</li>
+<li><p>rep stosd 程序的开始</p>
+</li>
+</ol>
+<h4 id="参考的文章："><a href="#参考的文章：" class="headerlink" title="参考的文章："></a>参考的文章：</h4><ol>
+<li><a href="http://www.cnblogs.com/vento/archive/2013/02/09/2909579.html" target="_blank" rel="external">利用IDA Pro反汇编程序</a></li>
+</ol>
+
+      
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2016/07/27/反汇编（三）/">反汇编（三）</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">younger</a></p>
+        <p><span>Created:</span>2016-07-27, 08:51:33</p>
+        <p><span>Updated:</span>2016-07-27, 19:49:56</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2016/07/27/反汇编（三）/" title="反汇编（三）">http://dongfengyz.github.io/2016/07/27/反汇编（三）/</a>
+            <span class="copy-path" data-clipboard-text="From http://dongfengyz.github.io/2016/07/27/反汇编（三）/　　By younger" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/07/26/反汇编（二）/">
+                    汇编（二）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#要点一"><span class="toc-number">1.</span> <span class="toc-text">要点一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA工具简介"><span class="toc-number">1.1.</span> <span class="toc-text">IDA工具简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IDA视图"><span class="toc-number">1.1.1.</span> <span class="toc-text">IDA视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例程序"><span class="toc-number">1.1.2.</span> <span class="toc-text">示例程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行IDA-Pro"><span class="toc-number">1.1.3.</span> <span class="toc-text">运行IDA Pro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定位代码片断"><span class="toc-number">1.1.4.</span> <span class="toc-text">定位代码片断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改程序文件"><span class="toc-number">1.1.5.</span> <span class="toc-text">修改程序文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点二"><span class="toc-number">2.</span> <span class="toc-text">要点二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于程序流程的理解以及自己编写"><span class="toc-number">2.1.</span> <span class="toc-text">对于程序流程的理解以及自己编写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点三、静下心来-再来一发"><span class="toc-number">3.</span> <span class="toc-text">要点三、静下心来 再来一发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#话不多说上图"><span class="toc-number">3.1.</span> <span class="toc-text">话不多说上图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点四、-脱壳半日游"><span class="toc-number">4.</span> <span class="toc-text">要点四、 脱壳半日游</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发现加壳"><span class="toc-number">4.1.</span> <span class="toc-text">发现加壳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OD进行破壳-："><span class="toc-number">4.2.</span> <span class="toc-text">OD进行破壳 ###：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律"><span class="toc-number">4.2.1.</span> <span class="toc-text">原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些小tips"><span class="toc-number">5.</span> <span class="toc-text">一些小tips</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考的文章："><span class="toc-number">5.0.1.</span> <span class="toc-text">参考的文章：</span></a></li></ol></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<script>
+    var valueHide = "Hide";
+    var valueShow = "Show";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+    <div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/07/27/反汇编（三）/" data-title="反汇编（三）" data-url="http://dongfengyz.github.io/2016/07/27/反汇编（三）/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangze1"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://yangze.win/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/07/26/反汇编（二）/" title="Next: 汇编（二）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/27/反汇编（三）/">反汇编（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/26/反汇编（二）/">汇编（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/反汇编（一）/">反汇编（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/Django/">Django</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/23/汇编/">汇编</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/struts202/">struts.xml配置文件详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/13/oracle-pl变量与常量的定义/">oracle-pl变量与常量的定义</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/项目管理复习/">项目管理复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/人生感悟-1/">人生感悟-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/oracle-pl/">oracle-pl</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/11/oracle-grant/">oracle_grant</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/10/将文件上传coding/">将文件上传coding</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/08/android17/">android17</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/08/上传/">上传</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/程序员的弊病/">程序员的弊病</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/07/jsp-标签/">jsp-标签</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/oracle/">oracle</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/05/web-分页/">web-分页</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/文章题目/">文章题目</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/biaoti/">biaoti</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 younger
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >Site Visitors: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">Page Hits: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.1.22/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
