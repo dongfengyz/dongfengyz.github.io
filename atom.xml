@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-26T14:26:21.569Z</updated>
+  <updated>2016-07-27T00:07:23.078Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://dongfengyz.github.io/2016/07/26/%E5%8F%8D%E6%B1%87%E7%BC%96%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>http://dongfengyz.github.io/2016/07/26/反汇编（二）/</id>
     <published>2016-07-26T10:54:55.000Z</published>
-    <updated>2016-07-26T14:26:21.569Z</updated>
+    <updated>2016-07-27T00:07:23.078Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/jEjgfX0.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;要点：&lt;/strong&gt;&lt;/p&gt;
@@ -62,7 +62,8 @@
 &lt;pre&gt;&lt;code&gt;1.输入要大于等于4位输入admin第一位是a，对应的ascii码就是61，eax=61 是第一位
 2.imul 乘法 eax * ds【】 61*29 =f89  3977
     0f89 + 0f89 = 7954 
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;第九个实验：&quot;&gt;&lt;a href=&quot;#第九个实验：&quot; class=&quot;headerlink&quot; title=&quot;第九个实验：&quot;&gt;&lt;/a&gt;第九个实验：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：就是一个登录框，进行分析寻找结果。&quot;&gt;&lt;a href=&quot;#实验描述：就是一个登录框，进行分析寻找结果。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：就是一个登录框，进行分析寻找结果。&quot;&gt;&lt;/a&gt;实验描述：就是一个登录框，进行分析寻找结果。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot;&gt;&lt;a href=&quot;#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot;&gt;&lt;/a&gt;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&lt;/h3&gt;&lt;p&gt;首先是根据智能搜索来查找关键字，之后进行查找关键跳，实验当中设计到很多&lt;img src=&quot;http://i.imgur.com/p95TZWE.png&quot; alt=&quot;&quot;&gt;类似的函数，然后就是根据函数的表面的意思进行猜解，然后设置断点进行分析。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/cemD4eu.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第九个实验：&quot;&gt;&lt;a href=&quot;#第九个实验：&quot; class=&quot;headerlink&quot; title=&quot;第九个实验：&quot;&gt;&lt;/a&gt;第九个实验：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：就是一个登录框，进行分析寻找结果。&quot;&gt;&lt;a href=&quot;#实验描述：就是一个登录框，进行分析寻找结果。&quot; class=&quot;headerlink&quot; title=&quot;实验描述：就是一个登录框，进行分析寻找结果。&quot;&gt;&lt;/a&gt;实验描述：就是一个登录框，进行分析寻找结果。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot;&gt;&lt;a href=&quot;#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot; class=&quot;headerlink&quot; title=&quot;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&quot;&gt;&lt;/a&gt;实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。&lt;/h3&gt;&lt;p&gt;首先是根据智能搜索来查找关键字，之后进行查找关键跳，实验当中设计到很多&lt;img src=&quot;http://i.imgur.com/p95TZWE.png&quot; alt=&quot;&quot;&gt;类似的函数，然后就是根据函数的表面的意思进行猜解，然后设置断点进行分析。&lt;/p&gt;
 &lt;p&gt; &lt;img src=&quot;http://i.imgur.com/idVPFXR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;strcmp  进行比较&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/kyKErV3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -73,7 +74,8 @@
     edi = len(input)
     edi *= int (&amp;apos;17cfb&amp;apos;,16) + ord(input[0])
 print edi
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;第十个实验：&quot;&gt;&lt;a href=&quot;#第十个实验：&quot; class=&quot;headerlink&quot; title=&quot;第十个实验：&quot;&gt;&lt;/a&gt;第十个实验：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。&quot;&gt;&lt;a href=&quot;#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。&quot; class=&quot;headerlink&quot; title=&quot;实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。&quot;&gt;&lt;/a&gt;实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot;&gt;&lt;a href=&quot;#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot; class=&quot;headerlink&quot; title=&quot;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot;&gt;&lt;/a&gt;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;55 push ebp
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/87UQwwB.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;第十个实验：&quot;&gt;&lt;a href=&quot;#第十个实验：&quot; class=&quot;headerlink&quot; title=&quot;第十个实验：&quot;&gt;&lt;/a&gt;第十个实验：&lt;/h2&gt;&lt;h3 id=&quot;实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。&quot;&gt;&lt;a href=&quot;#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。&quot; class=&quot;headerlink&quot; title=&quot;实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。&quot;&gt;&lt;/a&gt;实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。&lt;/h3&gt;&lt;h3 id=&quot;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot;&gt;&lt;a href=&quot;#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot; class=&quot;headerlink&quot; title=&quot;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&quot;&gt;&lt;/a&gt;实验思路：更加专业的寻找程序的入口就是自己在程序中寻找&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;55 push ebp
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这是对于复杂程序的入口定位，我们接下来就可以进行逐步的调试，来观察关联值的变化。&lt;/p&gt;
 &lt;p&gt;实验开始：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/zpckNGN.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -103,7 +105,7 @@ print edi
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/1aHFitw.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt; 根据ok处我们可以进行关键跳的寻找，此题经过寻找可以发现有两处要进行判断，分析如下：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/DcfTlG0.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt; 次步的主要目的就是进行输入字符串的长度的判断，0xa就是10的意思，因此可以推测我们的字符串的长度至少应该10位；&lt;/p&gt;
+&lt;p&gt; 次步的主要目的就是进行输入字符串的长度的判断，0xa就是10的意思，因此可以推测我们的字符串的长度为10位；&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/kCPJjRa.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt; 第二部的判断我们根据经验就肯定是输入的字符串和生成的字符串的检验判断，打个断点看一哈，各位看官别急，&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/miYcQxV.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;

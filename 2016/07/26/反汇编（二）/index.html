@@ -64,12 +64,14 @@
 <meta property="og:image" content="http://i.imgur.com/BM2Qr6J.png">
 <meta property="og:image" content="http://i.imgur.com/dY9Iaen.png">
 <meta property="og:image" content="http://i.imgur.com/E5Cbg1a.png">
+<meta property="og:image" content="http://i.imgur.com/cemD4eu.jpg">
 <meta property="og:image" content="http://i.imgur.com/p95TZWE.png">
 <meta property="og:image" content="http://i.imgur.com/idVPFXR.png">
 <meta property="og:image" content="http://i.imgur.com/kyKErV3.png">
 <meta property="og:image" content="http://i.imgur.com/RyFQtky.png">
 <meta property="og:image" content="http://i.imgur.com/pZg1oa7.png">
 <meta property="og:image" content="http://i.imgur.com/qgDah7m.png">
+<meta property="og:image" content="http://i.imgur.com/87UQwwB.jpg">
 <meta property="og:image" content="http://i.imgur.com/zpckNGN.png">
 <meta property="og:image" content="http://i.imgur.com/IFW40Xb.png">
 <meta property="og:image" content="http://i.imgur.com/9RP8vzl.png">
@@ -92,7 +94,7 @@
 <meta property="og:image" content="http://i.imgur.com/CVx6ByX.png">
 <meta property="og:image" content="http://i.imgur.com/nbBqIZY.png">
 <meta property="og:image" content="http://i.imgur.com/z8jMTUX.jpg">
-<meta property="og:updated_time" content="2016-07-26T14:26:21.569Z">
+<meta property="og:updated_time" content="2016-07-27T00:07:23.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编（二）">
 <meta name="twitter:description" content="要点：
@@ -409,7 +411,8 @@
 <pre><code>1.输入要大于等于4位输入admin第一位是a，对应的ascii码就是61，eax=61 是第一位
 2.imul 乘法 eax * ds【】 61*29 =f89  3977
     0f89 + 0f89 = 7954 
-</code></pre><h2 id="第九个实验："><a href="#第九个实验：" class="headerlink" title="第九个实验："></a>第九个实验：</h2><h3 id="实验描述：就是一个登录框，进行分析寻找结果。"><a href="#实验描述：就是一个登录框，进行分析寻找结果。" class="headerlink" title="实验描述：就是一个登录框，进行分析寻找结果。"></a>实验描述：就是一个登录框，进行分析寻找结果。</h3><h3 id="实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"><a href="#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。" class="headerlink" title="实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"></a>实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。</h3><p>首先是根据智能搜索来查找关键字，之后进行查找关键跳，实验当中设计到很多<img src="http://i.imgur.com/p95TZWE.png" alt="">类似的函数，然后就是根据函数的表面的意思进行猜解，然后设置断点进行分析。</p>
+</code></pre><p><img src="http://i.imgur.com/cemD4eu.jpg" alt=""></p>
+<h2 id="第九个实验："><a href="#第九个实验：" class="headerlink" title="第九个实验："></a>第九个实验：</h2><h3 id="实验描述：就是一个登录框，进行分析寻找结果。"><a href="#实验描述：就是一个登录框，进行分析寻找结果。" class="headerlink" title="实验描述：就是一个登录框，进行分析寻找结果。"></a>实验描述：就是一个登录框，进行分析寻找结果。</h3><h3 id="实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"><a href="#实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。" class="headerlink" title="实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。"></a>实验思路：这次实验要注意的点就是编写的程序当其调用系统的某些库函数的时候，我们就可以不急分析它进行跳过。</h3><p>首先是根据智能搜索来查找关键字，之后进行查找关键跳，实验当中设计到很多<img src="http://i.imgur.com/p95TZWE.png" alt="">类似的函数，然后就是根据函数的表面的意思进行猜解，然后设置断点进行分析。</p>
 <p> <img src="http://i.imgur.com/idVPFXR.png" alt=""></p>
 <p>strcmp  进行比较</p>
 <p><img src="http://i.imgur.com/kyKErV3.png" alt=""></p>
@@ -420,7 +423,8 @@
     edi = len(input)
     edi *= int (&apos;17cfb&apos;,16) + ord(input[0])
 print edi
-</code></pre><h2 id="第十个实验："><a href="#第十个实验：" class="headerlink" title="第十个实验："></a>第十个实验：</h2><h3 id="实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。"><a href="#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。" class="headerlink" title="实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。"></a>实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。</h3><h3 id="实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"><a href="#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找" class="headerlink" title="实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"></a>实验思路：更加专业的寻找程序的入口就是自己在程序中寻找</h3><pre><code>55 push ebp
+</code></pre><p><img src="http://i.imgur.com/87UQwwB.jpg" alt=""></p>
+<h2 id="第十个实验："><a href="#第十个实验：" class="headerlink" title="第十个实验："></a>第十个实验：</h2><h3 id="实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。"><a href="#实验描述：-在第九个实验的基础上进行更加复杂的算法的混淆。" class="headerlink" title="实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。"></a>实验描述： 在第九个实验的基础上进行更加复杂的算法的混淆。</h3><h3 id="实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"><a href="#实验思路：更加专业的寻找程序的入口就是自己在程序中寻找" class="headerlink" title="实验思路：更加专业的寻找程序的入口就是自己在程序中寻找"></a>实验思路：更加专业的寻找程序的入口就是自己在程序中寻找</h3><pre><code>55 push ebp
 </code></pre><p>这是对于复杂程序的入口定位，我们接下来就可以进行逐步的调试，来观察关联值的变化。</p>
 <p>实验开始：</p>
 <p><img src="http://i.imgur.com/zpckNGN.png" alt=""></p>
@@ -450,7 +454,7 @@ print edi
 <p><img src="http://i.imgur.com/1aHFitw.png" alt=""></p>
 <p> 根据ok处我们可以进行关键跳的寻找，此题经过寻找可以发现有两处要进行判断，分析如下：</p>
 <p><img src="http://i.imgur.com/DcfTlG0.png" alt=""></p>
-<p> 次步的主要目的就是进行输入字符串的长度的判断，0xa就是10的意思，因此可以推测我们的字符串的长度至少应该10位；</p>
+<p> 次步的主要目的就是进行输入字符串的长度的判断，0xa就是10的意思，因此可以推测我们的字符串的长度为10位；</p>
 <p><img src="http://i.imgur.com/kCPJjRa.png" alt=""></p>
 <p> 第二部的判断我们根据经验就肯定是输入的字符串和生成的字符串的检验判断，打个断点看一哈，各位看官别急，</p>
 <p><img src="http://i.imgur.com/miYcQxV.png" alt=""></p>
@@ -469,7 +473,7 @@ print edi
         <p><span>本文标题:</span><a href="/2016/07/26/反汇编（二）/">汇编（二）</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
         <p><span>发布时间:</span>2016-07-26, 18:54:55</p>
-        <p><span>最后更新:</span>2016-07-26, 22:26:21</p>
+        <p><span>最后更新:</span>2016-07-27, 08:07:23</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/07/26/反汇编（二）/" title="汇编（二）">http://dongfengyz.github.io/2016/07/26/反汇编（二）/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/07/26/反汇编（二）/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
