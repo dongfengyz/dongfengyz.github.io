@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://dongfengyz.github.io/"/>
-  <updated>2016-07-27T11:49:56.658Z</updated>
+  <updated>2016-07-27T11:56:02.913Z</updated>
   <id>http://dongfengyz.github.io/</id>
   
   <author>
@@ -20,14 +20,21 @@
     <link href="http://dongfengyz.github.io/2016/07/27/%E5%8F%8D%E6%B1%87%E7%BC%96%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>http://dongfengyz.github.io/2016/07/27/反汇编（三）/</id>
     <published>2016-07-27T00:51:33.000Z</published>
-    <updated>2016-07-27T11:49:56.658Z</updated>
+    <updated>2016-07-27T11:56:02.913Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://i.imgur.com/CBHcoF9.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;关键点：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1、实验环境的搭建（ida）（vc）（下载程序进行运行）&lt;/p&gt;
-&lt;p&gt;2、了解了ida的各部分主要功能。&lt;/p&gt;
-&lt;p&gt;3、根据ida程序流程，分析程序，返回调用。&lt;/p&gt;
-&lt;p&gt;4、脱壳半日游：）&lt;/p&gt;
-&lt;p&gt;5、一些小tips&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;实验环境的搭建（ida）（vc）（下载程序进行运行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;了解了ida的各部分主要功能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据ida程序流程，分析程序，返回调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;脱壳半日游：）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一些小tips&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;要点一&quot;&gt;&lt;a href=&quot;#要点一&quot; class=&quot;headerlink&quot; title=&quot;要点一&quot;&gt;&lt;/a&gt;要点一&lt;/h2&gt;&lt;h3 id=&quot;IDA工具简介&quot;&gt;&lt;a href=&quot;#IDA工具简介&quot; class=&quot;headerlink&quot; title=&quot;IDA工具简介&quot;&gt;&lt;/a&gt;IDA工具简介&lt;/h3&gt;&lt;p&gt;IDA Pro是一款强大的反汇编软件，特有的IDA视图和交叉引用，可以方便理解程序逻辑和快速定位代码片断，以方便修改。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/27038/201302/09132135-2b1b1af4110f46c2b332c43b2ba89d19.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -177,11 +184,18 @@ return 0;
     <summary type="html">
     
       &lt;p&gt;&lt;img src=&quot;http://i.imgur.com/CBHcoF9.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;关键点：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1、实验环境的搭建（ida）（vc）（下载程序进行运行）&lt;/p&gt;
-&lt;p&gt;2、了解了ida的各部分主要功能。&lt;/p&gt;
-&lt;p&gt;3、根据ida程序流程，分析程序，返回调用。&lt;/p&gt;
-&lt;p&gt;4、脱壳半日游：）&lt;/p&gt;
-&lt;p&gt;5、一些小tips&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;实验环境的搭建（ida）（vc）（下载程序进行运行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;了解了ida的各部分主要功能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据ida程序流程，分析程序，返回调用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;脱壳半日游：）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;一些小tips&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
     
     </summary>
     

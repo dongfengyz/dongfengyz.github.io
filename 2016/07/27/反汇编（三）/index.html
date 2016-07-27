@@ -6,21 +6,31 @@
   <title>反汇编（三） | younger</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关键点：
-1、实验环境的搭建（ida）（vc）（下载程序进行运行）
-2、了解了ida的各部分主要功能。
-3、根据ida程序流程，分析程序，返回调用。
-4、脱壳半日游：）
-5、一些小tips">
+
+实验环境的搭建（ida）（vc）（下载程序进行运行）
+
+了解了ida的各部分主要功能。
+
+根据ida程序流程，分析程序，返回调用。
+
+脱壳半日游：）
+
+一些小tips">
 <meta property="og:type" content="article">
 <meta property="og:title" content="反汇编（三）">
 <meta property="og:url" content="http://dongfengyz.github.io/2016/07/27/反汇编（三）/index.html">
 <meta property="og:site_name" content="younger">
 <meta property="og:description" content="关键点：
-1、实验环境的搭建（ida）（vc）（下载程序进行运行）
-2、了解了ida的各部分主要功能。
-3、根据ida程序流程，分析程序，返回调用。
-4、脱壳半日游：）
-5、一些小tips">
+
+实验环境的搭建（ida）（vc）（下载程序进行运行）
+
+了解了ida的各部分主要功能。
+
+根据ida程序流程，分析程序，返回调用。
+
+脱壳半日游：）
+
+一些小tips">
 <meta property="og:image" content="http://i.imgur.com/CBHcoF9.jpg">
 <meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132135-2b1b1af4110f46c2b332c43b2ba89d19.png">
 <meta property="og:image" content="http://images.cnitblog.com/blog/27038/201302/09132139-9087f4046dd64702ba04c493627f534b.png">
@@ -66,15 +76,20 @@
 <meta property="og:image" content="http://i.imgur.com/BkiiiTb.png">
 <meta property="og:image" content="http://i.imgur.com/tvrl8MQ.png">
 <meta property="og:image" content="http://i.imgur.com/rPEH26f.png">
-<meta property="og:updated_time" content="2016-07-27T11:49:56.658Z">
+<meta property="og:updated_time" content="2016-07-27T11:56:02.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="反汇编（三）">
 <meta name="twitter:description" content="关键点：
-1、实验环境的搭建（ida）（vc）（下载程序进行运行）
-2、了解了ida的各部分主要功能。
-3、根据ida程序流程，分析程序，返回调用。
-4、脱壳半日游：）
-5、一些小tips">
+
+实验环境的搭建（ida）（vc）（下载程序进行运行）
+
+了解了ida的各部分主要功能。
+
+根据ida程序流程，分析程序，返回调用。
+
+脱壳半日游：）
+
+一些小tips">
 <meta name="twitter:image" content="http://i.imgur.com/CBHcoF9.jpg">
   
     <link rel="alternative" href="/atom.xml" title="younger" type="application/atom+xml">
@@ -167,13 +182,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -335,11 +350,18 @@
       
           
         <p><img src="http://i.imgur.com/CBHcoF9.jpg" alt=""><br><strong>关键点：</strong></p>
-<p>1、实验环境的搭建（ida）（vc）（下载程序进行运行）</p>
-<p>2、了解了ida的各部分主要功能。</p>
-<p>3、根据ida程序流程，分析程序，返回调用。</p>
-<p>4、脱壳半日游：）</p>
-<p>5、一些小tips</p>
+<ol>
+<li><p>实验环境的搭建（ida）（vc）（下载程序进行运行）</p>
+</li>
+<li><p>了解了ida的各部分主要功能。</p>
+</li>
+<li><p>根据ida程序流程，分析程序，返回调用。</p>
+</li>
+<li><p>脱壳半日游：）</p>
+</li>
+<li><p>一些小tips</p>
+</li>
+</ol>
 <a id="more"></a>
 <h2 id="要点一"><a href="#要点一" class="headerlink" title="要点一"></a>要点一</h2><h3 id="IDA工具简介"><a href="#IDA工具简介" class="headerlink" title="IDA工具简介"></a>IDA工具简介</h3><p>IDA Pro是一款强大的反汇编软件，特有的IDA视图和交叉引用，可以方便理解程序逻辑和快速定位代码片断，以方便修改。</p>
 <p><img src="http://images.cnitblog.com/blog/27038/201302/09132135-2b1b1af4110f46c2b332c43b2ba89d19.png" alt=""></p>
@@ -493,18 +515,18 @@ return 0;
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/07/27/反汇编（三）/">反汇编（三）</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">younger</a></p>
-        <p><span>Created:</span>2016-07-27, 08:51:33</p>
-        <p><span>Updated:</span>2016-07-27, 19:49:56</p>
+        <p><span>本文标题:</span><a href="/2016/07/27/反汇编（三）/">反汇编（三）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">younger</a></p>
+        <p><span>发布时间:</span>2016-07-27, 08:51:33</p>
+        <p><span>最后更新:</span>2016-07-27, 19:56:02</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/07/27/反汇编（三）/" title="反汇编（三）">http://dongfengyz.github.io/2016/07/27/反汇编（三）/</a>
-            <span class="copy-path" data-clipboard-text="From http://dongfengyz.github.io/2016/07/27/反汇编（三）/　　By younger" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/27/反汇编（三）/" title="反汇编（三）">http://dongfengyz.github.io/2016/07/27/反汇编（三）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dongfengyz.github.io/2016/07/27/反汇编（三）/　　作者: younger" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -525,7 +547,7 @@ return 0;
 </article>
 
     <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
+    <strong class="toc-title">文章目录</strong>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#要点一"><span class="toc-number">1.</span> <span class="toc-text">要点一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDA工具简介"><span class="toc-number">1.1.</span> <span class="toc-text">IDA工具简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IDA视图"><span class="toc-number">1.1.1.</span> <span class="toc-text">IDA视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例程序"><span class="toc-number">1.1.2.</span> <span class="toc-text">示例程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#运行IDA-Pro"><span class="toc-number">1.1.3.</span> <span class="toc-text">运行IDA Pro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定位代码片断"><span class="toc-number">1.1.4.</span> <span class="toc-text">定位代码片断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改程序文件"><span class="toc-number">1.1.5.</span> <span class="toc-text">修改程序文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点二"><span class="toc-number">2.</span> <span class="toc-text">要点二</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对于程序流程的理解以及自己编写"><span class="toc-number">2.1.</span> <span class="toc-text">对于程序流程的理解以及自己编写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点三、静下心来-再来一发"><span class="toc-number">3.</span> <span class="toc-text">要点三、静下心来 再来一发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#话不多说上图"><span class="toc-number">3.1.</span> <span class="toc-text">话不多说上图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#要点四、-脱壳半日游"><span class="toc-number">4.</span> <span class="toc-text">要点四、 脱壳半日游</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发现加壳"><span class="toc-number">4.1.</span> <span class="toc-text">发现加壳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OD进行破壳-："><span class="toc-number">4.2.</span> <span class="toc-text">OD进行破壳 ###：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#原理：oep-真正程序的入口-脱壳最笨的棒法就是逐步进行-ESP定律"><span class="toc-number">4.2.1.</span> <span class="toc-text">原理：oep  真正程序的入口  脱壳最笨的棒法就是逐步进行  ESP定律</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些小tips"><span class="toc-number">5.</span> <span class="toc-text">一些小tips</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#参考的文章："><span class="toc-number">5.0.1.</span> <span class="toc-text">参考的文章：</span></a></li></ol></li></ol></li></ol>
 </div>
 <style>
@@ -537,10 +559,10 @@ return 0;
     }
 </style>
 
-<input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 <script>
-    var valueHide = "Hide";
-    var valueShow = "Show";
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
 
     if ($(".left-col").is(":hidden")) {
         $("#tocButton").attr("value", valueShow);
@@ -611,13 +633,13 @@ return 0;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/07/26/反汇编（二）/" title="Next: 汇编（二）">
+            <a href="/2016/07/26/反汇编（二）/" title="下一篇: 汇编（二）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -639,14 +661,14 @@ return 0;
                 &copy; 2016 younger
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo">Yelee</a> by MOxFIVE
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >Site Visitors: 
+                        <span id="site-visit" >本站到访数: 
                             <span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
@@ -656,7 +678,7 @@ return 0;
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">Page Hits: 
+                        <span id="page-visit">本页阅读量: 
                             <span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
@@ -689,9 +711,9 @@ return 0;
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
